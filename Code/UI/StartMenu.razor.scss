@@ -1,0 +1,48 @@
+StartMenu
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	//background-color: #000000;
+	//justify-content: center;
+	//align-items: center;
+	//font-weight: bold;
+	/* border-radius: 20px; */
+	color: #ffffff;
+	pointer-events: all;
+	flex-direction: column;
+	font-family: Poppins;
+
+	.title
+	{
+		font-size: 25px;
+		font-family: Poppins;
+		color: #fff;
+	}
+
+	> .topBar
+	{
+	    font-size: 25px;
+		background-color: black;
+		height: 8%;
+		padding: 12px;
+
+		> .topTitle
+		{
+            font-size: 7em;
+            font-weight: bolder;
+		}
+	}
+
+	> .body
+	{
+	    font-size: 25px;
+
+		> .sceneList
+		{
+
+		}
+	}
+}

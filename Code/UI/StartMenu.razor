@@ -1,0 +1,42 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+@namespace Sandbox
+
+<root>
+	<!--<div class="title">@MyStringValue</div>-->
+	<div class="topBar">
+		<p class="topTitle">Testpen!</p>
+
+	</div>
+	<hr/>
+	<div class="body">
+		<div class="sceneList">
+			<a>Go To Scene</a>
+		</div>
+	</div>
+</root>
+
+@code
+{
+
+	[Property, TextArea] public string MyStringValue { get; set; } = "Testpen!";
+
+	protected override void OnStart()
+	{
+		base.OnStart();
+	}
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+	}
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	//protected override int BuildHash() => System.HashCode.Combine( MyStringValue );
+	protected override int BuildHash() {
+		return System.HashCode.Combine( MyStringValue );
+	}
+}

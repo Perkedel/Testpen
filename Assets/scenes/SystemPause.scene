@@ -1,0 +1,59 @@
+{
+  "__guid": "f3d2ea9f-1a35-4b57-a4ca-90718c56234f",
+  "GameObjects": [
+    {
+      "__guid": "f4908837-ac9d-48ee-85ad-e6246d7df22b",
+      "__version": 2,
+      "__Prefab": "entity/ui.prefab",
+      "__PrefabInstancePatch": {
+        "AddedObjects": [],
+        "RemovedObjects": [],
+        "PropertyOverrides": [],
+        "MovedObjects": []
+      },
+      "__PrefabIdToInstanceId": {
+        "5b820ad5-f90e-4861-9490-94a8d1a41c2c": "f4908837-ac9d-48ee-85ad-e6246d7df22b",
+        "fa655495-289c-481e-a68c-8b47ee139eae": "4c935882-8546-4ef9-995c-b650275798a8",
+        "3cc0b540-2b6e-4fe5-b3ed-0e856e26f296": "a965ec31-8cc5-4cc4-8357-ab2e6c147e79",
+        "8b51a9b4-5a59-4ab7-9689-6316050f2fc4": "dd275a4e-bfab-4589-aa9c-57c4c81c8183",
+        "3c6394a8-e7fe-4282-80a2-359c95715270": "eb4cb234-307e-4381-8372-f93acd396e31",
+        "a67c7350-3a3e-4d0f-9e27-28574d285247": "55c0bddb-c0bf-43e2-b38e-2cdb4bf2762e"
+      }
+    }
+  ],
+  "SceneProperties": {
+    "NetworkInterpolation": true,
+    "TimeScale": 1,
+    "WantsSystemScene": true,
+    "Metadata": {},
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": false,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": "",
+      "DeferGeneration": false,
+      "CustomBounds": false
+    },
+    "GameObjectSystems": {
+      "Sandbox.Clutter.ClutterGridSystem": {
+        "Storage": {
+          "$blob": "9c3e9a2a-f159-4fe5-9fab-4bfc2b617420"
+        }
+      },
+      "Sandbox.MovieMaker.MovieRecorderSystem": {
+        "DisableClientRecording": false
+      }
+    }
+  },
+  "ResourceVersion": 3,
+  "Title": null,
+  "Description": null,
+  "__references": [],
+  "__version": 3
+}
