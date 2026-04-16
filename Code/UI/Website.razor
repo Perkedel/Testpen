@@ -1,0 +1,22 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+@namespace Sandbox
+
+<root>
+	<p>aaa</p>
+	<!--<iframe src="https://perkedel.netlify.app" title="Perkedel NTLF+ASTR"></iframe>-->
+	<!--@Html.Raw("https://perkedel.netlify.app");-->
+	<p>bb</p>
+</root>
+
+@code
+{
+	// https://www.w3schools.com/tags/tag_iframe.asp
+	[Property, TextArea] public string MyStringValue { get; set; } = "Hello World!";
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( MyStringValue );
+}

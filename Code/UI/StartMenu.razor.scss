@@ -1,5 +1,7 @@
 StartMenu
 {
+    // https://sbox.game/dev/doc/ui/styling-panels/style-properties
+
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -36,6 +38,7 @@ StartMenu
 
 	a
 	{
+	    cursor:pointer;
 	    background-color:rgba(navy,0.8);
 		border-radius:10px;
 	    &:hover
