@@ -52,9 +52,8 @@ StartMenu
 
 	.exitButton
 	{
-	    font-size:8em;
+
         background-color: rgba(darkred,0.8);
-        border-radius:20px;
 
         &:hover
         {
@@ -70,9 +69,8 @@ StartMenu
 
 	.resumeButton
 	{
-	    font-size:8em;
+
         background-color: rgba(darkgreen,0.8);
-        border-radius:20px;
 
         &:hover
         {
@@ -91,7 +89,14 @@ StartMenu
 	    //font-size: 25px;
 		background-color:rgba(black,0.5);
 		height: 8%;
+		gap: 1rem;
 		padding: 12px;
+		//flex-grow: 1;
+
+		a
+		{
+		    font-size: 8em;
+		}
 
 		.topTitle
 		{
@@ -101,17 +106,19 @@ StartMenu
 
 		> .topLeft
 		{
-
+		    gap: 1rem;
 		}
 
 		> .topCenter
 		{
             flex-grow: 1;
+            gap: 1rem;
 		}
 
 		> .topRight
 		{
 		    //justify-content: right;
+			gap: 1rem;
 		}
 	}
 
@@ -125,6 +132,16 @@ StartMenu
 		}
 		>.sceneList
 		{
+		    // Yoink Facepunch's style!
+			// https://github.com/Facepunch/sbox-scenestaging/blob/main/Code/SceneMenu/SceneMenuPanel.razor.scss
+			flex-wrap: wrap;
+			gap: 1rem;
+			padding: 2rem;
+			//background-color: #0006;
+			flex-grow: 1;
+			border-radius: 8px;
+			overflow: scroll;
+
 
 		    > a
 			{

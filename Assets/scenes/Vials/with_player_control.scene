@@ -24,7 +24,7 @@
           "Flags": 0,
           "Author": null,
           "Changes": null,
-          "Description": "",
+          "Description": "Minimal Scene with Player Controller already ready to use from s&box lol",
           "Group": null,
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
@@ -854,7 +854,8 @@
     "TimeScale": 1,
     "WantsSystemScene": true,
     "Metadata": {
-      "Title": "with Player control"
+      "Title": "with Player control",
+      "Description": "Minimal Scene with Player Controller already ready to use from s&box lol"
     },
     "NavMesh": {
       "Enabled": false,
@@ -883,7 +884,7 @@
   },
   "ResourceVersion": 3,
   "Title": "with Player control",
-  "Description": null,
+  "Description": "Minimal Scene with Player Controller already ready to use from s&box lol",
   "__references": [
     "shadb.sharkhead#115000"
   ],

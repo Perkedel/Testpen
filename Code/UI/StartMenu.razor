@@ -9,38 +9,54 @@
 
 		<div class="topLeft">
 			<p class="topTitle"><a class="resumeButton @(@isInStart?"hidden":"")" onClick=@ResumeGame>▶️</a> Testpen!</p>
+			<p><a class="homeButton @(isInStart?"hidden":"")" onClick=@ReturnToMenu>🏠</a></p>
 		</div>
 		<div class="topCenter">
 
 		</div>
 		<div class="topRight">
+			<p><a class="settingButton" onClick=@SettingGame>⚙️</a></p>
 			<p><a class="exitButton" onClick=@ExitGame>❌</a></p>
 		</div>
 	</div>
 	<hr/>
 	<div class="body">
 		<div class="manualSceneList">
-			<p><a onClick=@TestGoToScene>Go To Scene</a></p>
-			<p class=@(@isInStart?"hidden":"")><a onClick=@ReturnToMenu>Go To Home</a></p>
+			<!--<p><a onClick=@TestGoToScene>Go To Scene</a></p>-->
+			<!--<p class=@(@isInStart?"hidden":"")><a onClick=@ReturnToMenu>Go To Home</a></p>-->
 		</div>
 		<div class="sceneList">
-			
+			@foreach (var sceneVial in ResourceLibrary.GetAll<SceneFile>().Where(x => x.ResourcePath.Contains("/vials/")).OrderBy(x => x.GetMetadata("Title")))
+            {
+                <SceneVialSelectable Scene="@sceneVial" OnSelected=@OpenScene></SceneVialSelectable>
+
+            }
 		</div>
 	</div>
 </root>
 
 @code
 {
+	/*
+	//@foreach (var sceneVial in ResourceLibrary.GetAll<SceneFile>().Where(x => x.ResourcePath.Contains("/Vials/") && x.GetMetadata("Group", "None") == SceneCategory).OrderBy(x => x.GetMetadata("Title")))
+	//@foreach (var sceneVial in ResourceLibrary.GetAll<SceneFile>().Where(x => x.ResourcePath.Contains("/vials/")).OrderBy(x => x.GetMetadata("Title")))
+	@foreach (var sceneVial in ResourceLibrary.GetAll<SceneFile>())
+	*/
+
 	[Property] public bool isPaused {get; set;} = false;
 	[Property] public bool isInStart {get;set;} = false;
 	[Property, TextArea] public string MyStringValue { get; set; } = "Testpen!";
 
 	// Yoink Scene List from Facepunch!
 	// https://github.com/Facepunch/sbox-scenestaging/blob/main/Code/SceneMenu/SceneMenuPanel.razor
+	[ConVar( "testbed_category", ConVarFlags.Saved )]
+    public static string SceneCategory { get; set; } = "Random";
 
 	protected override void OnStart()
 	{
 		base.OnStart();
+
+		//TODO: Make it singleton, find other UI like this. If found other instance, let that guy alone, and self destruct. Just like Unity.
 	}
 
 	protected override void OnUpdate()
@@ -69,6 +85,16 @@
 		isInStart = false;
 	}
 
+	protected void OpenScene( SceneFile file )
+    {
+    	// https://github.com/Facepunch/sbox-scenestaging/blob/main/Code/SceneMenu/SceneMenuPanel.razor
+     	// pls I was just had to learn.
+        Game.ActiveScene.Load(file);
+
+        //var go = new GameObject(true, "Return To Menu");
+        //go.Components.Create<ReturnToMenu>();
+    }
+
 	protected void ReturnToMenu()
 	{
 		Log.Info("Let\'s go home!");
@@ -90,6 +116,11 @@
 		//Log.Info("isPaused is now " + isPaused);
 	}
 
+	protected void SettingGame()
+	{
+		Log.Info("Open Setting!!");
+	}
+
 	protected void ExitGame()
 	{
 		Log.Info("Exit Game Now!");
@@ -104,6 +135,7 @@
 		MyStringValue,
 		"",
 		isInStart,
+		ResourceLibrary.GetAll<SceneFile>(),
 		isPaused
 		);
 	}

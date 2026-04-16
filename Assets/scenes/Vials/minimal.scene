@@ -24,7 +24,7 @@
           "Flags": 0,
           "Author": null,
           "Changes": null,
-          "Description": "",
+          "Description": "bare minimum",
           "Group": null,
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
@@ -643,7 +643,8 @@
     "TimeScale": 1,
     "WantsSystemScene": true,
     "Metadata": {
-      "Title": "minimal"
+      "Title": "minimal",
+      "Description": "bare minimum"
     },
     "NavMesh": {
       "Enabled": false,
@@ -672,7 +673,7 @@
   },
   "ResourceVersion": 3,
   "Title": "minimal",
-  "Description": null,
+  "Description": "bare minimum",
   "__references": [],
   "__version": 3
 }
