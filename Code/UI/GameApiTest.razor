@@ -1,0 +1,46 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+@namespace Sandbox
+
+<root>
+	<div class="body">
+		<p>`Game` API</p>
+		<p>App ID = @Game.AppId</p>
+		<p>InGame = @Game.InGame</p>
+		<p>IsEditor = @Game.IsEditor</p>
+		<p>Ident = @Game.Ident</p>
+		<p>IsMainMenuVisible = @Game.IsMainMenuVisible</p>
+		<p>IsRecordingVideo = @Game.IsRecordingVideo</p>
+		<p>IsClosing (Get-Set) = @Game.IsClosing</p>
+		<p>IsRunningInVR = @Game.IsRunningInVR</p>
+		<p>IsRunningOnHandheld (Get-InternalSet) = @Game.IsRunningOnHandheld</p>
+		<p>Random = @Game.Random (interface, use it such as System.Random.*)</p>
+		<p>SteamId = ***** (Sorry, that'd reveal yours!)</p>
+		<p>CheatsEnabled (Get-Set) = @Game.CheatsEnabled (cvar `sv_cheats`)</p>
+		<p>IsPaused = @Game.IsPaused</p>
+		<p>Usage: `Game.*`, where `*` is one of the above variables.</p>
+		<p> see: </p>
+		<p>https://github.com/Facepunch/sbox-public/blob/master/engine/Sandbox.Engine/Game/Game/Game.cs</p>
+	</div>
+</root>
+
+@code
+{
+
+	[Property, TextArea] public string MyStringValue { get; set; } = "Hello World!";
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine(
+		Game.AppId,
+		Game.InGame,
+		Game.IsEditor,
+		Game.Ident,
+		Game.IsMainMenuVisible,
+		Game.IsRecordingVideo,
+		Game.IsClosing,
+		""
+	);
+}

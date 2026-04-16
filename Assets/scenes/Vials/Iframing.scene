@@ -86,7 +86,7 @@
               "OnComponentUpdate": null,
               "Opacity": 1,
               "Scale": 1,
-              "ScaleStrategy": "ConsistentHeight",
+              "ScaleStrategy": "FollowDesktopScaling",
               "TargetCamera": null,
               "ZIndex": 50
             },

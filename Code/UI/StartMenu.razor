@@ -9,7 +9,7 @@
 	<div class="topBar">
 
 		<div class="topLeft">
-			<p class="topTitle"><a class="resumeButton @(@isInStart?"hidden":"")" onClick=@ResumeGame>▶️</a> Testpen!</p>
+			<p class="topTitle"><a class="resumeButton @(@isInStart?"hidden":"")" onClick=@ResumeGame>▶️</a>🪛 Testpen!</p>
 			<p><a class="homeButton @(isInStart?"hidden":"")" onClick=@ReturnToMenu>🏠</a></p>
 		</div>
 		<div class="topCenter">
@@ -89,17 +89,35 @@
 	protected void OpenScene( SceneFile file )
     {
     	// https://github.com/Facepunch/sbox-scenestaging/blob/main/Code/SceneMenu/SceneMenuPanel.razor
+     	// https://github.com/Facepunch/sbox-public/blob/master/engine/Sandbox.Engine/Scene/Scene/Scene.cs
+      	// https://github.com/Facepunch/sbox-public/blob/master/engine/Sandbox.Engine/Game/Game/Game.Scene.cs
+       	// https://github.com/Facepunch/sbox-public/blob/master/engine/Sandbox.Engine/Systems/SceneSystem/SceneLoadOptions.cs
      	// pls I was just had to learn.
-        Game.ActiveScene.Load(file);
+      	var toThisScene = new SceneLoadOptions();
+       	toThisScene.SetScene(file);
 
+
+        //Game.ActiveScene.Load(file);
+		Game.ChangeScene(toThisScene);
+		//Scene.LoadFromFile(file);
         //var go = new GameObject(true, "Return To Menu");
         //go.Components.Create<ReturnToMenu>();
     }
+    
+    /*
+    protected void OpenScene( String filename)
+    {
+    	
+    }
+    */
 
 	protected void ReturnToMenu()
 	{
 		Log.Info("Let\'s go home!");
-		Scene.LoadFromFile("scenes/start.scene");
+		//Scene.LoadFromFile("scenes/start.scene");
+		var toThisScene = new SceneLoadOptions();
+       	toThisScene.SetScene("scenes/start.scene");
+        Game.ChangeScene(toThisScene);
 		isInStart = true;
 	}
 
@@ -125,6 +143,12 @@
 	protected void ExitGame()
 	{
 		Log.Info("Exit Game Now!");
+		// We had to scour examples, coz the documentation as of rn is infancy
+		// https://github.com/Facepunch/sbox-battlebugs/blob/main/code/UI/PanelComponents/MainMenu.razor
+		// https://github.com/Facepunch/sbox-public/blob/master/engine/Sandbox.Engine/Game/Game/Game.cs
+		// if(Game.IsEditor) return;
+		Game.Close();
+		// Oh Hey, Carson, what's up?
 	}
 
 	/// <summary>

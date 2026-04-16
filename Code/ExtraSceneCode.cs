@@ -19,7 +19,7 @@ public sealed class ExtraSceneCode : Component
 		// I forgor what was I originally add this one for 💀
 		// Oh yeah, achievement yess.
 		// https://sbox.game/dev/doc/services/achievements
-		Sandbox.Services.Achievements.Unlock( "entered_first" );
+		Sandbox.Services.Achievements.Unlock( "with_player_c" );
 
 		// File system?!
 		// https://sbox.game/dev/doc/assets/file-system

@@ -29,6 +29,7 @@
       "Keyboard": true,
       "VR": false,
       "Gamepad": true
-    }
+    },
+    "StartupScene": "scenes/start.scene"
   }
 }
