@@ -15,6 +15,18 @@ StartMenu
 	flex-direction: column;
 	font-family: Poppins;
 
+	&.resumed
+	{
+	    opacity: 0;
+		/* transition-duration: .5s; */
+	    //display:none;
+	}
+
+	.hidden
+	{
+	    display:none;
+	}
+
 	.title
 	{
 		font-size: 25px;
@@ -22,27 +34,115 @@ StartMenu
 		color: #fff;
 	}
 
+	a
+	{
+	    background-color:rgba(navy,0.8);
+		border-radius:10px;
+	    &:hover
+		{
+		    background-color:rgba(blue,0.8);
+		    sound-in:ui.button.over;
+		}
+		&:active
+		{
+            background-color: rgba(darkblue,0.8);
+		    sound-in:ui.popup.message.close;
+		}
+	}
+
+	.exitButton
+	{
+	    font-size:8em;
+        background-color: rgba(darkred,0.8);
+        border-radius:20px;
+
+        &:hover
+        {
+            /* space selector is considered too! */
+            /* https://www.w3schools.com/cssref/sel_nesting.php */
+            background-color: orangered;
+        }
+        &:active
+        {
+            background-color: red;
+        }
+	}
+
+	.resumeButton
+	{
+	    font-size:8em;
+        background-color: rgba(darkgreen,0.8);
+        border-radius:20px;
+
+        &:hover
+        {
+            /* space selector is considered too! */
+            /* https://www.w3schools.com/cssref/sel_nesting.php */
+            background-color: lightgreen;
+        }
+        &:active
+        {
+            background-color: lime;
+        }
+	}
+
 	> .topBar
 	{
-	    font-size: 25px;
-		background-color: black;
+	    //font-size: 25px;
+		background-color:rgba(black,0.5);
 		height: 8%;
 		padding: 12px;
 
-		> .topTitle
+		.topTitle
 		{
             font-size: 7em;
             font-weight: bolder;
 		}
-	}
 
-	> .body
-	{
-	    font-size: 25px;
-
-		> .sceneList
+		> .topLeft
 		{
 
+		}
+
+		> .topCenter
+		{
+            flex-grow: 1;
+		}
+
+		> .topRight
+		{
+		    //justify-content: right;
+		}
+	}
+
+	>.body
+	{
+	    font-size: 25px;
+		flex-direction: column;
+		>.manualSceneList
+		{
+		    flex-direction: column;
+		}
+		>.sceneList
+		{
+
+		    > a
+			{
+                /* background-color: gray;
+                border-radius: 10px; */
+
+                &:hover
+                {
+                    /* space selector is considered too! */
+                    /* https://www.w3schools.com/cssref/sel_nesting.php */
+                    /* background-color: lightgray; */
+                }
+                &:active
+                {
+                    /* background-color: darkgray; */
+                    sound-in: ui.popup.message.open;
+                }
+			}
 		}
 	}
 }

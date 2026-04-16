@@ -3,7 +3,7 @@
     "__guid": "5b820ad5-f90e-4861-9490-94a8d1a41c2c",
     "__version": 2,
     "Flags": 0,
-    "Name": "UI",
+    "Name": "ui",
     "Position": "0,0,0",
     "Rotation": "0,0,0,1",
     "Scale": "1,1,1",
@@ -75,7 +75,7 @@
         "Rotation": "0,0,0,1",
         "Scale": "1,1,1",
         "Tags": "",
-        "Enabled": false,
+        "Enabled": true,
         "NetworkMode": 2,
         "NetworkFlags": 0,
         "NetworkOrphaned": 0,
@@ -103,7 +103,28 @@
         ],
         "Children": []
       }
-    ]
+    ],
+    "__properties": {
+      "NetworkInterpolation": true,
+      "TimeScale": 1,
+      "WantsSystemScene": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": false,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": "",
+        "DeferGeneration": false,
+        "CustomBounds": false
+      }
+    },
+    "__variables": []
   },
   "ResourceVersion": 2,
   "ShowInMenu": false,

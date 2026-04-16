@@ -24,6 +24,11 @@
     "LeaderboardType": "None",
     "CsProjName": "",
     "SystemScene": "scenes/systempause.scene",
-    "LaunchMode": "Normal"
+    "LaunchMode": "Normal",
+    "ControlModes": {
+      "Keyboard": true,
+      "VR": false,
+      "Gamepad": true
+    }
   }
 }

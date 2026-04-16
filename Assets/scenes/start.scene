@@ -123,6 +123,38 @@
         }
       ],
       "Children": []
+    },
+    {
+      "__guid": "a66c945b-8e32-4c82-9969-dc5e2d832d6c",
+      "__version": 2,
+      "Flags": 0,
+      "Name": "IsMainMenu",
+      "Position": "0,0,0",
+      "Rotation": "0,0,0,1",
+      "Scale": "1,1,1",
+      "Tags": "",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkFlags": 0,
+      "NetworkOrphaned": 0,
+      "NetworkTransmit": true,
+      "OwnerTransfer": 1,
+      "Components": [
+        {
+          "__type": "IsMainMenu",
+          "__guid": "b63f2d03-ddd4-4589-a90c-08a0df4c5dd6",
+          "__enabled": true,
+          "Flags": 0,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "theMenu": null
+        }
+      ],
+      "Children": []
     }
   ],
   "SceneProperties": {

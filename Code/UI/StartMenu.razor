@@ -3,24 +3,40 @@
 @inherits PanelComponent
 @namespace Sandbox
 
-<root>
+<root class=@(isPaused?"":"resumed")>
 	<!--<div class="title">@MyStringValue</div>-->
 	<div class="topBar">
-		<p class="topTitle">Testpen!</p>
 
+		<div class="topLeft">
+			<p class="topTitle"><a class="resumeButton @(@isInStart?"hidden":"")" onClick=@ResumeGame>▶️</a> Testpen!</p>
+		</div>
+		<div class="topCenter">
+
+		</div>
+		<div class="topRight">
+			<p><a class="exitButton" onClick=@ExitGame>❌</a></p>
+		</div>
 	</div>
 	<hr/>
 	<div class="body">
+		<div class="manualSceneList">
+			<p><a onClick=@TestGoToScene>Go To Scene</a></p>
+			<p class=@(@isInStart?"hidden":"")><a onClick=@ReturnToMenu>Go To Home</a></p>
+		</div>
 		<div class="sceneList">
-			<a>Go To Scene</a>
+			
 		</div>
 	</div>
 </root>
 
 @code
 {
-
+	[Property] public bool isPaused {get; set;} = false;
+	[Property] public bool isInStart {get;set;} = false;
 	[Property, TextArea] public string MyStringValue { get; set; } = "Testpen!";
+
+	// Yoink Scene List from Facepunch!
+	// https://github.com/Facepunch/sbox-scenestaging/blob/main/Code/SceneMenu/SceneMenuPanel.razor
 
 	protected override void OnStart()
 	{
@@ -30,6 +46,53 @@
 	protected override void OnUpdate()
 	{
 		base.OnUpdate();
+
+		if(Input.EscapePressed)
+		{
+			//Log.Info("escape press");
+			if(!isInStart){
+				Input.EscapePressed = false;
+				TogglePause();
+			}
+		}
+
+		if(Input.Pressed("Jump"))
+		{
+			Log.Info("aaa");
+		}
+	}
+
+	protected void TestGoToScene()
+	{
+		Log.Info("Let\'s go!");
+		Scene.LoadFromFile("scenes/Vials/minimal.scene");
+		isInStart = false;
+	}
+
+	protected void ReturnToMenu()
+	{
+		Log.Info("Let\'s go home!");
+		Scene.LoadFromFile("scenes/start.scene");
+		isInStart = true;
+	}
+
+	protected void ResumeGame()
+	{
+		Log.Info("Resume Now!");
+		if(!isInStart)
+			isPaused = false;
+	}
+
+	protected void TogglePause()
+	{
+
+		isPaused = !isPaused;
+		//Log.Info("isPaused is now " + isPaused);
+	}
+
+	protected void ExitGame()
+	{
+		Log.Info("Exit Game Now!");
 	}
 
 	/// <summary>
@@ -37,6 +100,11 @@
 	/// </summary>
 	//protected override int BuildHash() => System.HashCode.Combine( MyStringValue );
 	protected override int BuildHash() {
-		return System.HashCode.Combine( MyStringValue );
+		return System.HashCode.Combine(
+		MyStringValue,
+		"",
+		isInStart,
+		isPaused
+		);
 	}
 }
