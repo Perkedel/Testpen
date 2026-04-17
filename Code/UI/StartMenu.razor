@@ -103,11 +103,11 @@
         //var go = new GameObject(true, "Return To Menu");
         //go.Components.Create<ReturnToMenu>();
     }
-    
+
     /*
     protected void OpenScene( String filename)
     {
-    	
+
     }
     */
 
@@ -138,6 +138,11 @@
 	protected void SettingGame()
 	{
 		Log.Info("Open Setting!!");
+		// found!
+		//https://github.com/Facepunch/sbox-public/blob/master/engine/Sandbox.Engine/Game/Game/Game.Overlay.cs
+		// Jesus Christ on an Innova, at least copy paste the old docs to sbox docs until you can remake the new one, wtf!
+
+		Game.ShowSettingModal("");
 	}
 
 	protected void ExitGame()

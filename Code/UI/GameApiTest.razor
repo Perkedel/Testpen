@@ -18,10 +18,14 @@
 		<p>Random = @Game.Random (a class, use it such as `new System.Random.*()`)</p>
 		<p>SteamId = ***** (Sorry, that'd reveal yours!)</p>
 		<p>CheatsEnabled (Get-Set) = @Game.CheatsEnabled (cvar `sv_cheats`)</p>
+		<p>IsPlaying (Get-InternalSet) = @Game.IsPlaying</p>
 		<p>IsPaused = @Game.IsPaused</p>
+		<p>Overlay.IsOpen = @Game.Overlay.IsOpen</p>
+		<p>Overlay.IsPauseMenuOpen = @Game.Overlay.IsPauseMenuOpen</p>
 		<p>Usage: `Game.*`, where `*` is one of the above variables.</p>
 		<p> see: </p>
 		<p>https://github.com/Facepunch/sbox-public/blob/master/engine/Sandbox.Engine/Game/Game/Game.cs</p>
+		<p> & also there's extra methods beside this file. </p>
 	</div>
 </root>
 
@@ -43,4 +47,6 @@
 		Game.IsClosing,
 		""
 	);
+
+	// https://github.com/Facepunch/sbox-public/blob/master/engine/Sandbox.Engine/Game/Game/Game.Overlay.cs
 }
