@@ -1,0 +1,19 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+@namespace Sandbox
+
+<root>
+	<Image Texture="@(ExpectedGlyphName == String.Empty?null:Input.GetGlyph( ExpectedGlyphName, InputGlyphSize.Medium, true ))"></Image>
+</root>
+
+@code
+{
+	[Property] public string ExpectedGlyphName { get; set; } = "";
+	// https://stackoverflow.com/questions/263191/in-c-should-i-use-string-empty-or-string-empty-or-to-intitialize-a-string
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( ExpectedGlyphName, Time.Now );
+}

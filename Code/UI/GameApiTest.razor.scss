@@ -13,8 +13,13 @@ GameApiTest
 	{
 	    flex-direction:column;
         padding: 2rem;
-        flex-wrap:wrap;
         flex-grow:1;
         overflow: scroll;
+	}
+
+	.fadeNow
+	{
+        transition: .8s;
+        opacity: .2;
 	}
 }

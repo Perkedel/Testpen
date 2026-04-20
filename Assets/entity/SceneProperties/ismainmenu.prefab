@@ -1,0 +1,42 @@
+{
+  "RootObject": {
+    "__guid": "a404c04e-b7ee-4ec7-9e1b-01afbf5441e3",
+    "__version": 2,
+    "Flags": 0,
+    "Name": "ismainmenu",
+    "Position": "0,0,0",
+    "Rotation": "0,0,0,1",
+    "Scale": "1,1,1",
+    "Tags": "",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "NetworkFlags": 0,
+    "NetworkOrphaned": 0,
+    "NetworkTransmit": true,
+    "OwnerTransfer": 1,
+    "Components": [
+      {
+        "__type": "IsMainMenu",
+        "__guid": "dce940ef-cdf6-47c6-8a9d-f2e11922cb8c",
+        "__enabled": true,
+        "Flags": 0,
+        "noFreeze": null,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "theMenu": null
+      }
+    ],
+    "Children": []
+  },
+  "ResourceVersion": 2,
+  "ShowInMenu": true,
+  "MenuPath": "Scene Properties/Is Main Menu",
+  "MenuIcon": "home",
+  "DontBreakAsTemplate": false,
+  "__references": [],
+  "__version": 2
+}

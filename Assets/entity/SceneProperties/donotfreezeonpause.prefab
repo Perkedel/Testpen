@@ -1,0 +1,41 @@
+{
+  "RootObject": {
+    "__guid": "5a88fd01-98a9-48f3-b5e1-99d0ea9bd8d4",
+    "__version": 2,
+    "Flags": 0,
+    "Name": "donotfreezeonpause",
+    "Position": "0,0,0",
+    "Rotation": "0,0,0,1",
+    "Scale": "1,1,1",
+    "Tags": "",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "NetworkFlags": 0,
+    "NetworkOrphaned": 0,
+    "NetworkTransmit": true,
+    "OwnerTransfer": 1,
+    "Components": [
+      {
+        "__type": "DoNotFreezeOnPause",
+        "__guid": "28c56b8c-caf6-46a4-b082-d01adfb8ec2b",
+        "__enabled": true,
+        "Flags": 0,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "theMenu": null
+      }
+    ],
+    "Children": []
+  },
+  "ResourceVersion": 2,
+  "ShowInMenu": true,
+  "MenuPath": "Scene Properties/Do Not Freeze On Pause",
+  "MenuIcon": "air",
+  "DontBreakAsTemplate": false,
+  "__references": [],
+  "__version": 2
+}

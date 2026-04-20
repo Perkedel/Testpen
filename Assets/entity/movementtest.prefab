@@ -1,0 +1,210 @@
+{
+  "RootObject": {
+    "__guid": "b6da91e7-c84e-4437-9652-2fdb5aa36076",
+    "__version": 2,
+    "Flags": 0,
+    "Name": "movementtest",
+    "Position": "0,0,0",
+    "Rotation": "0,0,0,1",
+    "Scale": "1,1,1",
+    "Tags": "",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "NetworkFlags": 0,
+    "NetworkOrphaned": 0,
+    "NetworkTransmit": true,
+    "OwnerTransfer": 1,
+    "Components": [
+      {
+        "__type": "AnalogStickTest",
+        "__guid": "0d685d3f-0557-4fd3-94d3-62f39ae474de",
+        "__enabled": true,
+        "Flags": 0,
+        "baunc": {
+          "_type": "gameobject",
+          "go": "d17407d9-a4ab-4308-801d-aae5d02c5d3d"
+        },
+        "expectedGlyphName": "",
+        "glyphImage": {
+          "_type": "component",
+          "component_id": "ce86174a-53e8-43bc-9d35-09abd9bba749",
+          "go": "63571bcf-c366-4639-a62e-067d5e4a6870",
+          "component_type": "GlyphImagePanel"
+        },
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "radius": 10,
+        "velocity": 5
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "d17407d9-a4ab-4308-801d-aae5d02c5d3d",
+        "__version": 2,
+        "Flags": 0,
+        "Name": "Baunc",
+        "Position": "0,0,32",
+        "Rotation": "0,0,0,1",
+        "Scale": "1,1,1",
+        "Tags": "",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkFlags": 0,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "b0de2f3d-0985-4d70-9436-d0ab4e0f8b0e",
+            "__enabled": true,
+            "Flags": 0,
+            "BodyGroups": 18446744073709551615,
+            "CreateAttachments": false,
+            "LodOverride": null,
+            "MaterialGroup": null,
+            "MaterialOverride": null,
+            "Materials": {
+              "indexed": {
+                "0": "materials/dev/prototype_grid/prototype_grid_dark_small.vmat"
+              }
+            },
+            "Model": "models/dev/box.vmdl",
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderType": "On",
+            "Tint": "1,0.66667,0.66667,1"
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "5cb4c879-0b25-4a1a-925e-3b4407df7346",
+        "__version": 2,
+        "Flags": 0,
+        "Name": "basnc",
+        "Position": "0,0,2.5",
+        "Rotation": "0,0,0,1",
+        "Scale": "1,1,0.100000001",
+        "Tags": "",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkFlags": 0,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "cf462526-9072-453b-9e61-e77b08028dbd",
+            "__enabled": true,
+            "Flags": 0,
+            "BodyGroups": 18446744073709551615,
+            "CreateAttachments": false,
+            "LodOverride": null,
+            "MaterialGroup": null,
+            "MaterialOverride": null,
+            "Materials": {
+              "indexed": {
+                "0": "materials/dev/primary_white.vmat"
+              }
+            },
+            "Model": "models/dev/box.vmdl",
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderType": "On",
+            "Tint": "0.66667,1,0.66667,1"
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "63571bcf-c366-4639-a62e-067d5e4a6870",
+        "__version": 2,
+        "__Prefab": "entity/glyphimage.prefab",
+        "__PrefabInstancePatch": {
+          "AddedObjects": [],
+          "RemovedObjects": [],
+          "PropertyOverrides": [
+            {
+              "Target": {
+                "Type": "GameObject",
+                "IdValue": "3c48fa85-412c-47c6-a079-89865de83e2a"
+              },
+              "Property": "Name",
+              "Value": "GlyphImage"
+            },
+            {
+              "Target": {
+                "Type": "GameObject",
+                "IdValue": "3c48fa85-412c-47c6-a079-89865de83e2a"
+              },
+              "Property": "Position",
+              "Value": "0,0,64"
+            }
+          ],
+          "MovedObjects": []
+        },
+        "__PrefabIdToInstanceId": {
+          "3c48fa85-412c-47c6-a079-89865de83e2a": "63571bcf-c366-4639-a62e-067d5e4a6870",
+          "a1e12250-edf9-4c05-8541-1b0ef9ab8451": "20e95045-5bb4-4580-89f7-67e97f23185a",
+          "42f6b8a6-317a-4d6b-8733-c187fa62fa98": "ce86174a-53e8-43bc-9d35-09abd9bba749"
+        }
+      }
+    ],
+    "__properties": {
+      "NetworkInterpolation": true,
+      "TimeScale": 1,
+      "WantsSystemScene": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": false,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": "",
+        "DeferGeneration": false,
+        "CustomBounds": false
+      }
+    },
+    "__variables": []
+  },
+  "ResourceVersion": 2,
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "__references": [
+    "mindless.mat_dev_prototypegriddarksmall#152769"
+  ],
+  "__version": 2
+}

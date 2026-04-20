@@ -4,7 +4,7 @@
 @namespace Sandbox
 
 <root>
-	<div class="body">
+	<div class="body @(isPaused?"fadeNow":"")">
 		<p>`Game` API</p>
 		<p>AppId = @Game.AppId</p>
 		<p>InGame = @Game.InGame</p>
@@ -20,8 +20,8 @@
 		<p>CheatsEnabled (Get-Set) = @Game.CheatsEnabled (cvar `sv_cheats`)</p>
 		<p>IsPlaying (Get-InternalSet) = @Game.IsPlaying</p>
 		<p>IsPaused = @Game.IsPaused</p>
-		<p>Overlay.IsOpen = @Game.Overlay.IsOpen</p>
-		<p>Overlay.IsPauseMenuOpen = @Game.Overlay.IsPauseMenuOpen</p>
+		<!--<p>Overlay.IsOpen = @IsOpen</p>-->
+		<!--<p>Overlay.IsPauseMenuOpen = @IsPauseMenuOpen</p>-->
 		<p>Usage: `Game.*`, where `*` is one of the above variables.</p>
 		<p> see: </p>
 		<p>https://github.com/Facepunch/sbox-public/blob/master/engine/Sandbox.Engine/Game/Game/Game.cs</p>
@@ -33,6 +33,36 @@
 {
 
 	[Property, TextArea] public string MyStringValue { get; set; } = "Hello World!";
+	[Property] protected StartMenu? theMenu {get;set;}
+	public bool isPaused {get; internal set;}
+
+	protected override void OnStart()
+	{
+		if(!theMenu.IsValid())
+		{
+			theMenu = Scene.Directory.FindByName( "ScreenMenu" ).First().GetComponent<StartMenu>();
+		}
+		if(theMenu.IsValid())
+		{
+			//TODO: subscribe to pause signal
+		}
+	}
+
+	protected override void OnUpdate()
+	{
+		//TODO: use ala-Godot signal system instead to subscribe and listen paused event
+		if(theMenu.IsValid())
+		{
+			// IDEA: make this more elegant! only change when that change! idk how!
+			if(theMenu.isPaused)
+			{
+				if(!isPaused) isPaused = true;
+			} else
+			{
+				if(isPaused) isPaused = false;
+			}
+		}
+	}
 
 	/// <summary>
 	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt

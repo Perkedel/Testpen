@@ -1,0 +1,65 @@
+{
+  "RootObject": {
+    "__guid": "3c48fa85-412c-47c6-a079-89865de83e2a",
+    "__version": 2,
+    "Flags": 0,
+    "Name": "GlyphImage",
+    "Position": "0,0,0",
+    "Rotation": "0.707106769,1.37678768E-07,0.707106769,1.37678768E-07",
+    "Scale": "1,1,1",
+    "Tags": "",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "NetworkFlags": 0,
+    "NetworkOrphaned": 0,
+    "NetworkTransmit": true,
+    "OwnerTransfer": 1,
+    "Components": [
+      {
+        "__type": "Sandbox.WorldPanel",
+        "__guid": "a1e12250-edf9-4c05-8541-1b0ef9ab8451",
+        "__enabled": true,
+        "Flags": 0,
+        "HorizontalAlign": "Center",
+        "InteractionRange": 1000,
+        "LookAtCamera": false,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "PanelSize": "1024,1024",
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
+        "RenderScale": 1,
+        "VerticalAlign": "Center"
+      },
+      {
+        "__type": "Sandbox.GlyphImagePanel",
+        "__guid": "42f6b8a6-317a-4d6b-8733-c187fa62fa98",
+        "__enabled": true,
+        "Flags": 0,
+        "ExpectedGlyphName": "Hello World!",
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null
+      }
+    ],
+    "Children": []
+  },
+  "ResourceVersion": 2,
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "DontBreakAsTemplate": false,
+  "__references": [],
+  "__version": 2
+}

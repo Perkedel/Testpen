@@ -127,34 +127,32 @@
     {
       "__guid": "a66c945b-8e32-4c82-9969-dc5e2d832d6c",
       "__version": 2,
-      "Flags": 0,
-      "Name": "IsMainMenu",
-      "Position": "0,0,0",
-      "Rotation": "0,0,0,1",
-      "Scale": "1,1,1",
-      "Tags": "",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkFlags": 0,
-      "NetworkOrphaned": 0,
-      "NetworkTransmit": true,
-      "OwnerTransfer": 1,
-      "Components": [
-        {
-          "__type": "IsMainMenu",
-          "__guid": "b63f2d03-ddd4-4589-a90c-08a0df4c5dd6",
-          "__enabled": true,
-          "Flags": 0,
-          "OnComponentDestroy": null,
-          "OnComponentDisabled": null,
-          "OnComponentEnabled": null,
-          "OnComponentFixedUpdate": null,
-          "OnComponentStart": null,
-          "OnComponentUpdate": null,
-          "theMenu": null
-        }
-      ],
-      "Children": []
+      "__Prefab": "entity/sceneproperties/ismainmenu.prefab",
+      "__PrefabInstancePatch": {
+        "AddedObjects": [],
+        "RemovedObjects": [],
+        "PropertyOverrides": [],
+        "MovedObjects": []
+      },
+      "__PrefabIdToInstanceId": {
+        "a404c04e-b7ee-4ec7-9e1b-01afbf5441e3": "a66c945b-8e32-4c82-9969-dc5e2d832d6c",
+        "dce940ef-cdf6-47c6-8a9d-f2e11922cb8c": "b63f2d03-ddd4-4589-a90c-08a0df4c5dd6"
+      }
+    },
+    {
+      "__guid": "c2ae7224-c8eb-4dea-9b42-d7f467d6986d",
+      "__version": 2,
+      "__Prefab": "entity/sceneproperties/donotfreezeonpause.prefab",
+      "__PrefabInstancePatch": {
+        "AddedObjects": [],
+        "RemovedObjects": [],
+        "PropertyOverrides": [],
+        "MovedObjects": []
+      },
+      "__PrefabIdToInstanceId": {
+        "5a88fd01-98a9-48f3-b5e1-99d0ea9bd8d4": "c2ae7224-c8eb-4dea-9b42-d7f467d6986d",
+        "28c56b8c-caf6-46a4-b082-d01adfb8ec2b": "a044dcbc-45c8-4700-9056-c2e6c7807579"
+      }
     }
   ],
   "SceneProperties": {

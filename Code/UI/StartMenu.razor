@@ -17,6 +17,7 @@
 		</div>
 		<div class="topRight">
 			<p><a class="settingButton" onClick=@SettingGame>⚙️</a></p>
+			<p><a class="selfInfoButton" onClick=@SelfInfoGame>ℹ️</a></p>
 			<p><a class="exitButton" onClick=@ExitGame>❌</a></p>
 		</div>
 	</div>
@@ -44,9 +45,14 @@
 	@foreach (var sceneVial in ResourceLibrary.GetAll<SceneFile>())
 	*/
 
-	[Property] public bool isPaused {get; set;} = false;
+	[Property] public bool isPaused {get; internal set;} = false;
+	protected bool hathPaused {get;set;} = false;
 	[Property] public bool isInStart {get;set;} = false;
 	[Property, TextArea] public string MyStringValue { get; set; } = "Testpen!";
+
+	//[Property] protected DoNotFreezeOnPause? noFreeze {get; set;}
+	[Property] public bool PlsDoNotFreeze {get;set;} = false;
+	protected bool hathFrozen {get; set;} = false;
 
 	// Yoink Scene List from Facepunch!
 	// https://github.com/Facepunch/sbox-scenestaging/blob/main/Code/SceneMenu/SceneMenuPanel.razor
@@ -58,6 +64,9 @@
 		base.OnStart();
 
 		//TODO: Make it singleton, find other UI like this. If found other instance, let that guy alone, and self destruct. Just like Unity.
+
+		// Search these SceneProperties Components!
+		//noFreeze = Scene.Directory.FindByName( "DoNotFreezeOnPause" ).First().GetComponent<DoNotFreezeOnPause>();
 	}
 
 	protected override void OnUpdate()
@@ -76,6 +85,54 @@
 		if(Input.Pressed("Jump"))
 		{
 			//Log.Info("aaa");
+		}
+
+		if(isPaused)
+		{
+			if(!hathPaused)
+			{
+				if(!hathFrozen)
+				{
+					/*
+					if(!noFreeze.IsValid())
+					{
+						//Log.Info("try find if noPause");
+						//noFreeze = Scene.Directory.FindByName( "DoNotFreezeOnPause" ).First().GetComponent<DoNotFreezeOnPause>();
+					}
+					if(noFreeze.IsValid())
+					{
+						// then we won't freeze time
+					} else
+					{
+						// freeze it now!
+						if(!hathFrozen)
+						{
+							Log.Info("try freeze");
+							Scene.TimeScale = 0f;
+							hathFrozen = true;
+						}
+					}
+					*/
+					if(PlsDoNotFreeze)
+					{
+						// then we won't freeze
+					} else
+					{
+						// Freeze Now!
+						Scene.TimeScale = 0f;
+						hathFrozen = true;
+					}
+				}
+				hathPaused = true;
+			}
+		} else {
+			if(hathFrozen)
+			{
+				// unfreeze just in case there was
+				Scene.TimeScale = 1f;
+				hathFrozen = false;
+			}
+			hathPaused = false;
 		}
 	}
 
@@ -142,7 +199,13 @@
 		//https://github.com/Facepunch/sbox-public/blob/master/engine/Sandbox.Engine/Game/Game/Game.Overlay.cs
 		// Jesus Christ on an Innova, at least copy paste the old docs to sbox docs until you can remake the new one, wtf!
 
-		Game.ShowSettingModal("");
+		Game.Overlay.ShowSettingsModal("");
+	}
+
+	protected void SelfInfoGame()
+	{
+		Log.Info("Open Self Info!!");
+		Game.Overlay.ShowPauseMenu();
 	}
 
 	protected void ExitGame()
@@ -165,7 +228,7 @@
 		MyStringValue,
 		"",
 		isInStart,
-		ResourceLibrary.GetAll<SceneFile>(),
+		ResourceLibrary.GetAll<SceneFile>().Where(x => x.ResourcePath.Contains("/vials/")).OrderBy(x => x.GetMetadata("Title")),
 		isPaused
 		);
 	}
