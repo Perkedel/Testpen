@@ -1,0 +1,503 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>package.gunsightsoftware.playercontrollerplus</name>
+    </assembly>
+    <members>
+        <member name="T:Sandbox.MovementPlus.ExternalMoveMode">
+            <summary>
+            Base class for external move modes that plug into PlayerControllerPlus.
+            Add as a component on the same GameObject as the player controller.
+            Override Score to control when this mode activates (higher score wins).
+            The default animation pipeline always runs; override UpdateAnimator to add extra animation on top.
+            </summary>
+        </member>
+        <member name="M:Sandbox.MovementPlus.ExternalMoveMode.Score(Sandbox.PlayerControllerPlus)">
+            <summary>
+            Return a score to compete with built-in modes. Walk is 0, Ladder is 5, Swim is 10, Sit is 10000.
+            Return negative to opt out.
+            </summary>
+        </member>
+        <member name="M:Sandbox.MovementPlus.ExternalMoveMode.IsStandableSurface(Sandbox.SceneTraceResult@)">
+            <summary>
+            Whether the given trace result is a surface the player can stand on.
+            Default allows any surface within 45 degrees of flat.
+            </summary>
+        </member>
+        <member name="M:Sandbox.MovementPlus.ExternalMoveMode.OnModeBegin">
+            <summary>
+            Called when this mode becomes the active mode.
+            </summary>
+        </member>
+        <member name="M:Sandbox.MovementPlus.ExternalMoveMode.OnModeEnd">
+            <summary>
+            Called when this mode is being replaced by another mode.
+            </summary>
+        </member>
+        <member name="M:Sandbox.MovementPlus.ExternalMoveMode.AddVelocity">
+            <summary>
+            Add velocity to the physics body. Default does nothing (no physics-driven movement).
+            </summary>
+        </member>
+        <member name="M:Sandbox.MovementPlus.ExternalMoveMode.UpdateRigidBody(Sandbox.Rigidbody)">
+            <summary>
+            Configure the rigidbody for this mode. Default disables gravity and applies high damping.
+            </summary>
+        </member>
+        <member name="M:Sandbox.MovementPlus.ExternalMoveMode.UpdateMove(Rotation,Vector3)">
+            <summary>
+            Process movement input and return a wish velocity. Default returns zero.
+            </summary>
+        </member>
+        <member name="M:Sandbox.MovementPlus.ExternalMoveMode.UpdateAnimator(Sandbox.SkinnedModelRenderer)">
+            <summary>
+            Called after the default animation pipeline runs. Override to set extra animation parameters.
+            </summary>
+        </member>
+        <member name="M:Sandbox.MovementPlus.ExternalMoveMode.GetEyeTransform">
+            <summary>
+            Override to provide a custom eye transform. Return null to use the default calculation.
+            </summary>
+        </member>
+        <member name="T:Sandbox.MovementPlus.ExternalMoveModeAdapter">
+            <summary>
+            Wraps an ExternalMoveMode component so it can participate in the MoveModePlus system.
+            </summary>
+        </member>
+        <member name="T:Sandbox.MovementPlus.MoveModePlus">
+            <summary>
+            A move mode for this character. Not a Component — owned and managed by PlayerControllerPlus.
+            </summary>
+        </member>
+        <member name="T:Sandbox.MovementPlus.ISitTarget">
+            <summary>
+            A component that can be sat in by a player. If the player is parented to an object with this component, they will be sitting in it.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.Renderer">
+            <summary>
+            The body will usually be a child object with SkinnedModelRenderer
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.ShowCreateBodyRenderer">
+            <summary>
+            If true we'll show the "create body" button
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.AimStrengthEyes">
+            <summary>
+            How strongly to look in the eye direction with our eyes
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.AimStrengthHead">
+            <summary>
+            How strongly to turn in the eye direction with our head
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.AimStrengthBody">
+            <summary>
+            How strongly to turn in the eye direction with our body
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.CrouchAnimationSpeed">
+            <summary>
+            How fast the character model blends into the crouch pose. Higher = faster. Default (5) is stock.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.CrouchCameraSpeed">
+            <summary>
+            How fast the camera height adjusts when crouching. Higher = faster. Default (50) is nearly instant.
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.UpdateAnimation(Sandbox.SkinnedModelRenderer)">
+            <summary>
+            Update the animation for this renderer. This will update the body rotation etc too.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.EyeAngles">
+            <summary>
+            The direction we're looking in input space.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.EyePosition">
+            <summary>
+            The player's eye position, in first person mode
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.EyeTransform">
+            <summary>
+            The player's eye transform, in first person mode
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.IsDucking">
+            <summary>
+            True if this player is ducking
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.Headroom">
+            <summary>
+            The distance from the top of the head to the closest ceiling.
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.EnsureComponentsCreated">
+            <summary>
+            Make sure the body and our components are created
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.UpdateBody">
+            <summary>
+            Update the body dimensions, and change the physical properties based on the current state
+            </summary>
+        </member>
+        <member name="T:Sandbox.PlayerControllerPlus.IEvents">
+            <summary>
+            Events from the PlayerControllerPlus
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.IEvents.OnEyeAngles(Angles@)">
+            <summary>
+            Our eye angles are changing. Allows you to change the sensitivity, or stomp all together.
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.IEvents.PostCameraSetup(Sandbox.CameraComponent)">
+            <summary>
+            Called after we've set the camera up
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.IEvents.OnJumped">
+            <summary>
+            The player has just jumped
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.IEvents.OnLanded(System.Single,Vector3)">
+            <summary>
+            The player has landed on the ground, after falling this distance.
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.IEvents.GetUsableComponent(Sandbox.GameObject)">
+            <summary>
+            Used by the Using system to find components we can interact with.
+            By default we can only interact with IPressable components.
+            Return a component if we can use it, or else return null.
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.IEvents.StartPressing(Sandbox.Component)">
+            <summary>
+            We have started using something (use was pressed)
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.IEvents.StopPressing(Sandbox.Component)">
+            <summary>
+            We have stopped using something
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.IEvents.FailPressing">
+            <summary>
+            We pressed USE but it did nothing
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.IEvents.PreInput">
+            <summary>
+            We have a chance to do something before input is processed
+            </summary>
+        </member>
+        <member name="F:Sandbox.PlayerControllerPlus.DebugFootsteps">
+            <summary>
+            Draw debug overlay on footsteps
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.PlayFootstepSound(Vector3,System.Single,System.Int32)">
+            <summary>
+            Play a footstep sound at the given world position. Will only play if the player has a GroundSurface.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.GroundObject">
+            <summary>
+            The object we're standing on. Null if we're standing on nothing.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.GroundComponent">
+            <summary>
+            The collider component we're standing on. Null if we're standing nothing
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.GroundSurface">
+            <summary>
+            If we're stnding on a surface this is it
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.GroundFriction">
+            <summary>
+            The friction property of the ground we're standing on.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.GroundIsDynamic">
+            <summary>
+            Are we standing on a surface that is physically dynamic
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.TimeSinceGrounded">
+            <summary>
+            Amount of time since this character was last on the ground
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.TimeSinceUngrounded">
+            <summary>
+            Amount of time since this character was last not on the ground
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.PreventGrounding(System.Single)">
+            <summary>
+            Prevent being grounded for a number of seconds
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.Reground(System.Single)">
+            <summary>
+            Lift player up and place a skin level above the ground
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.AccelerationTime">
+            <summary>
+            Amount of seconds it takes to get from your current speed to your requuested speed, if higher
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.DeaccelerationTime">
+            <summary>
+            Amount of seconds it takes to get from your current speed to your requuested speed, if lower
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.AltMoveButton">
+            <summary>
+            The button that the player will press to use to run
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.RunByDefault">
+            <summary>
+            If true then the player will run by default, and holding AltMoveButton will switch to walk
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.EnablePressing">
+            <summary>
+            Allows to player to interact with things by "use"ing them. 
+            Usually by pressing the "use" button.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.UseButton">
+            <summary>
+            The button that the player will press to use things
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.ReachLength">
+            <summary>
+            How far from the eye can the player reach to use things
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.UseLookControls">
+            <summary>
+            When true we'll move the camera around using the mouse
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.LookSensitivity">
+            <summary>
+            Allows modifying the eye angle sensitivity. Note that player preference sensitivity is already automatically applied, this is just extra.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.SlowWalkButton">
+            <summary>
+            The button that the player will press to slow walk
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.MoveRelativeToBody">
+            <summary>
+            Movement input is relative to the player body's facing direction rather than the camera direction.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.DisableLookInput">
+            <summary>
+            Prevents mouse input from changing the eye/camera angles.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.CurrentHeight">
+            <summary>
+            Gets the current character height from <see cref="P:Sandbox.PlayerControllerPlus.BodyHeight"/> when standing,
+            otherwise uses <see cref="P:Sandbox.PlayerControllerPlus.DuckedHeight"/> when ducking.
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.UpdateDucking(System.Boolean)">
+            <summary>
+            Called during FixedUpdate when UseInputControls is enabled. Will duck if requested.
+            If not, and we're ducked, will unduck if there is room
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.ActiveExternalMode">
+            <summary>
+            The currently active ExternalMoveMode component, or null if a built-in mode is active.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.Hovered">
+            <summary>
+            The object we're currently looking at
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.Pressed">
+            <summary>
+            The object we're currently using by holding down USE
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.Tooltips">
+            <summary>
+            The tooltip of the currently hovered Pressable object
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.UpdateLookAt">
+            <summary>
+            Called in Update when Using is enabled
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.UpdatePressed">
+            <summary>
+            Called every frame to update our pressed object
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.UpdateHovered">
+            <summary>
+            Called every frame to update our hovered status, unless it's being pressed
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.StopPressing">
+            <summary>
+            Stop pressing. Pressed will become null.
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.StartPressing(Sandbox.Component)">
+            <summary>
+            Start pressing a target component. This is called automatically when Use is pressed.
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.SwitchHovered(Sandbox.Component)">
+            <summary>
+            Called every frame with the component we're looking at - even if it's null
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.TryGetLookedAt">
+            <summary>
+            Get the best component we're looking at. We don't just return any old component, by default
+            we only return components that implement IPressable. Components can implement GetUsableComponent
+            to search and provide better alternatives.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.StepDebug">
+            <summary>
+            Enable debug overlays for this character
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.TryStep(System.Single)">
+            <summary>
+            Try to step up. Will trace forward, then up, then across, then down.
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.RestoreStep">
+            <summary>
+            If we stepped up on the previous step, we suck our position back to the previous position after the physics step
+            to avoid adding double velocity. This is technically wrong but doesn't seem to cause any harm right now
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.BodyBox(System.Single,System.Single)">
+            <summary>
+            Return an aabb representing the body
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.TraceBody(Vector3,Vector3,System.Single,System.Single)">
+            <summary>
+            Trace the aabb body from one position to another and return the result
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.CreateRagdoll(System.String)">
+            <summary>
+            Create a ragdoll gameobject version of our render body.
+            </summary>
+        </member>
+        <member name="F:Sandbox.PlayerControllerPlus._skin">
+            <summary>
+            This is used to keep a distance away from surfaces. For example, when grounding, we'll
+            be a skin distance away from the ground.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.BrakePower">
+            <summary>
+            We will apply extra friction when we're on the ground and our desired velocity is
+            lower than our current velocity, so we will slow down.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.AirFriction">
+            <summary>
+            How much friction to add when we're in the air. This will slow you down unless you have a wish
+            velocity.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.Inertia">
+            <summary>
+            How much the character resists changes in movement direction. 0 = instant direction changes, 1 = very sluggish.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.PreserveVelocityOnLanding">
+            <summary>
+            When enabled, horizontal velocity is preserved when landing instead of being braked immediately.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.ShowStats">
+            <summary>
+            Show a debug overlay with velocity, move state, and grounded state.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.TrueFirstPerson">
+            <summary>
+            In first person, render the body normally but make head/hair/hats shadow-only so they don't clip into the camera.
+            Requires HideBodyInFirstPerson to be false.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.TrueFirstPersonOffset">
+            <summary>
+            Offset from the head bone position for the first-person camera.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.DisableCameraBinding">
+            <summary>
+            Completely decouples the camera from the player. The camera stays in place
+            and the body only rotates toward its movement direction.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.IsAirborne">
+            <summary>
+            Not touching the ground, and not swimming or climbing
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.Velocity">
+            <summary>
+            Our actual physical velocity minus our ground velocity
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.GroundVelocity">
+            <summary>
+            The velocity that the ground underneath us is moving
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.IsClimbing">
+            <summary>
+            Set to true when entering a climbing <see cref="T:Sandbox.MovementPlus.MoveModePlus"/>.
+            </summary>
+        </member>
+        <member name="P:Sandbox.PlayerControllerPlus.IsSwimming">
+            <summary>
+            Set to true when entering a swimming <see cref="T:Sandbox.MovementPlus.MoveModePlus"/>.
+            </summary>
+        </member>
+        <member name="M:Sandbox.PlayerControllerPlus.Jump(Vector3)">
+            <summary>
+            Adds velocity in a special way. First we subtract any opposite velocity (ie, falling) then 
+            we add the velocity, but we clamp it to that direction. This means that if you jump when you're running
+            up a platform, you don't get extra jump power.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,13 @@
+{
+  "Title": "Toasty",
+  "Type": "library",
+  "Org": "ggg",
+  "Ident": "toasty",
+  "Schema": 1,
+  "IncludeSourceFiles": false,
+  "Resources": null,
+  "PackageReferences": [],
+  "EditorReferences": null,
+  "IsWhitelistDisabled": false,
+  "Metadata": {}
+}

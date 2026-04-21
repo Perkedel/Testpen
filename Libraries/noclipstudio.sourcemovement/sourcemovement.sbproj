@@ -1,0 +1,14 @@
+{
+  "Title": "Source Movement",
+  "Type": "library",
+  "Org": "noclipstudio",
+  "Ident": "sourcemovement",
+  "Schema": 1,
+  "IncludeSourceFiles": false,
+  "Resources": null,
+  "PackageReferences": [],
+  "EditorReferences": null,
+  "Mounts": null,
+  "IsStandaloneOnly": false,
+  "Metadata": {}
+}

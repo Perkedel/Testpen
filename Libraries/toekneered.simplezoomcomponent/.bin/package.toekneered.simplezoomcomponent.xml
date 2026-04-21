@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>package.toekneered.simplezoomcomponent</name>
+    </assembly>
+    <members>
+        <member name="T:ZoomComponent">
+            <summary>
+            Zoom Component that uses FOV to switch between third and first person.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,55 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using CrosshairMaker.Abstract;
+@inherits PanelComponent
+@namespace Sandbox
+
+<root>
+
+</root>
+
+@code
+{
+	[Property] public PlayerController ReferedPlayer {get;set;}
+	[Property] public BaseCrosshair[] anCrosshairs {get;set;}
+	[Property, TextArea] public string MyStringValue { get; set; } = "Hello World!";
+	[Property] public bool isThirdPerson {get; internal set;} = false;
+
+	protected override void OnStart()
+	{
+		if(!ReferedPlayer.IsValid())
+		{
+			// Obtain Player now!
+			ReferedPlayer = Scene.Directory.FindByName( "Player Component" ).First().GetComponent<PlayerController>();
+		}
+	}
+
+	protected override void OnUpdate()
+	{
+		if(ReferedPlayer.IsValid())
+		{
+			// Check first person now!
+			if(ReferedPlayer.ThirdPerson)
+			{
+				// Player is in 3rd person!
+
+			}
+			if(isThirdPerson != ReferedPlayer.ThirdPerson)
+			{
+				foreach(var crosshair in anCrosshairs)
+				{
+					if(crosshair.IsValid())
+					{
+						crosshair.IsVisible = !ReferedPlayer.ThirdPerson;
+					}
+				}
+				isThirdPerson = ReferedPlayer.ThirdPerson;
+			}
+		}
+	}
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( MyStringValue );
+}

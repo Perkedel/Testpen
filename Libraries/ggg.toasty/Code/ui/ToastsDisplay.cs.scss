@@ -1,0 +1,27 @@
+ToastsDisplay {
+    z-index: 1000;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    padding: 3px 5px;
+
+    .toastcontainer {
+        max-width: 350px;
+        flex-wrap: wrap;
+        width: 45%;
+    }
+    & > .TopLeft {
+        position: absolute;
+        left: 0px;
+    }
+    & > .TopRight {
+        position: absolute;
+        right: 0px;
+    }
+    & > .BottomRight {
+        align-self: flex-end;
+    }
+    & > .BottomLeft {
+        align-self: flex-end;
+    }
+}

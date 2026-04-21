@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>package.carsonk.mediahelpers</name>
+    </assembly>
+    <members>
+        <member name="T:MediaHelpers.IYoutubeStreamData">
+            <summary>
+            Represents the data expected from a YouTube stream.
+            </summary>
+        </member>
+    </members>
+</doc>

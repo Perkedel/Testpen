@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>package.clearly.cavc</name>
+    </assembly>
+    <members>
+        <member name="T:RacingGame.OrbitCamera">
+            <summary>
+            Basic component for vehicle camera
+            </summary>
+        </member>
+        <member name="T:MyLibraryComponent">
+            <summary>
+            This is a component - in your library!
+            </summary>
+        </member>
+    </members>
+</doc>

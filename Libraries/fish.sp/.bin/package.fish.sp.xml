@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>package.fish.sp</name>
+    </assembly>
+    <members>
+        <member name="T:ShrimplePawns.Client">
+            <summary>
+            The base client that you should inherit off of.
+            </summary>
+        </member>
+        <member name="M:ShrimplePawns.Client.TryGetPawn``1(``0@)">
+            <summary>
+            Get the pawn only if it is valid.
+            </summary>
+        </member>
+        <member name="M:ShrimplePawns.Client.GetPawn``1">
+            <summary>
+            Get the pawn.
+            </summary>
+        </member>
+        <member name="M:ShrimplePawns.Client.GetPawn">
+            <summary>
+            Get the pawn.
+            </summary>
+        </member>
+        <member name="M:ShrimplePawns.Client.AssignConnection(Sandbox.Connection)">
+            <summary>
+            Assigns the given connection as the client's current connection.
+            This connection will be used to give ownership to any future assigned pawns.
+            This must be called on the host!
+            </summary>
+            <param name="connection">The connection to assign to the client.</param>
+        </member>
+        <member name="M:ShrimplePawns.Client.AssignPawn(Sandbox.PrefabFile)">
+            <summary>
+            Creates a <see cref="T:Sandbox.GameObject" /> from the given prefab file and assigns it as the client's current pawn.
+            This must be called on the host!
+            </summary>
+            <param name="prefabFile">The prefab file that is used to create the pawn.</param>
+        </member>
+        <member name="M:ShrimplePawns.Client.AssignPawn``1">
+            <summary>
+            Assigns the given pawn type as the client's current pawn.
+            The pawn type must have a <see cref="T:ShrimplePawns.PawnAttribute" /> defined in order to use this method.
+            This must be called on the host!
+            </summary>
+            <returns>The pawn component that the client was assigned to.</returns>
+        </member>
+        <member name="M:ShrimplePawns.Client.AssignPawn(Sandbox.GameObject)">
+            <summary>
+            Takes a <see cref="T:Sandbox.GameObject" /> that already exists, networked spawns it, and assigns it to the client.
+            This must be called on the host!
+            </summary>
+            <param name="obj">The pawn game object that will be networked spawned and assigned to the client.</param>
+        </member>
+        <member name="T:ShrimplePawns.Pawn">
+            <summary>
+            The base pawn that you should inherit off of.
+            </summary>
+        </member>
+        <member name="M:ShrimplePawns.Pawn.OnAssign(ShrimplePawns.Client)">
+            <summary>
+            Called when the pawn has been assigned.
+            </summary>
+        </member>
+        <member name="M:ShrimplePawns.Pawn.OnUnassign">
+            <summary>
+            Called when the pawn has been unassigned.
+            </summary>
+        </member>
+        <member name="T:ShrimplePawns.PawnAttribute">
+            <summary>
+            This attribute should be given to any class that derives Pawn.cs
+            </summary>
+            <param name="prefabPath">The path to the prefab that contains the derived pawn component.</param>
+        </member>
+        <member name="M:ShrimplePawns.PawnAttribute.#ctor(System.String)">
+            <summary>
+            This attribute should be given to any class that derives Pawn.cs
+            </summary>
+            <param name="prefabPath">The path to the prefab that contains the derived pawn component.</param>
+        </member>
+    </members>
+</doc>

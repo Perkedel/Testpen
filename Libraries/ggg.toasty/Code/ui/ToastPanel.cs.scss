@@ -1,0 +1,113 @@
+﻿ToastPanel {
+    align-items: center;
+    width: 100%;
+    border-radius: 6px;
+    color: white;
+    border: 3px black solid;
+    margin-top: 3px;
+
+    IconPanel {
+        min-width: 60px;
+        font-size: 50px;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        text-stroke: 5px rgba(0, 0, 0, 0.3) 2px;
+    }
+
+    .text {
+        font-size: 20;
+        text-align: left;
+        font-weight: 600;
+        text-stroke: 3px black;
+        transition: all 0.2s ease-out 0s;
+        transition: opacity 1s ease-out 0s;
+        opacity: 1;
+    }
+
+    &.info {
+        background-color: #39a2ae;
+    }
+    &.warning {
+        background-color: #ed9b40;
+    }
+    &.success {
+        background-color: #bcd979;
+    }
+    &.error {
+        background-color: #ff5964;
+    }
+
+    transition: transform 0.7s ease-out;
+    transform: translateX(0);
+
+    &.TopLeft,
+    &.BottomLeft {
+        // When the element is created make it expand from nothing.
+        &:intro {
+            animation: slide-in-left 1.2s ease-out both;
+        }
+
+        // When the element is deleted make it double in size before being deleted.
+        &:outro {
+            animation: slide-out-left 1.2s ease-in both;
+        }
+    }
+    &.TopRight,
+    &.BottomRight {
+        // When the element is created make it expand from nothing.
+        &:intro {
+            animation: slide-in-right 1.2s ease-out both;
+        }
+
+        // When the element is deleted make it double in size before being deleted.
+        &:outro {
+            animation: slide-out-right 1.2s ease-in both;
+        }
+    }
+}
+
+@keyframes slide-in-right {
+    0% {
+        transform: translateX(1000px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-out-right {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(1000px);
+        opacity: 0;
+    }
+}
+
+@keyframes slide-in-left {
+    0% {
+        transform: translateX(-1000px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-out-left {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-1000px);
+        opacity: 0;
+    }
+}

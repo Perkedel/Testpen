@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>package.fawasinteractive.fipropgrabber</name>
+    </assembly>
+    <members>
+        <member name="T:PropGrabber">
+            <summary>
+            A general purpose prop  grabber.
+            Works with only a transform for the raycast (like a camera). Optionally interacts with an IPropUser for custom behavior.
+            </summary>
+        </member>
+        <member name="P:PropGrabber.RaycastSource">
+            <summary>
+            The GameObject to use as the transform origin of the raycast for picking up props (e.g. a camera).
+            </summary>
+        </member>
+        <member name="P:PropGrabber.PickupRange">
+            <summary>
+            How far the grabber can pick up props from, in units.
+            </summary>
+        </member>
+        <member name="P:PropGrabber.HoldDistance">
+            <summary>
+            The distance from the RaycastSource where the prop is held.
+            </summary>
+        </member>
+        <member name="P:PropGrabber.ThrowForce">
+            <summary>
+            The force applied to the prop when thrown.
+            </summary>
+        </member>
+        <member name="P:PropGrabber.MaxHoldVelocity">
+            <summary>
+            The max velocity allowed before the prop is automatically dropped.
+            Only matters if <see cref="P:PropGrabber.DropFromVelocity"/> is true.
+            </summary>
+        </member>
+        <member name="P:PropGrabber.MaxFovAngle">
+            <summary>
+            The max angle (degrees) from the forward direction before the prop is dropped from being out of view.
+            Only matters if <see cref="P:PropGrabber.DropFromAngle"/> is true.
+            </summary>
+        </member>
+        <member name="P:PropGrabber.MaxMoveSpeed">
+            <summary>
+            Increase to make the pop move faster. Decrease for smoother movement, but too low makes it move stubbornly.
+            </summary>
+        </member>
+        <member name="P:PropGrabber.CanThrow">
+            <summary>
+            Whether the player is allowed to throw the held prop.
+            </summary>
+        </member>
+        <member name="P:PropGrabber.DropFromVelocity">
+            <summary>
+            Whether the prop should be dropped if its velocity exceeds <see cref="P:PropGrabber.MaxHoldVelocity"/>.
+            </summary>
+        </member>
+        <member name="P:PropGrabber.DropFromAngle">
+            <summary>
+            Whether the prop should be dropped if it moves outside the field of view defined by <see cref="P:PropGrabber.MaxFovAngle"/>.
+            </summary>
+        </member>
+        <member name="F:PropGrabber.RequirePropComponent">
+            <summary>
+            Limits pickup to objects with a <see cref="T:Sandbox.Prop"/> component.
+            </summary>
+        </member>
+        <member name="P:PropGrabber.RequireTags">
+            <summary>
+            Tags that the pickupable object must have in order to be picked up, like "prop".
+            Leave empty to ignore requiring any tag.
+            </summary>
+        </member>
+    </members>
+</doc>

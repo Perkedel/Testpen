@@ -1,0 +1,14 @@
+{
+  "Title": "FI Prop Grabber",
+  "Type": "library",
+  "Org": "fawasinteractive",
+  "Ident": "fipropgrabber",
+  "Schema": 1,
+  "IncludeSourceFiles": false,
+  "Resources": null,
+  "PackageReferences": [],
+  "EditorReferences": null,
+  "Mounts": null,
+  "IsStandaloneOnly": false,
+  "Metadata": {}
+}
