@@ -1,15 +1,15 @@
 {
-  "__guid": "efa025a0-c1f9-469f-a46d-12948b243e71",
+  "__guid": "91e0ebb8-fb92-40fd-a66b-845e692049af",
   "GameObjects": [
     {
-      "__guid": "db243ef2-5dc8-4180-8b49-9c23e1a8416d",
+      "__guid": "2d7088ed-783c-43c3-ab96-b2382704c31e",
       "__version": 2,
       "Flags": 0,
-      "Name": "Scene Information",
+      "Name": "2D Skybox",
       "Position": "0,0,0",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
-      "Tags": "",
+      "Tags": "skybox",
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkFlags": 0,
@@ -18,29 +18,25 @@
       "OwnerTransfer": 1,
       "Components": [
         {
-          "__type": "Sandbox.SceneInformation",
-          "__guid": "4b4f8cb5-6157-409e-ac6a-3d2c4e97788a",
+          "__type": "Sandbox.SkyBox2D",
+          "__guid": "f21b554b-3935-4ee6-bf1d-f9f049411e7c",
           "__enabled": true,
           "Flags": 0,
-          "Author": "JOELwindows7",
-          "Changes": null,
-          "Description": "Let's try opening a website here!\nusing a Panel called \"WebPanel\" here.",
-          "Group": null,
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
-          "SceneTags": "",
-          "Title": "IFraming",
-          "Version": null
+          "SkyIndirectLighting": true,
+          "SkyMaterial": "materials/skybox/light_test_default.vmat",
+          "Tint": "0,0,0,1"
         }
       ],
       "Children": []
     },
     {
-      "__guid": "fc126c2c-795a-4bfc-9a30-ddd9b341bc43",
+      "__guid": "45bec766-8b66-452d-abec-0780eb68b13a",
       "__version": 2,
       "Flags": 0,
       "Name": "UI_Sub",
@@ -57,10 +53,10 @@
       "Components": [],
       "Children": [
         {
-          "__guid": "8c826945-6139-4416-aada-4ddd05b83331",
+          "__guid": "97f31742-156c-4db5-86e5-08e62818ec75",
           "__version": 2,
           "Flags": 0,
-          "Name": "Website",
+          "Name": "DotPixelTester",
           "Position": "0,0,0",
           "Rotation": "0,0,0,1",
           "Scale": "1,1,1",
@@ -74,7 +70,7 @@
           "Components": [
             {
               "__type": "Sandbox.ScreenPanel",
-              "__guid": "6dbdd241-3e97-4920-ab3e-99d4480c9544",
+              "__guid": "6fcff35c-4c9e-4987-9d4b-a42a8640cf42",
               "__enabled": true,
               "Flags": 0,
               "AutoScreenScale": true,
@@ -86,23 +82,25 @@
               "OnComponentUpdate": null,
               "Opacity": 1,
               "Scale": 1,
-              "ScaleStrategy": "FollowDesktopScaling",
+              "ScaleStrategy": "ConsistentHeight",
               "TargetCamera": null,
-              "ZIndex": 50
+              "ZIndex": 100
             },
             {
-              "__type": "Sandbox.Website",
-              "__guid": "8b073b36-0e5d-4e48-9b60-30499e6346c0",
+              "__type": "Sandbox.DotPixelTester",
+              "__guid": "2362fece-7dc3-4471-8687-9e13623840e6",
               "__enabled": true,
               "Flags": 0,
-              "MyStringValue": "Hello World!",
               "OnComponentDestroy": null,
               "OnComponentDisabled": null,
               "OnComponentEnabled": null,
               "OnComponentFixedUpdate": null,
               "OnComponentStart": null,
               "OnComponentUpdate": null,
-              "VisitWebsite": "https://perkedel.netlify.app"
+              "selectBgTheme": 0,
+              "selectDotTheme": 1,
+              "setPos": "0,0",
+              "speed": 50
             }
           ],
           "Children": []
@@ -110,7 +108,7 @@
       ]
     },
     {
-      "__guid": "979df506-7e9a-4ccd-b985-cd4bf79bc073",
+      "__guid": "4266a8ba-4c9e-4c95-90cc-7a38ee2de8bc",
       "__version": 2,
       "Flags": 0,
       "Name": "Camera",
@@ -127,7 +125,7 @@
       "Components": [
         {
           "__type": "Sandbox.CameraComponent",
-          "__guid": "2876e389-3f5c-4c70-9192-ce96d4ff65e5",
+          "__guid": "23d31d55-9bcc-45aa-890d-932cee3bebe6",
           "__enabled": true,
           "Flags": 0,
           "BackgroundColor": "0.33333,0.46275,0.52157,1",
@@ -153,49 +151,19 @@
           "Viewport": "0,0,1,1",
           "ZFar": 10000,
           "ZNear": 10
-        },
-        {
-          "__type": "ToastsDisplay",
-          "__guid": "ed646461-e958-48bd-b7aa-d8ae13a9000e",
-          "__enabled": true,
-          "Flags": 0,
-          "OnComponentDestroy": null,
-          "OnComponentDisabled": null,
-          "OnComponentEnabled": null,
-          "OnComponentFixedUpdate": null,
-          "OnComponentStart": null,
-          "OnComponentUpdate": null
-        },
-        {
-          "__type": "Sandbox.ScreenPanel",
-          "__guid": "a38e3775-f67e-4c76-b7e8-55b9cd9ee91f",
-          "__enabled": true,
-          "Flags": 0,
-          "AutoScreenScale": true,
-          "OnComponentDestroy": null,
-          "OnComponentDisabled": null,
-          "OnComponentEnabled": null,
-          "OnComponentFixedUpdate": null,
-          "OnComponentStart": null,
-          "OnComponentUpdate": null,
-          "Opacity": 1,
-          "Scale": 1,
-          "ScaleStrategy": "ConsistentHeight",
-          "TargetCamera": null,
-          "ZIndex": 100
         }
       ],
       "Children": []
     },
     {
-      "__guid": "21b3fb18-685a-44b3-821c-9ab5c076ac4b",
+      "__guid": "ffae73ab-fc78-46b4-b300-75d38f3d91f9",
       "__version": 2,
       "Flags": 0,
-      "Name": "2D Skybox",
+      "Name": "Scene Information",
       "Position": "0,0,0",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
-      "Tags": "skybox",
+      "Tags": "",
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkFlags": 0,
@@ -204,19 +172,23 @@
       "OwnerTransfer": 1,
       "Components": [
         {
-          "__type": "Sandbox.SkyBox2D",
-          "__guid": "c1a09555-e3ab-45ba-99d6-5088e99fa09b",
+          "__type": "Sandbox.SceneInformation",
+          "__guid": "ebefbe20-78e1-4035-8b41-339d2fe017ce",
           "__enabled": true,
           "Flags": 0,
+          "Author": "JOELwindows7",
+          "Changes": null,
+          "Description": "Test your display integrity: Moving a Dot pixel\n\nInspired from Artemio's 240p Test Suite",
+          "Group": null,
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
-          "SkyIndirectLighting": true,
-          "SkyMaterial": "materials/skybox/skybox_day_01.vmat",
-          "Tint": "1,1,1,1"
+          "SceneTags": "",
+          "Title": "Dot Pixel Test",
+          "Version": null
         }
       ],
       "Children": []
@@ -227,8 +199,8 @@
     "TimeScale": 1,
     "WantsSystemScene": true,
     "Metadata": {
-      "Title": "IFraming",
-      "Description": "Let's try opening a website here!\nusing a Panel called \"WebPanel\" here.",
+      "Title": "Dot Pixel Test",
+      "Description": "Test your display integrity: Moving a Dot pixel\n\nInspired from Artemio's 240p Test Suite",
       "Author": "JOELwindows7"
     },
     "NavMesh": {
@@ -251,14 +223,14 @@
       },
       "Sandbox.Clutter.ClutterGridSystem": {
         "Storage": {
-          "$blob": "e5f3e351-67a2-4c96-803b-7870ae3c0f7c"
+          "$blob": "d3b24689-d3dd-4c6f-876a-c744a9074be6"
         }
       }
     }
   },
   "ResourceVersion": 3,
-  "Title": "IFraming",
-  "Description": "Let's try opening a website here!\nusing a Panel called \"WebPanel\" here.",
+  "Title": "Dot Pixel Test",
+  "Description": "Test your display integrity: Moving a Dot pixel\n\nInspired from Artemio's 240p Test Suite",
   "__references": [],
   "__version": 3
 }

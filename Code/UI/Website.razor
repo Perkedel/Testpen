@@ -4,19 +4,49 @@
 @namespace Sandbox
 
 <root>
-	<p>aaa</p>
 	<!--<iframe src="https://perkedel.netlify.app" title="Perkedel NTLF+ASTR"></iframe>-->
 	<!--@Html.Raw("https://perkedel.netlify.app");-->
-	<p>bb</p>
+	<WebPanel class="FullIframe" Url=@VisitWebsite @ref="anIframe"></WebPanel>
 </root>
 
 @code
 {
+	// pls inspire from
+	// https://github.com/CarsonKompon/sbox-mediaplayer/blob/main/code/ui/MediaBrowser/MediaBrowser.razor
+	// thancc carson.
+	// https://github.com/Facepunch/sbox-public/blob/master/engine/Sandbox.Engine/Systems/UI/Controls/WebPanel.cs
+	// https://github.com/Facepunch/sbox-scenestaging/blob/main/Code/Panels/UITests/Elements/WebPanelTest.razor
+	/*
+	<WebPanel class="FullIframe" @ref="anIframe" ></WebPanel>
+
+	https://perkedel.netlify.app/
+	*/
+	public WebPanel anIframe {get;set;}
+
 	// https://www.w3schools.com/tags/tag_iframe.asp
 	[Property, TextArea] public string MyStringValue { get; set; } = "Hello World!";
+	[Property] public string VisitWebsite { get; set; } = "https://perkedel.netlify.app";
+
+	protected override void OnStart()
+	{
+		//anIframe.Url = VisitWebsite;
+	}
+
+	/*
+	protected override void OnAfterTreeRender(bool firstTime)
+	{
+		if(firstTime)
+		{
+			anIframe.Url = VisitWebsite;
+		}
+	}
+	*/
 
 	/// <summary>
 	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
 	/// </summary>
-	protected override int BuildHash() => System.HashCode.Combine( MyStringValue );
+	protected override int BuildHash() => System.HashCode.Combine(
+		MyStringValue ,
+		VisitWebsite
+	);
 }

@@ -1,0 +1,138 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+@namespace Sandbox
+
+<root>
+	<div class="TestArea" style=@writeBgStyle>
+		<div class="theDot" style=@writePosStyle></div>
+	</div>
+</root>
+
+@code
+{
+	/*
+	public enum BgTheme: int {
+		Black,
+		White,
+		Gray,
+		Blue,
+	};
+	*/
+	public string[] BgTheme = [
+		"background-color:black;",
+		"background-color:white;",
+		"background-color:red;",
+		"background-color:lime;",
+		"background-color:blue;",
+		"background-color:cyan;",
+		"background-color:magenta;",
+		"background-color:yellow;",
+	];
+
+	[Property] public Vector2 setPos {get;set;} = new Vector2(50,50);
+	[Property] public float speed {get;set;} = 50f;
+	[Property] public int selectBgTheme {get;set;} = 0;
+	[Property] public int selectDotTheme {get;set;} = 1;
+	//[Property] public BgTheme selectBgTheme {get;set;} = BgTheme.Black;
+	protected int maxBgTheme {get;} = 4;
+	protected float _x {get;set;} = 50;
+	protected float _y {get;set;} = 50;
+	protected string writeBgTheme {get;set;}
+	protected string writeDotTheme {get;set;}
+	protected string writePosStyle {get;set;}
+	protected string writeBgStyle {get;set;}
+
+	// https://www.w3schools.com/css/css_positioning_fixed_absolute.asp
+	// https://www.w3schools.com/cs/cs_enums.php
+	// https://stackoverflow.com/questions/630803/associating-enums-with-strings-in-c-sharp
+
+	protected override void OnUpdate()
+	{
+		_x += -Input.AnalogMove.x * Time.Delta * speed;
+		_y += -Input.AnalogMove.y * Time.Delta * speed;
+
+		/*
+		writeBgTheme = switch(selectBgTheme)
+		{
+			default:
+				"";
+				break;
+		};
+		*/
+		if(Input.Pressed("slotNext"))
+		{
+			selectBgTheme += 1;
+		}
+		if(Input.Pressed("slotPrev"))
+		{
+			selectBgTheme -= 1;
+		}
+		if(Input.Pressed("attack1"))
+		{
+			selectDotTheme += 1;
+		}
+		if(Input.Pressed("attack2"))
+		{
+			selectDotTheme -= 1;
+		}
+
+		/*
+		if(selectBgTheme > System.Enum.GetValues(BgTheme).Length())
+		{
+			selectBgTheme = BgTheme.Black;
+		}
+		*/
+		if(selectBgTheme < 0)
+		{
+			selectBgTheme = BgTheme.Length - 1;
+		}
+		if(selectBgTheme > BgTheme.Length-1)
+		{
+			selectBgTheme = 0;
+		}
+		if(selectDotTheme < 0)
+		{
+			selectDotTheme = BgTheme.Length - 1;
+		}
+		if(selectDotTheme > BgTheme.Length-1)
+		{
+			selectDotTheme = 0;
+		}
+
+		/*
+		switch(selectBgTheme)
+		{
+			case BgTheme.Black:
+				writeBgTheme = "background-color:black;";
+				break;
+			case BgTheme.White:
+				writeBgTheme = "background-color:white;";
+				break;
+			case BgTheme.Gray:
+				writeBgTheme = "background-color:gray;";
+				break;
+			case BgTheme.Blue:
+				writeBgTheme = "background-color:blue;";
+				break;
+			default:
+				break;
+		}
+		*/
+		writeBgTheme = BgTheme[selectBgTheme];
+		writeDotTheme = BgTheme[selectDotTheme];
+
+		if(_x >= 100) _x = 100;
+		if(_x <= 0) _x = 0;
+		if(_y >= 100) _y = 100;
+		if(_y <= 0) _y = 0;
+		setPos = new Vector2(_x,_y);
+		writePosStyle = $" top:{setPos.x}%; left:{setPos.y}%; {writeDotTheme}";
+		writeBgStyle = $"{writeBgTheme}";
+	}
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( setPos, writePosStyle, writeBgStyle );
+}

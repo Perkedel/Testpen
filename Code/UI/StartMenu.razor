@@ -9,11 +9,12 @@
 	<div class="topBar">
 
 		<div class="topLeft">
-			<p class="topTitle"><a class="resumeButton @(@isInStart?"hidden":"")" onClick=@ResumeGame>▶️</a>🪛 Testpen!</p>
+			<p><a class="resumeButton @(@isInStart?"hidden":"")" onClick=@ResumeGame><iconify icon="material-symbols:arrow-back" size=@(48)/></a></p>
+			<p class="topTitle">🪛 Testpen!</p>
 			<p><a class="homeButton @(isInStart?"hidden":"")" onClick=@ReturnToMenu>🏠</a></p>
 		</div>
 		<div class="topCenter">
-
+			<p>@openedSceneName</p>
 		</div>
 		<div class="topRight">
 			<p><a class="settingButton" onClick=@SettingGame>⚙️</a></p>
@@ -49,6 +50,8 @@
 	protected bool hathPaused {get;set;} = false;
 	[Property] public bool isInStart {get;set;} = false;
 	[Property, TextArea] public string MyStringValue { get; set; } = "Testpen!";
+	protected string openedSceneName {get;set;} = "Select test";
+	[Property] public SceneInformation ObtainSceneInfo {get;set;}
 
 	//[Property] protected DoNotFreezeOnPause? noFreeze {get; set;}
 	[Property] public bool PlsDoNotFreeze {get;set;} = false;
@@ -67,6 +70,7 @@
 
 		// Search these SceneProperties Components!
 		//noFreeze = Scene.Directory.FindByName( "DoNotFreezeOnPause" ).First().GetComponent<DoNotFreezeOnPause>();
+		//ObtainSceneInfo = Scene.Directory.FindByName("Scene Information").First().GetComponent<SceneInformation>();
 	}
 
 	protected override void OnUpdate()
