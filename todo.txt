@@ -1,3 +1,2 @@
 - Make drone hoop and cone
 - credit Artemio. Now we will make 240p test suite
-- make one entity multichair bench. Seat together.
