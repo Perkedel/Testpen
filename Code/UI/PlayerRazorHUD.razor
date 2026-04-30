@@ -5,22 +5,36 @@
 @namespace Sandbox
 
 <root>
-
+	<div class="column">
+		<div class="row top"></div>
+		<div class="row middle"></div>
+		<div class="row bottom">
+			<TutorialHealthArmorPanel @ref="HPPanel"/>
+		</div>
+	</div>
 </root>
 
 @code
 {
+	[Property] public string ExpectedReferedPlayer {get;set;} = "player controller edito";
 	[Property] public PlayerController ReferedPlayer {get;set;}
+	[Property,ReadOnly] public TacitPlayerSample HealthSystem {get;set;}
+	string hashPlayerHp {get;set;} = "";
 	[Property] public BaseCrosshair[] anCrosshairs {get;set;}
 	[Property, TextArea] public string MyStringValue { get; set; } = "Hello World!";
 	[Property] public bool isThirdPerson {get; internal set;} = false;
+	TutorialHealthArmorPanel HPPanel {get;set;}
 
 	protected override void OnStart()
 	{
 		if(!ReferedPlayer.IsValid())
 		{
 			// Obtain Player now!
-			ReferedPlayer = Scene.Directory.FindByName( "Player Component" ).First().GetComponent<PlayerController>();
+			ReferedPlayer = Scene.Directory.FindByName( ExpectedReferedPlayer ).First().GetComponent<PlayerController>();
+		}
+		if(ReferedPlayer.IsValid())
+		{
+			HealthSystem = ReferedPlayer.GetComponent<TacitPlayerSample>();
 		}
 	}
 
@@ -40,16 +54,43 @@
 				{
 					if(crosshair.IsValid())
 					{
-						crosshair.IsVisible = !ReferedPlayer.ThirdPerson;
+						var isAlive = false;
+						if(HealthSystem.IsValid()) isAlive = !HealthSystem.IsDead;
+						else isAlive = false;
+						crosshair.IsVisible = !ReferedPlayer.ThirdPerson && isAlive;
 					}
 				}
 				isThirdPerson = ReferedPlayer.ThirdPerson;
 			}
+			//HPPanel.Health = ReferedPlayer.Local.Health;
+		} else {
+			foreach(var crosshair in anCrosshairs)
+			{
+				if(crosshair.IsValid())
+				{
+					crosshair.IsVisible = false;
+				}
+			}
+		}
+
+		if(HealthSystem.IsValid())
+		{
+			hashPlayerHp = $"{HealthSystem.Health}";
+			HPPanel.Health = HealthSystem.Health;
+			//HPPanel.Armor = 12f;
+		} else {
+			hashPlayerHp = $"0";
+			HPPanel.Health = 0f;
 		}
 	}
 
 	/// <summary>
 	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
 	/// </summary>
-	protected override int BuildHash() => System.HashCode.Combine( MyStringValue );
+	protected override int BuildHash() => System.HashCode.Combine(
+		ReferedPlayer,
+		hashPlayerHp,
+		ExpectedReferedPlayer,
+		MyStringValue
+	);
 }

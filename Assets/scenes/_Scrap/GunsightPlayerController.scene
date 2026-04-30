@@ -1,0 +1,278 @@
+{
+  "__guid": "6bd2f859-fd6d-47ee-920e-f2c1475219ca",
+  "GameObjects": [
+    {
+      "__guid": "e20d1a2d-20ef-4fa5-85dc-dadedbef806e",
+      "__version": 2,
+      "Flags": 0,
+      "Name": "PlaneGround",
+      "Position": "0,0,0",
+      "Rotation": "0,0,0,1",
+      "Scale": "100,100,100",
+      "Tags": "",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkFlags": 0,
+      "NetworkOrphaned": 0,
+      "NetworkTransmit": true,
+      "OwnerTransfer": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "fe80c624-9ce0-4c27-b694-005237dd8d95",
+          "__enabled": true,
+          "Flags": 0,
+          "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
+          "LodOverride": null,
+          "MaterialGroup": null,
+          "MaterialOverride": "materials/dev/prototype_grid/prototype_grid_dark_large.vmat",
+          "Materials": null,
+          "Model": "models/dev/plane.vmdl",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "0d0286c1-0063-46eb-9be2-b99b525e1e6e",
+          "__enabled": true,
+          "Flags": 0,
+          "Center": "0,0,0",
+          "ColliderFlags": 0,
+          "Elasticity": null,
+          "Friction": null,
+          "IsTrigger": false,
+          "Normal": "0,0,1",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OnObjectTriggerEnter": null,
+          "OnObjectTriggerExit": null,
+          "OnTriggerEnter": null,
+          "OnTriggerExit": null,
+          "RollingResistance": null,
+          "Scale": "100,100",
+          "Static": true,
+          "Surface": null,
+          "SurfaceVelocity": "0,0,0"
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "d467d04f-3529-47af-aa90-de69f1b4ba32",
+      "__version": 2,
+      "__Prefab": "entity/enchantedplayercontroller/player controller gunsight.prefab",
+      "__PrefabInstancePatch": {
+        "AddedObjects": [],
+        "RemovedObjects": [
+          {
+            "Id": {
+              "Type": "Component",
+              "IdValue": "7c8bd06f-3f04-4a11-80c5-ca96b65ea719"
+            }
+          },
+          {
+            "Id": {
+              "Type": "GameObject",
+              "IdValue": "588c40c2-8a66-407b-9bae-d3eafad14954"
+            }
+          },
+          {
+            "Id": {
+              "Type": "Component",
+              "IdValue": "cb4fc1aa-5b44-4e42-9eae-d6616e6e9719"
+            }
+          },
+          {
+            "Id": {
+              "Type": "Component",
+              "IdValue": "c96c8513-b199-42b6-addb-4255969026d2"
+            }
+          }
+        ],
+        "PropertyOverrides": [
+          {
+            "Target": {
+              "Type": "Component",
+              "IdValue": "6723e4a2-ffe3-400d-891c-a3c120b18ca1"
+            },
+            "Property": "ColliderObject",
+            "Value": null
+          }
+        ],
+        "MovedObjects": []
+      },
+      "__PrefabIdToInstanceId": {
+        "84926b3c-6eef-44ae-98a5-50414d395009": "d467d04f-3529-47af-aa90-de69f1b4ba32",
+        "5d06b29f-250a-4c33-8b91-57fe637424c5": "a2dba5ef-857f-47c3-8345-c42e8b366ade",
+        "d397b211-4b64-4ec2-ba8e-bea8a8e320f5": "1e884574-7ad3-49d6-92ad-05491747ba0d",
+        "62f75a22-029f-4f94-bf10-595ece34c6fd": "fb2c2f60-703f-4cfa-a33d-b02a3e81e49d",
+        "01f01987-7306-4584-a2d9-0dfd8f5265f3": "e2e56966-5ff3-4694-945c-9b238fac4838",
+        "6723e4a2-ffe3-400d-891c-a3c120b18ca1": "52775eed-bf71-4ae0-8e70-136236b3d567",
+        "2344a098-e0bd-405f-bd65-d1d17513a0cd": "0d08bf59-00cf-4e06-b830-808daefc2e3c",
+        "909ca400-3f95-4eb0-b134-6f79f230b3ad": "f3975e48-fc3c-45d9-b6f2-68805aa81347",
+        "b7174e4a-83d9-4bdb-bd09-32af1f60b110": "e6076fbb-4d7a-4cc7-b14a-cbc04c0c8f9f",
+        "e26b1481-56c1-4224-9e67-721072fa5729": "9b358312-153b-40f9-b782-5d5fbad084fa",
+        "54cbdcb1-34f9-4707-848e-17ef6d0f8a42": "caa35066-56da-42fa-90d8-8a4ac9ee5fb4",
+        "8b9a0720-6dff-4ad3-ab64-9cd0dd633630": "9d8ec063-5ace-4c32-91fa-e20c2543ebc5",
+        "b4213967-0617-4d2c-932e-eab91f4e5b24": "36eea97b-43b6-4ca0-99da-1f5b49305a5e",
+        "44c67260-eb72-45f4-aaa0-7ef6bae8ef91": "80e1b61d-264b-444a-b66c-743f4c2ebda8",
+        "4d88fee5-8659-4f92-af24-21d21f82a685": "3d90417b-38a3-4df7-81f1-25fbd47331ad",
+        "b17314f1-076f-4c25-8c61-57efb6e81df6": "655fa81a-4f43-4a02-b5ea-8dcb93eafff3",
+        "47d87210-d75d-4e10-8dc0-ffbc6cf7a12b": "7918d03f-9ce8-4175-b564-fe17c35df240",
+        "3f211037-83bd-4ce1-ba3d-cf6790c99c0a": "3b5234db-7d12-4b72-be07-34dbb4044127",
+        "11a04c5e-08bc-4e72-b39c-f3f732942c37": "ce978073-77ed-46ff-a3ad-d968787bf7b5",
+        "3db21160-1f4b-4818-a510-09fda527912f": "b206f8a7-d7ba-4f9b-8a5a-e314d1bae6c6",
+        "8ffef6de-c0e2-4b07-be06-e12ec0b7f799": "cf66da4d-1030-4710-b569-17bc841bee50",
+        "f1531d8b-4c3a-4d16-9c41-9cc00ce3c0a9": "654a0565-25b4-4309-9f30-3f3761620c52",
+        "226138b5-b7a7-41d2-942c-828380aed105": "43edba0b-b21b-4c09-b9ad-fff1f7e36496",
+        "69071097-2ec1-4b87-b247-5675a507df6a": "3b07e05a-9403-4a9a-ab5f-b02e5dd235a4",
+        "d9129370-4604-46ad-a9d6-20a98ab8c9d0": "a0239a1e-c808-40e9-8b58-6e6dfdc31184",
+        "588c40c2-8a66-407b-9bae-d3eafad14954": "f2d6afe9-34ed-4cec-a2de-8f1b78933d77",
+        "7c8bd06f-3f04-4a11-80c5-ca96b65ea719": "e472db4c-066e-4ad3-a2de-cb0f55a96265",
+        "cb4fc1aa-5b44-4e42-9eae-d6616e6e9719": "5cb04ac9-21b4-490c-b3cd-8a47bab6cbfc",
+        "c96c8513-b199-42b6-addb-4255969026d2": "7669eee2-0933-44e3-a840-a484f8e2fa11"
+      }
+    },
+    {
+      "__guid": "61fc8515-6e0c-4542-99b4-5774b219e296",
+      "__version": 2,
+      "Flags": 0,
+      "Name": "2D Skybox",
+      "Position": "0,0,0",
+      "Rotation": "0,0,0,1",
+      "Scale": "1,1,1",
+      "Tags": "skybox",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkFlags": 0,
+      "NetworkOrphaned": 0,
+      "NetworkTransmit": true,
+      "OwnerTransfer": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.SkyBox2D",
+          "__guid": "df1c28a7-e3fc-4630-b6c2-71961e33e33a",
+          "__enabled": true,
+          "Flags": 0,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "SkyIndirectLighting": true,
+          "SkyMaterial": "materials/skybox/skybox_day_01.vmat",
+          "Tint": "1,1,1,1"
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "dc0d07d9-cba7-4794-a2d6-e256ee384b8b",
+      "__version": 2,
+      "Flags": 0,
+      "Name": "Camera",
+      "Position": "0,0,0",
+      "Rotation": "0,0,0,1",
+      "Scale": "1,1,1",
+      "Tags": "maincamera",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkFlags": 0,
+      "NetworkOrphaned": 0,
+      "NetworkTransmit": true,
+      "OwnerTransfer": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "7f598df9-e0d7-4da1-afff-6df41112e00d",
+          "__enabled": true,
+          "Flags": 0,
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "EnablePostProcessing": true,
+          "FieldOfView": 60,
+          "FovAxis": "Horizontal",
+          "IsMainCamera": true,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "PostProcessAnchor": null,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "RenderTexture": null,
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 10
+        }
+      ],
+      "Children": []
+    }
+  ],
+  "SceneProperties": {
+    "NetworkInterpolation": true,
+    "TimeScale": 1,
+    "WantsSystemScene": true,
+    "Metadata": {},
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": false,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": "",
+      "DeferGeneration": false,
+      "CustomBounds": false
+    },
+    "GameObjectSystems": {
+      "Sandbox.SelectionSetsSystem": {
+        "Data": {
+          "SelectionSets": []
+        }
+      },
+      "Sandbox.Clutter.ClutterGridSystem": {
+        "Storage": {
+          "$blob": "1c4e1216-fd3e-430b-a7f2-cde85e37c216"
+        }
+      },
+      "Sandbox.MovieMaker.MovieRecorderSystem": {
+        "DisableClientRecording": false
+      }
+    }
+  },
+  "ResourceVersion": 3,
+  "Title": null,
+  "Description": null,
+  "__references": [
+    "mindless.mat_dev_prototypegriddarklarge#152767"
+  ],
+  "__version": 3
+}

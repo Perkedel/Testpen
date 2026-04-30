@@ -1,0 +1,16 @@
+@using Sandbox;
+@using Sandbox.UI;
+
+<root>
+  <div class="health">HP: @Health</div>
+  <div class="armor">Armor: @Armor</div>
+</root>
+
+@code
+{
+	// https://sbox.game/dev/doc/ui/razor-panels/
+	public float Health { get; set; } = 100f;
+	public float Armor { get; set; } = 100f;
+
+	protected override int BuildHash() => System.HashCode.Combine( Health, Armor );
+}
