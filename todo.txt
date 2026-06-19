@@ -1,3 +1,4 @@
 - Make drone hoop and cone
 - credit Artemio. Now we will make 240p test suite
 - health bar
+- reupdate because there is `Make it Open Source`. Redundant, but we are serious about Open Source.
