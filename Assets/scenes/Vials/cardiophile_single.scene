@@ -5,7 +5,7 @@
       "__guid": "073fa2d3-08c4-4245-9d6f-bd38641c5d91",
       "__version": 2,
       "Flags": 0,
-      "Name": "UI",
+      "Name": "UI_Sub",
       "Position": "0,0,0",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
@@ -38,7 +38,7 @@
             "go": "9e0efc9f-df8e-4d4d-a732-5b948a91f008",
             "component_type": "CameraComponent"
           },
-          "ZIndex": 100
+          "ZIndex": 50
         }
       ],
       "Children": [
@@ -276,6 +276,30 @@
                 "Id": "a83c6ecf-664e-47c8-bdf0-4eb330e3a940"
               },
               "Volume": 1
+            },
+            {
+              "__type": "Sandbox.RudimentaryHeartScaleAnimator",
+              "__guid": "2d346231-d427-4984-93fd-7da9e7c304b8",
+              "__enabled": true,
+              "Flags": 0,
+              "enlargeTo": 1.2,
+              "Itself": {
+                "_type": "component",
+                "component_id": "8dade849-8ede-4a39-b35a-109a7fa4f967",
+                "go": "8a1964e8-138e-465b-b09f-8fb5f8b1ed88",
+                "component_type": "HeartOrgan"
+              },
+              "ModelObject": {
+                "_type": "gameobject",
+                "go": "8ab5645e-d93c-44da-88e8-93580010d182"
+              },
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "relaxTo": 1
             }
           ],
           "Children": [
@@ -367,6 +391,41 @@
                   "Static": false,
                   "Surface": null,
                   "SurfaceVelocity": "0,0,0"
+                },
+                {
+                  "__type": "Sandbox.Rigidbody",
+                  "__guid": "bc2540ad-093e-4586-b6c9-f04f634a1563",
+                  "__enabled": true,
+                  "Flags": 0,
+                  "AngularDamping": 0,
+                  "EnableImpactDamage": true,
+                  "EnhancedCcd": false,
+                  "Gravity": true,
+                  "GravityScale": 1,
+                  "ImpactDamage": 0,
+                  "LinearDamping": 0,
+                  "Locking": {
+                    "X": false,
+                    "Y": false,
+                    "Z": false,
+                    "Pitch": false,
+                    "Yaw": false,
+                    "Roll": false
+                  },
+                  "MassCenterOverride": "0,0,0",
+                  "MassOverride": 0,
+                  "MinImpactDamageSpeed": 500,
+                  "MotionEnabled": true,
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "OverrideMassCenter": false,
+                  "RigidbodyFlags": 0,
+                  "SleepThreshold": 2,
+                  "StartAsleep": false
                 }
               ],
               "Children": []
@@ -584,6 +643,11 @@
       "CustomBounds": false
     },
     "GameObjectSystems": {
+      "Sandbox.Clutter.ClutterGridSystem": {
+        "Storage": {
+          "$blob": "2f2de98f-264f-4eab-8c32-81429d4af914"
+        }
+      },
       "Sandbox.SelectionSetsSystem": {
         "Data": {
           "SelectionSets": []

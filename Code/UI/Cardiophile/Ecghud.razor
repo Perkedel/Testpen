@@ -9,6 +9,15 @@
 		<p>🍪 @CookiesSay (x @MultiplierSay )</p>
 		<!--<p><input type="number"></p>-->
 		<p><a class="button" onClick=@DecreaseHeartRate>-</a> <label>💓</label> <a class="button" onClick=@AddHeartRate>+</a> | <a class="button" onClick=@ResetHeartRate>🔄️</a></p>
+		<p>PRESET:
+			<a class="button" onClick=@(()=>PresetHeartRate(0))>5</a>|
+			<a class="button" onClick=@(()=>PresetHeartRate(1))>30</a>|
+			<a class="button" onClick=@(()=>PresetHeartRate(2))>50</a>|
+			<a class="button" onClick=@(()=>PresetHeartRate(3))>70</a>|
+			<a class="button" onClick=@(()=>PresetHeartRate(4))>120</a>|
+			<a class="button" onClick=@(()=>PresetHeartRate(5))>200</a>|
+			<a class="button" onClick=@(()=>PresetHeartRate(6))>300</a>|
+		</p>
 		<p><a class="button" onClick=@DecreaseMultiplier>-</a> <label>MULTI</label> <a class="button" onClick=@IncreaseMultiplier>+</a> | <a class="button" onClick=@ResetMultiplier>🔄️</a></p>
 		<p>Internal <a class="Checkbox" id="InternalSpeakerToggle" onClick=@ToggleSound>@SpeakerSay</a></p>
 	</div>
@@ -48,6 +57,37 @@
 	protected void DecreaseHeartRate()
 	{
 		AddHeartRateBy(-1);
+	}
+
+	protected void PresetHeartRate(int whichOne = 3)
+	{
+		if(HeartOrgan.IsValid())
+			switch(whichOne)
+			{
+				case 0:
+					HeartOrgan.SetHeartRate(5);
+					break;
+				case 1:
+					HeartOrgan.SetHeartRate(30);
+					break;
+				case 2:
+					HeartOrgan.SetHeartRate(50);
+					break;
+				case 3:
+					HeartOrgan.SetHeartRate(70);
+					break;
+				case 4:
+					HeartOrgan.SetHeartRate(120);
+					break;
+				case 5:
+					HeartOrgan.SetHeartRate(200);
+					break;
+				case 6:
+					HeartOrgan.SetHeartRate(300);
+					break;
+				default:
+					break;
+			}
 	}
 
 	protected void ResetHeartRate()
