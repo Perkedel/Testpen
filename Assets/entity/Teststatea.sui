@@ -1,0 +1,65 @@
+{
+  "Document": {
+    "SchemaVersion": 1,
+    "DocumentId": null,
+    "Name": null,
+    "CreatedWith": "Sbox UI Designer",
+    "DesignerVersion": "0.1.0",
+    "Canvas": {
+      "BaseWidth": 1920,
+      "BaseHeight": 1080,
+      "ScaleMode": "ScreenHeight1080",
+      "SafeArea": {
+        "Enabled": false,
+        "Left": 0,
+        "Top": 0,
+        "Right": 0,
+        "Bottom": 0
+      },
+      "BackgroundPreview": {
+        "Type": "Color",
+        "Color": "#101010",
+        "ImagePath": null
+      },
+      "PreviewWidth": 0,
+      "PreviewHeight": 0
+    },
+    "Settings": {
+      "AutoPreview": true,
+      "PreviewDebounceMs": 350,
+      "SnapToGrid": true,
+      "GridSize": 8,
+      "ShowRulers": true,
+      "ShowAnchors": false,
+      "ShowSafeArea": false,
+      "ShowGrid": false,
+      "ShowAlignmentGuides": true,
+      "ShowLayoutBounds": true,
+      "ShowWidgetInfo": false,
+      "ResponsiveDebug": false,
+      "CanvasZoom": 1,
+      "CanvasPanX": 0,
+      "CanvasPanY": 0
+    },
+    "Elements": [],
+    "Events": [],
+    "Animations": [],
+    "Bindings": [],
+    "Output": {
+      "Configured": false,
+      "RootFolder": null,
+      "Namespace": "Game.UI",
+      "ClassName": null,
+      "GenerateRazor": true,
+      "GenerateScss": true,
+      "GenerateGeneratedCs": false,
+      "GenerateUserCsIfMissing": false,
+      "GenerateCustomScssIfMissing": false
+    },
+    "Manifest": {
+      "GeneratedFiles": []
+    }
+  },
+  "__references": [],
+  "__version": 0
+}

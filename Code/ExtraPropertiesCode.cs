@@ -51,11 +51,11 @@ public sealed class ExtraPropertiesCode : Component
 	[Property, Feature( "Advanced Customizations" ), Group( "ReadOnly" ), ReadOnly] public double ReadOnlyDouble { get; set; } = 67.443322f;
 	[Property, Feature( "Advanced Customizations" ), Group( "ReadOnly" ), ReadOnly] public int ReadOnlyInteger { get; set; } = 0x067;
 
-	[Property, Feature( "Advanced Customizations" ), Group( "Wide Mode" ), WideMode] public float WideFloat = 99999f;
-	[Property, Feature( "Advanced Customizations" ), Group( "Wide Mode" ), WideMode] public double WideDouble = 99999f;
-	[Property, Feature( "Advanced Customizations" ), Group( "Wide Mode" ), WideMode] public int WideInteger = 1234567890;
-	[Property, Feature( "Advanced Customizations" ), Group( "Wide Mode" ), WideMode] public string WideString = "AAAAAAAAAAAAAAAAAAAA!!!";
-	[Property, Feature( "Advanced Customizations" ), Group( "Wide Mode" ), WideMode, TextArea] public string WideText = "ASDHFLAUIHWERIUFHASLSUDUHFKLJASHDFJKLAHSIULGHALIERHGAKLJSHDFGKJLAHSDKJLFHALSKJDHFLAKJDHSFKLJ!!!";
+	[Property, Feature( "Advanced Customizations" ), Group( "Wide Mode" ), WideMode] public float WideFloat { get; set; } = 99999f;
+	[Property, Feature( "Advanced Customizations" ), Group( "Wide Mode" ), WideMode] public double WideDouble { get; set; } = 99999f;
+	[Property, Feature( "Advanced Customizations" ), Group( "Wide Mode" ), WideMode] public int WideInteger { get; set; } = 1234567890;
+	[Property, Feature( "Advanced Customizations" ), Group( "Wide Mode" ), WideMode] public string WideString { get; set; } = "AAAAAAAAAAAAAAAAAAAA!!!";
+	[Property, Feature( "Advanced Customizations" ), Group( "Wide Mode" ), WideMode, TextArea] public string WideText { get; set; } = "ASDHFLAUIHWERIUFHASLSUDUHFKLJASHDFJKLAHSIULGHALIERHGAKLJSHDFGKJLAHSDKJLFHALSKJDHFLAKJDHSFKLJ!!!";
 
 	public struct MyStruct
 	{

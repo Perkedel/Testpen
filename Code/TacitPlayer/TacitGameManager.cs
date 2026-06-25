@@ -1,4 +1,5 @@
 // copy https://github.com/Facepunch/sbox-walker/blob/main/code/GameManager.cs
+namespace Sandbox.TacitPlayer; 
 
 /* 
 public sealed class TacitGameManager : GameObjectSystem<TacitGameManager>, Component.INetworkListener, ISceneStartup

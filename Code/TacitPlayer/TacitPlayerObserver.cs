@@ -1,11 +1,12 @@
 // Copy https://github.com/Facepunch/sbox-walker/blob/main/code/Player/PlayerObserver.cs
+namespace Sandbox.TacitPlayer; 
 
 /// <summary>
 /// Dead players become these. They try to observe their last corpse.
 /// </summary>
 public sealed class TacitPlayerObserver : Component
 {
-	[Property,ReadOnly] SceneBoss Boss { get; set; }
+	[Property, ReadOnly] SceneBoss Boss { get; set; }
 	Angles EyeAngles;
 	TimeSince timeSinceStarted;
 
@@ -44,7 +45,7 @@ public sealed class TacitPlayerObserver : Component
 			return;
 
 		// If pressed a button, or has been too long
-		if ( Input.Pressed( "attack1" ) || Input.Pressed( "jump" ) || Input.Pressed("use") || timeSinceStarted > 4 )
+		if ( Input.Pressed( "attack1" ) || Input.Pressed( "jump" ) || Input.Pressed( "use" ) || timeSinceStarted > 4 )
 		{
 			Respawn();
 			GameObject.Destroy();
@@ -57,7 +58,7 @@ public sealed class TacitPlayerObserver : Component
 		if ( !Networking.IsHost ) return;
 
 		//GameManager.Current.SpawnPlayerForConnection( Network.Owner );
-		if(Boss.IsValid)
+		if ( Boss.IsValid )
 		{
 			Boss.SpawnPlayerForConnection( Network.Owner );
 		}

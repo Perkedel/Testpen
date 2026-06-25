@@ -1,0 +1,53 @@
+RazorHitShapeDemo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 400px;
+    height: 400px;
+    margin-left: -200px;
+    margin-top: -200px;
+    border-radius: 50%;
+    background-color: rgba( 22, 25, 32, 1 );
+    border: 1px solid rgba( 255, 255, 255, 0.08 );
+    box-shadow: 0px 14px 40px rgba( 0, 0, 0, 0.55 );
+    pointer-events: all;
+    font-family: Poppins;
+    transition: background-color 180ms ease-out, border-color 180ms ease-out;
+
+    .slot {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba( 44, 50, 62, 1 );
+        border: 1px solid rgba( 255, 255, 255, 0.10 );
+        border-radius: 50%;
+        color: rgba( 232, 236, 244, 1 );
+        pointer-events: none;
+        transition: all 160ms ease-out;
+    }
+
+    .slot.hot {
+        background-color: rgba( 242, 167, 51, 1 );
+        border-color: rgba( 255, 255, 255, 0.30 );
+        color: rgba( 18, 20, 26, 1 );
+    }
+
+    .slot .num {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .slot .cnt {
+        font-size: 11px;
+        margin-top: 2px;
+        opacity: 0.7;
+    }
+}
+
+RazorHitShapeDemo:hover {
+    background-color: rgba( 28, 32, 42, 1 );
+    border-color: rgba( 242, 167, 51, 0.4 );
+}

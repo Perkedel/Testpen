@@ -2,6 +2,8 @@
 
 namespace Sandbox;
 
+using Sandbox.TacitPlayer;
+
 public sealed class SceneBoss : Component
 {
 	[Property, ReadOnly] public PlayerRazorHUD AnHud { get; set; }

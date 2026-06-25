@@ -1,0 +1,62 @@
+Ecghud
+{
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	pointer-events: all;
+
+	a
+	{
+	    cursor:pointer;
+	    background-color:rgba(navy,0.8);
+		border-radius:10px;
+	    &:hover
+		{
+		    background-color:rgba(blue,0.8);
+		    sound-in:ui.button.over;
+		}
+		&:active
+		{
+            background-color: rgba(darkblue,0.8);
+		    sound-in:ui.popup.message.close;
+		}
+	}
+
+	.button
+	{
+        width: 2em;
+        text-align: center;
+        align-items: center;
+        color: white;
+	}
+
+	.checkbox
+	{
+	    width: 2em;
+        text-align: center;
+        align-items: center;
+        background-color: rgba(darkblue, 0.8);
+
+        .enabled
+        {
+            background-color: rgba(darkgreen,0.8);
+        }
+	}
+
+	.title
+	{
+		font-size: 25px;
+		font-family: Poppins;
+		color: #fff;
+	}
+
+	.Rudimentary
+	{
+        flex-direction: column;
+    	font-size: 75px;
+    	font-family: Poppins;
+	}
+}

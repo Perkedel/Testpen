@@ -60,11 +60,11 @@
 				break;
 		};
 		*/
-		if(Input.Pressed("slotNext"))
+		if(Input.Pressed("slotNext") || Input.Pressed("Reload"))
 		{
 			selectBgTheme += 1;
 		}
-		if(Input.Pressed("slotPrev"))
+		if(Input.Pressed("slotPrev") || Input.Pressed("Use"))
 		{
 			selectBgTheme -= 1;
 		}

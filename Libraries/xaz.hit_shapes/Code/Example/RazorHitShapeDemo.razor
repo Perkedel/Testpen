@@ -1,0 +1,51 @@
+@using System
+@using HitShapes
+@using Sandbox.UI
+
+@inherits PanelComponent
+
+<root @onmouseout=@OnUnhover
+      @onmousemove=@OnHover
+      @onclick=@OnClicked>
+    @for ( int i = 0; i < 8; i++ )
+    {
+        int slot = i;
+        <div class=@SlotClass(slot) style=@SlotStyle(slot)>
+            <div class="num">@slot</div>
+            <div class="cnt">@_clicks[slot]</div>
+        </div>
+    }
+</root>
+
+@code
+{
+    SlotDispatcher _dispatcher;
+    int[] _clicks = new int[8];
+
+    protected override void OnEnabled()
+    {
+        base.OnEnabled();
+        _dispatcher = new SlotDispatcher( HitShape.Radial( 8 ) )
+        {
+            OnSlotEnter = SlotChanged,
+            OnSlotLeave = SlotChanged,
+            OnSlotClick = ( slot, e ) => { _clicks[slot]++; StateHasChanged(); },
+        };
+    }
+
+    void SlotChanged( int slot ) => StateHasChanged();
+
+    void OnHover( PanelEvent e ) => _dispatcher?.HandleMouseMove( (MousePanelEvent)e, Panel );
+    void OnUnhover( PanelEvent e ) => _dispatcher?.HandleMouseLeave( (MousePanelEvent)e );
+    void OnClicked( PanelEvent e ) => _dispatcher?.HandleClick( (MousePanelEvent)e, Panel );
+
+    string SlotClass( int slot ) => "slot" + (_dispatcher?.CurrentSlot == slot ? " hot" : "");
+
+    string SlotStyle( int slot )
+    {
+        float theta = slot * MathF.Tau / 8f - MathF.PI / 2f;
+        float lx = 200f + MathF.Cos( theta ) * 140f - 30f;
+        float ly = 200f + MathF.Sin( theta ) * 140f - 30f;
+        return $"left: {lx}px; top: {ly}px";
+    }
+}

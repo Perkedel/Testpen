@@ -1,6 +1,7 @@
 // copy https://github.com/Facepunch/sbox-walker/blob/main/code/Player/PlayerEvent.cs
+namespace Sandbox.TacitPlayer; 
 
-﻿/// <summary>
+/// <summary>
 /// Called only on the Player's GameObject
 /// </summary>
 public interface IPlayerEvent : ISceneEvent<IPlayerEvent>

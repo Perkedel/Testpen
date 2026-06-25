@@ -1,0 +1,148 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+@namespace Sandbox
+
+<root>
+	<div class="Rudimentary">
+		<p>@HrSay BPM @LubSay</p>
+		<p>🍪 @CookiesSay (x @MultiplierSay )</p>
+		<!--<p><input type="number"></p>-->
+		<p><a class="button" onClick=@DecreaseHeartRate>-</a> <label>💓</label> <a class="button" onClick=@AddHeartRate>+</a> | <a class="button" onClick=@ResetHeartRate>🔄️</a></p>
+		<p><a class="button" onClick=@DecreaseMultiplier>-</a> <label>MULTI</label> <a class="button" onClick=@IncreaseMultiplier>+</a> | <a class="button" onClick=@ResetMultiplier>🔄️</a></p>
+		<p>Internal <a class="Checkbox" id="InternalSpeakerToggle" onClick=@ToggleSound>@SpeakerSay</a></p>
+	</div>
+</root>
+
+@code
+{
+	[Property, TextArea] public string MyStringValue { get; set; } = "Waaaaa";
+	[Property] public HeartOrgan HeartOrgan {get;set;}
+	[Property] public AnCookieClicker CookieClicker {get;set;}
+
+	[Property] public float HeartRate {get;set;} = 70f;
+	[Property] public double CookiesNow {get;set;} = 0;
+	[Property] public float Multiplier {get;set;} = 1f;
+	[Property] bool Clicked = false;
+
+	[Property] string LubSay {get;set;} = "♥️";
+	[Property] string HrSay {get;set;} = "---";
+	[Property] string CookiesSay {get;set;} = "---";
+	[Property] string MultiplierSay {get;set;} = "???";
+	[Property] string SpeakerSay {get;set;} = "❓";
+
+	protected void AddHeartRateBy(float whatIsIt = 1)
+	{
+		if(HeartOrgan.IsValid())
+		{
+			Log.Info($"Add Heart Rate By {whatIsIt}");
+			HeartOrgan.AddHeartRate(whatIsIt);
+		}
+	}
+
+	protected void AddHeartRate()
+	{
+		AddHeartRateBy(1);
+	}
+
+	protected void DecreaseHeartRate()
+	{
+		AddHeartRateBy(-1);
+	}
+
+	protected void ResetHeartRate()
+	{
+		if(HeartOrgan.IsValid())
+		{
+			//HeartOrgan.SetHeartRate(70);
+			HeartOrgan.ResetHeartRate();
+		}
+	}
+
+	protected void IncreaseMultiplier()
+	{
+		if(CookieClicker.IsValid())
+		{
+			CookieClicker.AddMultiplierBy(.1f);
+		}
+	}
+
+	protected void DecreaseMultiplier()
+	{
+		if(CookieClicker.IsValid())
+		{
+			CookieClicker.AddMultiplierBy(-.1f);
+		}
+	}
+
+	protected void ResetMultiplier()
+	{
+		if(CookieClicker.IsValid())
+		{
+			CookieClicker.ResetMultiplier();
+		}
+	}
+
+	protected void ToggleSound()
+	{
+		if(HeartOrgan.IsValid())
+		{
+			HeartOrgan.ToggleInternalSound();
+		}
+	}
+
+	protected override void OnUpdate()
+	{
+		if(HeartOrgan.IsValid())
+		{
+			HeartRate = HeartOrgan.HeartRate;
+			LubSay = HeartOrgan.Lub? "♥️" : " ";
+			HrSay = $"{HeartRate}";
+			SpeakerSay = HeartOrgan.EnableSound? "🔊" : "🔇";
+		} else
+		{
+			LubSay = "❓";
+			HrSay = "---";
+			SpeakerSay = "❓";
+		}
+
+		if(CookieClicker.IsValid())
+		{
+			if(HeartOrgan.IsValid())
+			{
+				if(HeartOrgan.Lub)
+					{
+						if(!Clicked)
+						{
+							CookieClicker.ClickTheCookie();
+
+						}
+						Clicked = true;
+					}
+				else
+					Clicked = false;
+			}
+
+			CookiesNow = CookieClicker.Cookies;
+			CookiesSay = $"{Math.Floor(CookiesNow)}";
+			Multiplier = CookieClicker.Multiplier;
+			MultiplierSay = $"{Math.Floor(Multiplier*100)/100}";
+		} else
+		{
+			CookiesSay = "---";
+			MultiplierSay = "???";
+		}
+	}
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine(
+	MyStringValue,
+	LubSay,
+	CookiesNow,
+	Clicked,
+	CookiesSay,
+	HeartRate
+	);
+}

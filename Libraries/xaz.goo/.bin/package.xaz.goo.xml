@@ -1,0 +1,872 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>package.xaz.goo</name>
+    </assembly>
+    <members>
+        <member name="T:Goo.Animation.AgePhase">
+            <summary>Projects an entry's age into normalized slide-in / hold / fade-out values (0..1); pure value-type sibling of <see cref="T:Goo.Animation.Tween"/>.</summary>
+        </member>
+        <member name="M:Goo.Animation.AgePhase.Project(System.Single,System.Single)">
+            <param name="age">Seconds since spawn (drives slide-in).</param>
+            <param name="idleAge">Seconds since last input (drives hold + fade-out).</param>
+        </member>
+        <member name="T:Goo.Animation.AgeProjection">
+            <summary>Normalized 0..1 projection from <see cref="M:Goo.Animation.AgePhase.Project(System.Single,System.Single)"/>; <c>Opacity</c> is the composite <c>(1 - Fade) * Slide</c>.</summary>
+        </member>
+        <member name="M:Goo.Animation.AgeProjection.#ctor(System.Single,System.Single,System.Single)">
+            <summary>Normalized 0..1 projection from <see cref="M:Goo.Animation.AgePhase.Project(System.Single,System.Single)"/>; <c>Opacity</c> is the composite <c>(1 - Fade) * Slide</c>.</summary>
+        </member>
+        <member name="T:Goo.Animation.TickFn">
+            <summary>Per-frame animator tick; returns true while the animator is still in motion.</summary>
+        </member>
+        <member name="T:Goo.Animation.AnimationSet">
+            <summary>Collects per-frame animator tick callbacks; UpdateAll returns true while any still runs.</summary>
+        </member>
+        <member name="M:Goo.Animation.DecayColor.Tick(System.Single)">
+            <summary>Advances by dt and returns true while still moving; chain calls with | (not ||) so every damper advances each frame.</summary>
+        </member>
+        <member name="M:Goo.Animation.DecayFloat.Tick(System.Single)">
+            <summary>Advances by dt and returns true while still moving; chain calls with | (not ||) so every damper advances each frame.</summary>
+        </member>
+        <member name="M:Goo.Animation.DecayVector2.Tick(System.Single)">
+            <summary>Advances by dt and returns true while still moving; chain calls with | (not ||) so every damper advances each frame.</summary>
+        </member>
+        <member name="T:Goo.Animation.GlideState">
+            <summary>Banked-offset glide for layout position transitions; pure value type, caller owns the clock.</summary>
+        </member>
+        <member name="M:Goo.Animation.GlideState.#ctor(System.Single,Sandbox.Utility.Easing.Function)">
+            <summary>Creates a glide with duration in milliseconds and optional easing (defaults to EaseOut).</summary>
+        </member>
+        <member name="P:Goo.Animation.GlideState.Offset">
+            <summary>Current visual displacement from the layout slot; exactly zero when settled.</summary>
+        </member>
+        <member name="P:Goo.Animation.GlideState.IsActive">
+            <summary>True while the glide is still animating toward zero.</summary>
+        </member>
+        <member name="M:Goo.Animation.GlideState.Bank(Vector2)">
+            <summary>Banks a layout jump; a mid-flight bank preserves the current visual offset and restarts the clock.</summary>
+        </member>
+        <member name="M:Goo.Animation.GlideState.Advance(System.Single)">
+            <summary>Steps the animation forward by dt seconds; settles when the offset drops below 0.5px.</summary>
+        </member>
+        <member name="M:Goo.Animation.SmoothColor.Tick(System.Single)">
+            <summary>Advances by dt and returns true while still moving; chain calls with | (not ||) so every damper advances each frame.</summary>
+        </member>
+        <member name="M:Goo.Animation.SmoothFloat.Tick(System.Single)">
+            <summary>Advances by dt and returns true while still moving; chain calls with | (not ||) so every damper advances each frame.</summary>
+        </member>
+        <member name="M:Goo.Animation.SmoothVector2.Tick(System.Single)">
+            <summary>Advances by dt and returns true while still moving; chain calls with | (not ||) so every damper advances each frame.</summary>
+        </member>
+        <member name="M:Goo.Animation.SpringColor.Tick(System.Single)">
+            <summary>Advances by dt and returns true while still moving; chain calls with | (not ||) so every damper advances each frame.</summary>
+        </member>
+        <member name="M:Goo.Animation.SpringFloat.Tick(System.Single)">
+            <summary>Advances by dt and returns true while still moving; chain calls with | (not ||) so every damper advances each frame.</summary>
+        </member>
+        <member name="M:Goo.Animation.SpringVector2.Tick(System.Single)">
+            <summary>Advances by dt and returns true while still moving; chain calls with | (not ||) so every damper advances each frame.</summary>
+        </member>
+        <member name="M:Goo.Animation.Timeline.Sequence(Goo.Animation.Tween[])">
+            <summary>Auto-concatenated: segment N starts where N-1 ends. Skips the internal sort because the input is ascending by construction.</summary>
+        </member>
+        <member name="M:Goo.Animation.Timeline.At(System.ValueTuple{System.Single,Goo.Animation.Tween}[])">
+            <summary>Explicit timing: each entry is (absolute startTime, tween), gaps allowed; sorts internally so stored Segments are ascending by StartTime.</summary>
+        </member>
+        <member name="M:Goo.Animation.Tween.FromCurve(Sandbox.Curve,System.Single,System.Single)">
+            <summary>
+            Bridge a designer-authored Sandbox.Curve (authored over [0, 1]) into a Tween.
+            Allocates one delegate per call; cache the result in a static readonly field.
+            </summary>
+        </member>
+        <member name="M:Goo.Controls.Button(System.String,System.Action,System.Nullable{Color},System.String)">
+            <summary>Goo primitive button: unstyled click target wrapping a text label. Pass a null onClick for a display-only button (no handler is wired). Distinct from Components.Button in the app project, which applies brand tokens and visual chrome. Use this to build custom-styled buttons without inheriting app-level styling. Style fields the factory sets (PointerEvents, FlexDirection, AlignItems, JustifyContent, and conditionally HoverBackgroundColor) cannot be overridden via <c>with</c> - first-declared wins; see Hud.Fill for the same constraint.</summary>
+        </member>
+        <member name="T:Goo.Arc">
+            <summary>A stroked arc line. Sweeps from <see cref="P:Goo.Arc.StartAngle"/> to <see cref="P:Goo.Arc.EndAngle"/> at a fixed <see cref="P:Goo.Arc.Radius"/>.</summary>
+        </member>
+        <member name="P:Goo.Arc.StartAngle">
+            <summary>Angle where the arc begins, in degrees.</summary>
+        </member>
+        <member name="P:Goo.Arc.EndAngle">
+            <summary>Angle where the arc ends, in degrees.</summary>
+        </member>
+        <member name="P:Goo.Arc.Radius">
+            <summary>Radius of the arc, as a fraction (0 to 1) of the frame box.</summary>
+        </member>
+        <member name="P:Goo.Arc.StrokeWidth">
+            <summary>Thickness of the arc stroke.</summary>
+        </member>
+        <member name="P:Goo.Arc.Key">
+            <summary>Stable identity across rebuilds. Set it when this blob can change position among its siblings, so the reconciler matches it to the same panel.</summary>
+        </member>
+        <member name="P:Goo.Arc.OnClick">
+            <summary>Called when clicked with the left mouse button.</summary>
+        </member>
+        <member name="P:Goo.Arc.OnRightClick">
+            <summary>Called when clicked with the right mouse button.</summary>
+        </member>
+        <member name="P:Goo.Arc.OnMiddleClick">
+            <summary>Called when clicked with the middle mouse button.</summary>
+        </member>
+        <member name="P:Goo.Arc.OnMouseEnter">
+            <summary>Called when the pointer enters.</summary>
+        </member>
+        <member name="P:Goo.Arc.OnMouseLeave">
+            <summary>Called when the pointer leaves.</summary>
+        </member>
+        <member name="P:Goo.Arc.OnMouseDown">
+            <summary>Called when a mouse button is pressed.</summary>
+        </member>
+        <member name="P:Goo.Arc.OnMouseUp">
+            <summary>Called when a mouse button is released.</summary>
+        </member>
+        <member name="P:Goo.Arc.OnMouseMove">
+            <summary>Called when the pointer moves over it.</summary>
+        </member>
+        <member name="T:Goo.Text">
+            <summary>Renders a run of text. Style it with the text and common style properties.</summary>
+        </member>
+        <member name="P:Goo.Text.Content">
+            <summary>The text to display.</summary>
+        </member>
+        <member name="P:Goo.Text.Key">
+            <summary>Stable identity across rebuilds. Set it when this blob can change position among its siblings, so the reconciler matches it to the same panel.</summary>
+        </member>
+        <member name="P:Goo.Text.OnClick">
+            <summary>Called when clicked with the left mouse button.</summary>
+        </member>
+        <member name="P:Goo.Text.OnRightClick">
+            <summary>Called when clicked with the right mouse button.</summary>
+        </member>
+        <member name="P:Goo.Text.OnMiddleClick">
+            <summary>Called when clicked with the middle mouse button.</summary>
+        </member>
+        <member name="P:Goo.Text.OnMouseEnter">
+            <summary>Called when the pointer enters.</summary>
+        </member>
+        <member name="P:Goo.Text.OnMouseLeave">
+            <summary>Called when the pointer leaves.</summary>
+        </member>
+        <member name="P:Goo.Text.OnMouseDown">
+            <summary>Called when a mouse button is pressed.</summary>
+        </member>
+        <member name="P:Goo.Text.OnMouseUp">
+            <summary>Called when a mouse button is released.</summary>
+        </member>
+        <member name="P:Goo.Text.OnMouseMove">
+            <summary>Called when the pointer moves over it.</summary>
+        </member>
+        <member name="P:Goo.Text.Style">
+            <summary>Applies a font preset (FontFamily, FontSize, FontWeight, FontColor) in one property. First-declared wins: a per-field override must precede Style in the initializer; fields set after Style are ignored where the preset already set them.</summary>
+        </member>
+        <member name="T:Goo.Container">
+            <summary>
+            The general-purpose layout blob. Holds children and exposes the full style surface:
+            layout, flex, spacing, border, background, filters, transforms, and state variants.
+            </summary>
+        </member>
+        <member name="P:Goo.Container.Key">
+            <summary>Stable identity across rebuilds. Set it when this blob can change position among its siblings, so the reconciler matches it to the same panel.</summary>
+        </member>
+        <member name="P:Goo.Container.OnClick">
+            <summary>Called when clicked with the left mouse button.</summary>
+        </member>
+        <member name="P:Goo.Container.OnRightClick">
+            <summary>Called when clicked with the right mouse button.</summary>
+        </member>
+        <member name="P:Goo.Container.OnMiddleClick">
+            <summary>Called when clicked with the middle mouse button.</summary>
+        </member>
+        <member name="P:Goo.Container.OnMouseEnter">
+            <summary>Called when the pointer enters.</summary>
+        </member>
+        <member name="P:Goo.Container.OnMouseLeave">
+            <summary>Called when the pointer leaves.</summary>
+        </member>
+        <member name="P:Goo.Container.OnMouseDown">
+            <summary>Called when a mouse button is pressed.</summary>
+        </member>
+        <member name="P:Goo.Container.OnMouseUp">
+            <summary>Called when a mouse button is released.</summary>
+        </member>
+        <member name="P:Goo.Container.OnMouseMove">
+            <summary>Called when the pointer moves over it.</summary>
+        </member>
+        <member name="P:Goo.Container.OnMouseWheel">
+            <summary>Called when the mouse wheel scrolls over it. The argument is the wheel delta (y positive = scroll down). Setting this consumes the wheel so it does not bubble to an ancestor scroll container.</summary>
+        </member>
+        <member name="P:Goo.Container.OnDragStart">
+            <summary>Called when a drag begins on this blob.</summary>
+        </member>
+        <member name="P:Goo.Container.OnDrag">
+            <summary>Called on each frame of an in-flight drag.</summary>
+        </member>
+        <member name="P:Goo.Container.OnDragEnd">
+            <summary>Called when a drag started on this blob ends.</summary>
+        </member>
+        <member name="P:Goo.Container.OnDragEnter">
+            <summary>Called when a dragged item enters this blob as a drop target.</summary>
+        </member>
+        <member name="P:Goo.Container.OnDragLeave">
+            <summary>Called when a dragged item leaves this blob as a drop target.</summary>
+        </member>
+        <member name="P:Goo.Container.OnDrop">
+            <summary>Called when a dragged item is dropped on this blob.</summary>
+        </member>
+        <member name="P:Goo.Container.Effect">
+            <summary>A custom shader effect to render this blob with (FrostedGlass, Spotlight, Particles, or a custom ShaderEffect). Drawn via IPanelDraw; coexists with Draw.</summary>
+        </member>
+        <member name="P:Goo.Container.Draw">
+            <summary>A custom immediate-mode draw callback. Receives a <see cref="T:Goo.Canvas"/> for issuing batched primitive draws (rects, text, shadows, ...).</summary>
+        </member>
+        <member name="P:Goo.Container.LayoutTransition">
+            <summary>Declared transition for layout position moves. When this blob's flex slot changes (pop, insert, reorder, reflow), it glides to the new position instead of snapping. Declare per child; survivors must be keyed.</summary>
+        </member>
+        <member name="P:Goo.Container.Tag">
+            <summary>Global effect-addressing tag. When set and no inline <see cref="P:Goo.Container.Effect"/> is given, the effect resolves from the host's effect manifest. May repeat across the tree; distinct from <see cref="P:Goo.Container.Key"/> (sibling-local reconciliation identity).</summary>
+        </member>
+        <member name="P:Goo.Container.SwallowClick">
+            <summary>When true, a left click stops propagating before reaching a parent handler. Use on the content panel inside a scrim or popover so clicks inside do not dismiss the overlay.</summary>
+        </member>
+        <member name="P:Goo.Container.Children">
+            <summary>The child blobs added to this container during Build().</summary>
+        </member>
+        <member name="M:Goo.Container.Add``1(``0@)">
+            <summary>Adds a child blob. Called by collection-initializer syntax inside Build().</summary>
+        </member>
+        <member name="P:Goo.Container.PaddingX">
+            <summary>Sets PaddingLeft and PaddingRight to the same value. The style list is append-only; a PaddingLeft declared after this shorthand overrides it for that edge.</summary>
+        </member>
+        <member name="P:Goo.Container.PaddingY">
+            <summary>Sets PaddingTop and PaddingBottom to the same value. The style list is append-only; a PaddingTop or PaddingBottom declared after this shorthand overrides it for that edge.</summary>
+        </member>
+        <member name="P:Goo.Container.MarginX">
+            <summary>Sets MarginLeft and MarginRight to the same value. The style list is append-only; a MarginLeft declared after this shorthand overrides it for that edge.</summary>
+        </member>
+        <member name="P:Goo.Container.MarginY">
+            <summary>Sets MarginTop and MarginBottom to the same value. The style list is append-only; a MarginTop or MarginBottom declared after this shorthand overrides it for that edge.</summary>
+        </member>
+        <member name="P:Goo.Container.BorderTopRadius">
+            <summary>Sets BorderTopLeftRadius and BorderTopRightRadius to the same value. The style list is append-only; a per-corner property declared after this shorthand overrides it for that corner.</summary>
+        </member>
+        <member name="P:Goo.Container.BorderBottomRadius">
+            <summary>Sets BorderBottomLeftRadius and BorderBottomRightRadius to the same value. The style list is append-only; a per-corner property declared after this shorthand overrides it for that corner.</summary>
+        </member>
+        <member name="P:Goo.Container.BorderLeftRadius">
+            <summary>Sets BorderTopLeftRadius and BorderBottomLeftRadius to the same value. The style list is append-only; a per-corner property declared after this shorthand overrides it for that corner.</summary>
+        </member>
+        <member name="P:Goo.Container.BorderRightRadius">
+            <summary>Sets BorderTopRightRadius and BorderBottomRightRadius to the same value. The style list is append-only; a per-corner property declared after this shorthand overrides it for that corner.</summary>
+        </member>
+        <member name="P:Goo.Container.Disabled">
+            <summary>Forces PointerEvents to None and dims the resolved opacity while true. Applied after all other declared fields, so per-property PointerEvents and Opacity declarations cannot override it.</summary>
+        </member>
+        <member name="T:Goo.Image">
+            <summary>
+            Displays an image from a live <see cref="T:Sandbox.Texture"/> or an asset path. Set one source, never both.
+            Wrap in a <see cref="T:Goo.Container"/> for layout, background, border, or other styles it does not expose.
+            </summary>
+        </member>
+        <member name="P:Goo.Image.Texture">
+            <summary>A live texture to display. Set this or <see cref="P:Goo.Image.Path"/>, never both. Setting both renders nothing and warns.</summary>
+        </member>
+        <member name="P:Goo.Image.Path">
+            <summary>Path to an image asset, for example "ui/logo.png". Set this or <see cref="P:Goo.Image.Texture"/>, never both. Setting both renders nothing and warns.</summary>
+        </member>
+        <member name="P:Goo.Image.Key">
+            <summary>Stable identity across rebuilds. Set it when this blob can change position among its siblings, so the reconciler matches it to the same panel.</summary>
+        </member>
+        <member name="P:Goo.Image.OnClick">
+            <summary>Called when clicked with the left mouse button.</summary>
+        </member>
+        <member name="P:Goo.Image.OnRightClick">
+            <summary>Called when clicked with the right mouse button.</summary>
+        </member>
+        <member name="P:Goo.Image.OnMiddleClick">
+            <summary>Called when clicked with the middle mouse button.</summary>
+        </member>
+        <member name="P:Goo.Image.OnMouseEnter">
+            <summary>Called when the pointer enters.</summary>
+        </member>
+        <member name="P:Goo.Image.OnMouseLeave">
+            <summary>Called when the pointer leaves.</summary>
+        </member>
+        <member name="P:Goo.Image.OnMouseDown">
+            <summary>Called when a mouse button is pressed.</summary>
+        </member>
+        <member name="P:Goo.Image.OnMouseUp">
+            <summary>Called when a mouse button is released.</summary>
+        </member>
+        <member name="P:Goo.Image.OnMouseMove">
+            <summary>Called when the pointer moves over it.</summary>
+        </member>
+        <member name="T:Goo.ScenePanel">
+            <summary>Renders a 3D <see cref="T:Sandbox.Scene"/> into the UI. Provide a live scene or a scene path.</summary>
+        </member>
+        <member name="P:Goo.ScenePanel.Scene">
+            <summary>A live scene to render. Set this or <see cref="P:Goo.ScenePanel.ScenePath"/>.</summary>
+        </member>
+        <member name="P:Goo.ScenePanel.ScenePath">
+            <summary>Path to a scene asset to render. Set this or <see cref="P:Goo.ScenePanel.Scene"/>.</summary>
+        </member>
+        <member name="P:Goo.ScenePanel.RenderOnce">
+            <summary>When true, renders the scene a single frame instead of every frame. Use for static previews.</summary>
+        </member>
+        <member name="P:Goo.ScenePanel.Key">
+            <summary>Stable identity across rebuilds. Set it when this blob can change position among its siblings, so the reconciler matches it to the same panel.</summary>
+        </member>
+        <member name="P:Goo.ScenePanel.OnClick">
+            <summary>Called when clicked with the left mouse button.</summary>
+        </member>
+        <member name="P:Goo.ScenePanel.OnRightClick">
+            <summary>Called when clicked with the right mouse button.</summary>
+        </member>
+        <member name="P:Goo.ScenePanel.OnMiddleClick">
+            <summary>Called when clicked with the middle mouse button.</summary>
+        </member>
+        <member name="P:Goo.ScenePanel.OnMouseEnter">
+            <summary>Called when the pointer enters.</summary>
+        </member>
+        <member name="P:Goo.ScenePanel.OnMouseLeave">
+            <summary>Called when the pointer leaves.</summary>
+        </member>
+        <member name="P:Goo.ScenePanel.OnMouseDown">
+            <summary>Called when a mouse button is pressed.</summary>
+        </member>
+        <member name="P:Goo.ScenePanel.OnMouseUp">
+            <summary>Called when a mouse button is released.</summary>
+        </member>
+        <member name="P:Goo.ScenePanel.OnMouseMove">
+            <summary>Called when the pointer moves over it.</summary>
+        </member>
+        <member name="T:Goo.SvgPanel">
+            <summary>Renders an SVG asset, with an optional color override.</summary>
+        </member>
+        <member name="P:Goo.SvgPanel.Path">
+            <summary>Path to the SVG asset to render, for example "ui/icon.svg".</summary>
+        </member>
+        <member name="P:Goo.SvgPanel.Color">
+            <summary>Optional color to tint the SVG, as a CSS color string. Leave null to use the SVG's own colors.</summary>
+        </member>
+        <member name="P:Goo.SvgPanel.Key">
+            <summary>Stable identity across rebuilds. Set it when this blob can change position among its siblings, so the reconciler matches it to the same panel.</summary>
+        </member>
+        <member name="P:Goo.SvgPanel.OnClick">
+            <summary>Called when clicked with the left mouse button.</summary>
+        </member>
+        <member name="P:Goo.SvgPanel.OnRightClick">
+            <summary>Called when clicked with the right mouse button.</summary>
+        </member>
+        <member name="P:Goo.SvgPanel.OnMiddleClick">
+            <summary>Called when clicked with the middle mouse button.</summary>
+        </member>
+        <member name="P:Goo.SvgPanel.OnMouseEnter">
+            <summary>Called when the pointer enters.</summary>
+        </member>
+        <member name="P:Goo.SvgPanel.OnMouseLeave">
+            <summary>Called when the pointer leaves.</summary>
+        </member>
+        <member name="P:Goo.SvgPanel.OnMouseDown">
+            <summary>Called when a mouse button is pressed.</summary>
+        </member>
+        <member name="P:Goo.SvgPanel.OnMouseUp">
+            <summary>Called when a mouse button is released.</summary>
+        </member>
+        <member name="P:Goo.SvgPanel.OnMouseMove">
+            <summary>Called when the pointer moves over it.</summary>
+        </member>
+        <member name="T:Goo.Sector">
+            <summary>A pie wedge or ring segment. Spans from <see cref="P:Goo.Sector.StartAngle"/> to <see cref="P:Goo.Sector.EndAngle"/>, between <see cref="P:Goo.Sector.InnerRadius"/> and <see cref="P:Goo.Sector.OuterRadius"/>.</summary>
+        </member>
+        <member name="P:Goo.Sector.StartAngle">
+            <summary>Angle where the wedge begins, in degrees.</summary>
+        </member>
+        <member name="P:Goo.Sector.EndAngle">
+            <summary>Angle where the wedge ends, in degrees.</summary>
+        </member>
+        <member name="P:Goo.Sector.InnerRadius">
+            <summary>Inner edge of the ring, as a fraction (0 to 1) of the frame box. 0 gives a solid wedge.</summary>
+        </member>
+        <member name="P:Goo.Sector.OuterRadius">
+            <summary>Outer edge of the ring, as a fraction (0 to 1) of the frame box.</summary>
+        </member>
+        <member name="P:Goo.Sector.CornerRadius">
+            <summary>Corner rounding, as a fraction (0 to 1) of the outer radius. 0 gives sharp corners.</summary>
+        </member>
+        <member name="P:Goo.Sector.Key">
+            <summary>Stable identity across rebuilds. Set it when this blob can change position among its siblings, so the reconciler matches it to the same panel.</summary>
+        </member>
+        <member name="P:Goo.Sector.OnClick">
+            <summary>Called when clicked with the left mouse button.</summary>
+        </member>
+        <member name="P:Goo.Sector.OnRightClick">
+            <summary>Called when clicked with the right mouse button.</summary>
+        </member>
+        <member name="P:Goo.Sector.OnMiddleClick">
+            <summary>Called when clicked with the middle mouse button.</summary>
+        </member>
+        <member name="P:Goo.Sector.OnMouseEnter">
+            <summary>Called when the pointer enters.</summary>
+        </member>
+        <member name="P:Goo.Sector.OnMouseLeave">
+            <summary>Called when the pointer leaves.</summary>
+        </member>
+        <member name="P:Goo.Sector.OnMouseDown">
+            <summary>Called when a mouse button is pressed.</summary>
+        </member>
+        <member name="P:Goo.Sector.OnMouseUp">
+            <summary>Called when a mouse button is released.</summary>
+        </member>
+        <member name="P:Goo.Sector.OnMouseMove">
+            <summary>Called when the pointer moves over it.</summary>
+        </member>
+        <member name="T:Goo.Polygon">
+            <summary>A filled shape defined by arbitrary vertices in unit coordinates.</summary>
+        </member>
+        <member name="P:Goo.Polygon.Points">
+            <summary>The vertices, in unit coordinates from 0 to 1 (origin top-left, x right, y down). Treated as immutable: do not mutate the array after assigning it.</summary>
+        </member>
+        <member name="P:Goo.Polygon.Key">
+            <summary>Stable identity across rebuilds. Set it when this blob can change position among its siblings, so the reconciler matches it to the same panel.</summary>
+        </member>
+        <member name="P:Goo.Polygon.OnClick">
+            <summary>Called when clicked with the left mouse button.</summary>
+        </member>
+        <member name="P:Goo.Polygon.OnRightClick">
+            <summary>Called when clicked with the right mouse button.</summary>
+        </member>
+        <member name="P:Goo.Polygon.OnMiddleClick">
+            <summary>Called when clicked with the middle mouse button.</summary>
+        </member>
+        <member name="P:Goo.Polygon.OnMouseEnter">
+            <summary>Called when the pointer enters.</summary>
+        </member>
+        <member name="P:Goo.Polygon.OnMouseLeave">
+            <summary>Called when the pointer leaves.</summary>
+        </member>
+        <member name="P:Goo.Polygon.OnMouseDown">
+            <summary>Called when a mouse button is pressed.</summary>
+        </member>
+        <member name="P:Goo.Polygon.OnMouseUp">
+            <summary>Called when a mouse button is released.</summary>
+        </member>
+        <member name="P:Goo.Polygon.OnMouseMove">
+            <summary>Called when the pointer moves over it.</summary>
+        </member>
+        <member name="T:Goo.WebPanel">
+            <summary>Embeds a web view via the engine's Chromium webview. <see cref="P:Goo.WebPanel.Url"/> is its only content surface.</summary>
+        </member>
+        <member name="P:Goo.WebPanel.Url">
+            <summary>The URL to load in the web view.</summary>
+        </member>
+        <member name="P:Goo.WebPanel.Paused">
+            <summary>When true, throttles the view's script and repaint and pauses its media. Use for offscreen or hidden views.</summary>
+        </member>
+        <member name="P:Goo.WebPanel.Key">
+            <summary>Stable identity across rebuilds. Set it when this blob can change position among its siblings, so the reconciler matches it to the same panel.</summary>
+        </member>
+        <member name="P:Goo.WebPanel.OnClick">
+            <summary>Called when clicked with the left mouse button.</summary>
+        </member>
+        <member name="P:Goo.WebPanel.OnRightClick">
+            <summary>Called when clicked with the right mouse button.</summary>
+        </member>
+        <member name="P:Goo.WebPanel.OnMiddleClick">
+            <summary>Called when clicked with the middle mouse button.</summary>
+        </member>
+        <member name="P:Goo.WebPanel.OnMouseEnter">
+            <summary>Called when the pointer enters.</summary>
+        </member>
+        <member name="P:Goo.WebPanel.OnMouseLeave">
+            <summary>Called when the pointer leaves.</summary>
+        </member>
+        <member name="P:Goo.WebPanel.OnMouseDown">
+            <summary>Called when a mouse button is pressed.</summary>
+        </member>
+        <member name="P:Goo.WebPanel.OnMouseUp">
+            <summary>Called when a mouse button is released.</summary>
+        </member>
+        <member name="P:Goo.WebPanel.OnMouseMove">
+            <summary>Called when the pointer moves over it.</summary>
+        </member>
+        <member name="T:Goo.TextEntry">
+            <summary>A text input wrapping the engine's TextEntry. Set <see cref="P:Goo.TextEntry.Value"/> for a controlled field driven by your state, or <see cref="P:Goo.TextEntry.InitialText"/> for an uncontrolled one; never both.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.Value">
+            <summary>The field text in controlled mode, re-emitted each render to track your state. Set this or <see cref="P:Goo.TextEntry.InitialText"/>, never both.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.InitialText">
+            <summary>The starting text in uncontrolled mode, set once when the field is created. Set this or <see cref="P:Goo.TextEntry.Value"/>, never both.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.Placeholder">
+            <summary>Hint text shown when the field is empty.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.MaxLength">
+            <summary>Maximum number of characters allowed. Null for no limit.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.Disabled">
+            <summary>When true, the field is read-only and does not accept input.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.Multiline">
+            <summary>When true, the field accepts and wraps multiple lines.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.Numeric">
+            <summary>When true, the field accepts numeric input only.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.MinLength">
+            <summary>Minimum number of characters; shorter input is flagged invalid. Null for no minimum.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.CharacterRegex">
+            <summary>Regex each typed character must match; non-matching keystrokes are blocked. Null to allow any character.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.StringRegex">
+            <summary>Regex the whole text must match to be valid. Null for no whole-text check.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.MinValue">
+            <summary>Smallest accepted value when <see cref="P:Goo.TextEntry.Numeric"/> is true.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.MaxValue">
+            <summary>Largest accepted value when <see cref="P:Goo.TextEntry.Numeric"/> is true.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.NumberFormat">
+            <summary>Format string applied to the value when <see cref="P:Goo.TextEntry.Numeric"/> is true.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.Key">
+            <summary>Stable identity across rebuilds. Set it when this blob can change position among its siblings, so the reconciler matches it to the same panel.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.OnChange">
+            <summary>Called on each edit, with the new text.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.OnSubmit">
+            <summary>Called when the user submits the field, for example by pressing Enter, with the text.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.OnFocus">
+            <summary>Called when the field gains focus.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.OnBlur">
+            <summary>Called when the field loses focus, with its final text.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.OnCancel">
+            <summary>Called when the user cancels editing, for example by pressing Escape.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.CanEnterChar">
+            <summary>Predicate gating each typed character; return false to block it. Composed with <see cref="P:Goo.TextEntry.CharacterRegex"/> and the engine's numeric/multiline rules.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.Validate">
+            <summary>Predicate validating the whole text; return false to mark the field invalid. Can only tighten validity, never loosen engine rules.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.OnValidationChanged">
+            <summary>Called when the field's validity flips, with the current error state (true = invalid).</summary>
+        </member>
+        <member name="P:Goo.TextEntry.OnClick">
+            <summary>Called when clicked with the left mouse button.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.OnRightClick">
+            <summary>Called when clicked with the right mouse button.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.OnMiddleClick">
+            <summary>Called when clicked with the middle mouse button.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.OnMouseEnter">
+            <summary>Called when the pointer enters.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.OnMouseLeave">
+            <summary>Called when the pointer leaves.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.OnMouseDown">
+            <summary>Called when a mouse button is pressed.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.OnMouseUp">
+            <summary>Called when a mouse button is released.</summary>
+        </member>
+        <member name="P:Goo.TextEntry.OnMouseMove">
+            <summary>Called when the pointer moves over it.</summary>
+        </member>
+        <member name="T:Goo.DrawCallback">
+            <summary>
+            Immediate-mode custom-draw callback for a <see cref="T:Goo.Container"/>. Invoked once per paint with a
+            <see cref="T:Goo.Canvas"/> scoped to the panel's box.
+            </summary>
+        </member>
+        <member name="T:Goo.Canvas">
+            <summary>
+            Drawing surface handed to a <see cref="P:Goo.Container.Draw"/> callback. Wraps the engine's batched
+            <c>Panel.Draw.*</c> primitives. Only valid for the duration of the callback: it is a ref struct and
+            cannot be stored, boxed, or captured.
+            </summary>
+        </member>
+        <member name="P:Goo.Canvas.Width">
+            <summary>Panel width in pixels.</summary>
+        </member>
+        <member name="P:Goo.Canvas.Height">
+            <summary>Panel height in pixels.</summary>
+        </member>
+        <member name="P:Goo.Canvas.Size">
+            <summary>Panel size in pixels.</summary>
+        </member>
+        <member name="P:Goo.Canvas.LocalRect">
+            <summary>Panel-local rect, origin at top-left.</summary>
+        </member>
+        <member name="M:Goo.Canvas.Rect(Sandbox.Rect,Color,System.Single)">
+            <summary>Filled (optionally uniformly-rounded) rectangle.</summary>
+        </member>
+        <member name="M:Goo.Canvas.Rect(Sandbox.Rect,Color,Vector4)">
+            <summary>Filled rectangle with per-corner radius (bottom-right, top-right, bottom-left, top-left).</summary>
+        </member>
+        <member name="M:Goo.Canvas.Circle(Vector2,System.Single,Color)">
+            <summary>Filled circle.</summary>
+        </member>
+        <member name="M:Goo.Canvas.Texture(Sandbox.Texture,Sandbox.Rect,System.Nullable{Color})">
+            <summary>Texture drawn into a rect.</summary>
+        </member>
+        <member name="M:Goo.Canvas.Text(System.String,Sandbox.Rect,System.Single,Color,Sandbox.TextFlag)">
+            <summary>Text laid out within a rect.</summary>
+        </member>
+        <member name="M:Goo.Canvas.Shadow(Sandbox.Rect,Color,System.Single,System.Single,Vector2,System.Single,System.Boolean)">
+            <summary>Box shadow (drop or inset). offset stays a delta, not a position.</summary>
+        </member>
+        <member name="M:Goo.Canvas.Outline(Sandbox.Rect,Color,System.Single,System.Single,System.Single)">
+            <summary>Outline (stroke) around a rect.</summary>
+        </member>
+        <member name="T:Goo.IBlob">
+            <summary>Compile-time constraint for blob struct types. Never use as storage, return, or parameter type (boxes the struct, destroys per-Rebuild allocation profile); only valid in where T : struct, IBlob.</summary>
+        </member>
+        <member name="T:Goo.BlobBuilder">
+            <summary>Returns the single root Blob for a GooView build. A named delegate rather than
+            Func&lt;IBlob&gt; because IBlob has a static-abstract member (Kind) and C# bars such interfaces
+            as generic type arguments (CS8920). Consequence for Razor markup: a bare method group cannot
+            bind (its natural type is the illegal Func&lt;IBlob&gt;), so write
+            <c>Build=@(new BlobBuilder(MyBuild))</c>. See docs/site/docs/gotchas.md.</summary>
+        </member>
+        <member name="T:Goo.LayoutTransition">
+            <summary>Declared transition for layout position moves: when this blob's layout slot changes, it glides there instead of snapping. Null easing resolves to EaseOut.</summary>
+        </member>
+        <member name="M:Goo.LayoutTransition.#ctor(System.Single,Sandbox.Utility.Easing.Function)">
+            <summary>Declared transition for layout position moves: when this blob's layout slot changes, it glides there instead of snapping. Null easing resolves to EaseOut.</summary>
+        </member>
+        <member name="M:Goo.MousePanelEventExtensions.PositionIn(Sandbox.UI.MousePanelEvent,Sandbox.UI.Panel)">
+            <summary>Translates cursor position from e.Target's frame into ancestor's frame.</summary>
+        </member>
+        <member name="T:Goo.PanelTransform">
+            <summary>Typed wrapper around Sandbox.UI.PanelTransform adding fluent chaining and structural equality (the engine struct's Add* methods do not chain and its equality is reference-based, which would emit redundant per-Build ops).</summary>
+        </member>
+        <member name="T:Goo.PanelTransformExtensions">
+            <summary>Instance fluent chain methods for <see cref="T:Goo.PanelTransform"/>, each returning a new value with the entry appended (extensions because C# forbids same-name static and instance methods on one type).</summary>
+        </member>
+        <member name="T:Goo.TextStyle">
+            <summary>A bundle of font properties applied together via Text.Style; null fields are no-ops.</summary>
+        </member>
+        <member name="T:Goo.Typography">
+            <summary>Length helpers for typography properties whose engine unit semantics are non-obvious.</summary>
+        </member>
+        <member name="M:Goo.Typography.LineHeightMultiplier(System.Single)">
+            <summary>CSS-style unitless LineHeight multiplier (e.g. 1.5 = 1.5x of FontSize).</summary>
+        </member>
+        <member name="M:Goo.Typography.LetterSpacingEm(System.Single)">
+            <summary>CSS-style em-relative LetterSpacing (e.g. -0.02 for tight headings).</summary>
+        </member>
+        <member name="T:Goo.EffectMap">
+            <summary>A host-level <c>{ tag -> ShaderEffect }</c> manifest. A Blob with a matching
+            <see cref="P:Goo.Container.Tag"/> resolves its effect from here unless it sets <c>Effect</c> inline.</summary>
+        </member>
+        <member name="F:Goo.EffectMap.Empty">
+            <summary>The shared empty manifest. Hosts that target no tags return this.</summary>
+        </member>
+        <member name="M:Goo.GooPanel`1.Tick(System.Single)">
+            <summary>Override to drive per-frame state (animations, polled input).
+            Return true while a rebuild is still needed next frame (e.g. an animation is in motion).
+            Runs every frame, before the build gate. On the frame motion stops (this returns false
+            after the previous frame returned true) one extra rebuild fires so the final settled value paints.</summary>
+        </member>
+        <member name="P:Goo.GooPanel`1.AutoRebuildOnEvents">
+            <summary>When true (default), a rebuild is requested automatically after any event
+            handler on this panel's tree fires. Set false to restore fully manual Rebuild() control.</summary>
+        </member>
+        <member name="P:Goo.GooPanel`1.Effects">
+            <summary>Override to map tags to effects. A Blob with a matching <see cref="P:Goo.Container.Tag"/> and no
+            inline <c>Effect</c> resolves its effect from here. Default targets nothing.</summary>
+        </member>
+        <member name="T:Goo.GooView">
+            <summary>
+            A Razor markup element that hands its children to Goo. Drop <c>&lt;GooView Build=@MyBuild/&gt;</c>
+            into any .razor panel; every frame it runs the Goo reconciler pump (<see cref="T:Goo.Reconciler"/> to
+            <see cref="T:Goo.Applier"/>) against itself. Razor owns everything outside the tag; Goo owns everything
+            inside. GooView imposes no intrinsic sizing: size it like any panel (a zero-content-size view can
+            collapse, same as a bare &lt;div&gt;).
+            </summary>
+        </member>
+        <member name="P:Goo.GooView.Build">
+            <summary>Returns the single Goo root. Invoked every frame; the build closure may freely read
+            external (Razor-owned) state because the view re-diffs each frame, so changes to that state appear
+            with no explicit dirty signal. A dirty-on-reassign scheme cannot work here: the engine de-dupes a
+            re-assigned Build delegate by hashcode, so re-running the reconciler each frame is what reflects
+            outside state.</summary>
+        </member>
+        <member name="P:Goo.GooView.OnTick">
+            <summary>Optional per-frame driver for animation or polled state the build closure reads. Runs every
+            frame before the diff. Its return value is ignored (the view always re-diffs).</summary>
+        </member>
+        <member name="P:Goo.GooView.Effects">
+            <summary>Optional tag-to-effect manifest. A Blob with a matching <see cref="P:Goo.Container.Tag"/> and no
+            inline <c>Effect</c> resolves its effect from here.</summary>
+        </member>
+        <member name="T:Goo.GrabMode">
+            <summary>How a <see cref="T:Goo.ShaderEffect"/> grabs the framebuffer behind its panel before drawing.</summary>
+        </member>
+        <member name="F:Goo.GrabMode.None">
+            <summary>No grab. For procedural or self-contained shaders that do not read the backdrop.</summary>
+        </member>
+        <member name="F:Goo.GrabMode.Sharp">
+            <summary>Grab the raw framebuffer (FrameBufferCopyTexture). For shaders that sample the backdrop sharp.</summary>
+        </member>
+        <member name="F:Goo.GrabMode.Blurred">
+            <summary>Grab a gaussian-blurred framebuffer mip chain. For backdrop-blur effects (frosted glass, aero).</summary>
+        </member>
+        <member name="M:Goo.Hud.Overlay">
+            <summary>Full-screen HUD root: Column layout, pointer-events off. For shader overlays use Hud.Fill().</summary>
+        </member>
+        <member name="M:Goo.Hud.Fill">
+            <summary>Absolute, 100% x 100%, pointer-through fill layer. Resolves inside the nearest positioned ancestor; add Position=Relative to that ancestor if needed. Style fields the factory sets (Position, Top, Left, Width, Height, PointerEvents) cannot be overridden via <c>with</c> - first-declared wins; build a Container directly for an interactive full-bleed layer.</summary>
+        </member>
+        <member name="M:Goo.Hud.Scrim(System.Nullable{Color})">
+            <summary>Absolute, all four edges pinned to zero. Assign PointerEvents explicitly - scrims typically toggle between None and All on open/close. The factory does not set PointerEvents, so it is overridable via <c>with</c> (unlike Fill, which sets it).</summary>
+        </member>
+        <member name="M:Goo.Hud.Wallpaper(Sandbox.Texture,System.String)">
+            <summary>Full-bleed absolute image layer. Pass texture=null to load by path; path is ignored when texture is non-null. Style fields the factory sets (Position, Top, Left, Width, Height, PointerEvents) cannot be overridden via <c>with</c> - first-declared wins; build a Container directly for an interactive full-bleed layer. Must be called from within Build().</summary>
+        </member>
+        <member name="M:Goo.Hud.Anchored(Goo.Layout.Anchor,Goo.Container,System.Nullable{Sandbox.UI.Length},System.String)">
+            <summary>Full-bleed pointer-through cell that pins content to an anchor corner. Wrapper is always FlexDirection.Column; ResolveAnchor's ColumnReverse belongs on an inner stacking column, never here (top anchors would render at the bottom).</summary>
+        </member>
+        <member name="M:Goo.Hud.Spacer">
+            <summary>A flex-grow spacer that pushes siblings apart. Sets only FlexGrow = 1; all other fields are caller-controlled.</summary>
+        </member>
+        <member name="M:Goo.Hud.Divider(System.Nullable{Color})">
+            <summary>A 1px full-width horizontal rule. Defaults to a low-alpha white line; pass a color to override. Sets Height, Width, and BackgroundColor.</summary>
+        </member>
+        <member name="M:Goo.Input.KeyTracker.Pressed(System.String)">
+            <summary>True if the named key had a rising edge (just-pressed, not held) this frame; call Poll first.</summary>
+        </member>
+        <member name="T:Goo.Internal.EventDispatch">
+            <summary>Invokes a user event handler and, if it ran, requests a rebuild.
+            Centralizes the "auto-rebuild after a handler fires" rule (the GooPanel
+            AutoRebuildOnEvents contract) for every event-host panel. Generic over the
+            payload so mouse (MousePanelEvent), wheel (Vector2), and drag (DragEvent /
+            PanelEvent) handlers all route through the same path.</summary>
+        </member>
+        <member name="P:Goo.Internal.IStatefulEventHost.RequestRebuild">
+            <summary>Set by the Applier: invoked after any user handler runs so the panel
+            auto-rebuilds. Null when the owning GooPanel opts out (AutoRebuildOnEvents == false).</summary>
+        </member>
+        <member name="T:Goo.Viewport">
+            <summary>
+            Pure pan/zoom transform state for building canvases. No Panel dependency, fully unit-tested.
+            Model: <c>screen = world * Zoom + Pan</c>, origin top-left. A consumer drives <see cref="M:Goo.Viewport.PanBy(Vector2)"/>
+            from drag deltas and <see cref="M:Goo.Viewport.ZoomAt(Vector2,System.Single)"/> from the mouse wheel, then feeds <see cref="P:Goo.Viewport.Zoom"/>/<see cref="P:Goo.Viewport.Pan"/>
+            into a <c>Transform = Scale(Zoom).Translate(Pan)</c> on the world container (with its transform-origin
+            pinned to top-left so the scale pivots at the local origin, matching this math).
+            </summary>
+        </member>
+        <member name="P:Goo.Viewport.Pan">
+            <summary>Translation in screen pixels.</summary>
+        </member>
+        <member name="P:Goo.Viewport.Zoom">
+            <summary>Uniform scale factor; 1 = no zoom. Always within [<see cref="P:Goo.Viewport.MinZoom"/>, <see cref="P:Goo.Viewport.MaxZoom"/>].</summary>
+        </member>
+        <member name="P:Goo.Viewport.MinZoom">
+            <summary>Lower zoom clamp.</summary>
+        </member>
+        <member name="P:Goo.Viewport.MaxZoom">
+            <summary>Upper zoom clamp.</summary>
+        </member>
+        <member name="M:Goo.Viewport.WorldToScreen(Vector2)">
+            <summary>Maps a world-space point to its screen-space position.</summary>
+        </member>
+        <member name="M:Goo.Viewport.ScreenToWorld(Vector2)">
+            <summary>Maps a screen-space point back to world space.</summary>
+        </member>
+        <member name="M:Goo.Viewport.PanBy(Vector2)">
+            <summary>Pans by a screen-space delta (e.g. a drag movement).</summary>
+        </member>
+        <member name="M:Goo.Viewport.ZoomAt(Vector2,System.Single)">
+            <summary>
+            Multiplies zoom by <paramref name="factor"/> (clamped) while keeping the world point currently
+            under <paramref name="screenAnchor"/> fixed under it - i.e. zoom-to-cursor.
+            </summary>
+        </member>
+        <member name="T:Goo.ShaderEffect">
+            <summary>
+            A custom shader applied to a Blob. Point it at a compiled .shader; it parses the shader
+            source's Attribute() declarations to validate uniform names and to reset uniforms other
+            panels have set (panels share one CommandList attribute namespace), and pushes the uniform
+            bag every frame. Set uniforms with the collection initializer (<c>["Name"] = value</c>);
+            a value may be a literal or a per-frame Func. Subclass and override <see cref="M:Goo.ShaderEffect.Apply(Sandbox.Rendering.CommandList,Sandbox.Rect)"/>
+            only for bespoke per-frame CPU logic.
+            </summary>
+        </member>
+        <member name="M:Goo.ShaderEffect.#ctor">
+            <summary>For subclasses that supply their own <see cref="P:Goo.ShaderEffect.Material"/> and <see cref="M:Goo.ShaderEffect.Apply(Sandbox.Rendering.CommandList,Sandbox.Rect)"/>.</summary>
+        </member>
+        <member name="M:Goo.ShaderEffect.#ctor(System.String,Goo.GrabMode)">
+            <summary>Apply the shader at <paramref name="shaderPath"/> (e.g. "shaders/ui_dither.shader").</summary>
+        </member>
+        <member name="M:Goo.ShaderEffect.#ctor(Sandbox.Shader,Goo.GrabMode)">
+            <summary>Apply a shader resource (drag-droppable in the inspector).</summary>
+        </member>
+        <member name="P:Goo.ShaderEffect.ShaderPath">
+            <summary>The shader asset path, or null when constructed from a <see cref="T:Sandbox.Shader"/> resource.</summary>
+        </member>
+        <member name="P:Goo.ShaderEffect.Grab">
+            <summary>How this effect grabs the framebuffer behind its panel.</summary>
+        </member>
+        <member name="P:Goo.ShaderEffect.Item(System.String)">
+            <summary>Get or set a uniform by its shader attribute name.</summary>
+        </member>
+        <member name="P:Goo.ShaderEffect.Material">
+            <summary>The material this effect draws with, cached so it is excluded from record equality.</summary>
+        </member>
+        <member name="M:Goo.ShaderEffect.Warm">
+            <summary>Create the Material now, on the calling thread. Call on the main thread; Draw runs on the render thread and must only read the cache.</summary>
+        </member>
+        <member name="M:Goo.ShaderEffect.Apply(Sandbox.Rendering.CommandList,Sandbox.Rect)">
+            <summary>Set this effect's shader attributes for the frame, then grab the framebuffer per <see cref="P:Goo.ShaderEffect.Grab"/>.</summary>
+        </member>
+        <member name="T:Goo.Shapes">
+            <summary>Factories for composite shape subtrees. Rotation-applying helpers default <c>PointerEvents.None</c> so rotated descendants do not drift parent hit dispatch.</summary>
+        </member>
+        <member name="M:Goo.Shapes.Ring(System.Int32,System.Single,System.ReadOnlySpan{Color},System.Single,System.String)">
+            <summary>N <see cref="T:Goo.Sector"/> wedges clockwise from 12 o'clock; the subtree is <c>PointerEvents.None</c> so parent dispatchers see the unrotated frame.</summary>
+        </member>
+        <member name="M:Goo.Shapes.Ring(System.Int32,System.Single,Color[],System.Single,System.String)">
+            <summary>Color-array overload; forwards to the <see cref="T:System.ReadOnlySpan`1"/> form. Prefer the span overload from animated <c>Build()</c> bodies to avoid per-frame allocation.</summary>
+        </member>
+        <member name="M:Goo.Shapes.Disc(System.String)">
+            <summary>A pre-rounded circular <see cref="T:Goo.Container"/> (50% radius, 100% size) that drops into a flex slot.</summary>
+        </member>
+        <member name="T:Goo.Skins">
+            <summary>
+            Factories for skin (border-image) styling on a <see cref="T:Goo.Container"/>.
+            </summary>
+        </member>
+        <member name="F:Goo.Skins.OnZeroBorder">
+            <summary>Dev-diagnostic sink for the zero-width-border nine-slice case; null by default so non-logging contexts (tests) can use the helper.</summary>
+        </member>
+        <member name="M:Goo.Skins.NineSlice(Sandbox.Texture,System.Single,System.Single,Sandbox.UI.BorderImageRepeat,Sandbox.UI.BorderImageFill,System.String)">
+            <summary>A nine-slice skinned <see cref="T:Goo.Container"/> that sets source, slice insets, and rendered border together so the slice cannot be set without a width. <paramref name="sliceSrcPx"/> is in source-image pixels; <paramref name="renderedBorder"/> is on-screen px.</summary>
+        </member>
+        <member name="T:Goo.UniformValue">
+            <summary>A single shader-uniform value in a <see cref="T:Goo.ShaderEffect"/> bag: either a literal or a
+            per-frame <see cref="T:System.Func`1"/> evaluated each Apply. Construct via implicit conversion.</summary>
+        </member>
+        <member name="P:Goo.UniformValue.IsDynamic">
+            <summary>True when this value is a per-frame Func re-evaluated on each Apply.</summary>
+        </member>
+        <member name="M:Goo.UniformValue.Resolve">
+            <summary>The current value: evaluates the Func for dynamic entries, otherwise returns the literal.</summary>
+        </member>
+        <member name="F:Goo.UniformValue.Time">
+            <summary>Per-frame push of Sandbox.Time.Now; only for attributes needing CPU-side time, most Goo shaders read g_flTime instead. Static field so bag equality holds across rebuilds.</summary>
+        </member>
+    </members>
+</doc>

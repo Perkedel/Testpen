@@ -46,8 +46,10 @@
           "$blob": "9c3e9a2a-f159-4fe5-9fab-4bfc2b617420"
         }
       },
-      "Sandbox.MovieMaker.MovieRecorderSystem": {
-        "DisableClientRecording": false
+      "Sandbox.SelectionSetsSystem": {
+        "Data": {
+          "SelectionSets": []
+        }
       }
     }
   },

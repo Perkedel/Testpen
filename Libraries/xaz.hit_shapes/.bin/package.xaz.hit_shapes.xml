@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>package.xaz.hit_shapes</name>
+    </assembly>
+    <members>
+        <member name="T:HitShapes.HitShape">
+            <summary>Factory entry points for built-in <see cref="T:HitShapes.IHitShape"/> implementations.</summary>
+        </member>
+        <member name="T:HitShapes.IHitShape">
+            <summary>Maps a panel-local cursor position to a slot id, or null if outside the shape.</summary>
+        </member>
+        <member name="P:HitShapes.IHitShape.SlotCount">
+            <summary>Total number of slots (slot ids: 0..SlotCount-1).</summary>
+        </member>
+        <member name="M:HitShapes.IHitShape.Resolve(Vector2,Vector2)">
+            <summary>Map a panel-local cursor position to a slot id, or null if outside the shape.</summary>
+        </member>
+        <member name="T:HitShapes.IGeometricHitShape">
+            <summary>
+            Optional companion to <see cref="T:HitShapes.IHitShape"/> for shapes that carry geometric
+            state worth exposing to consumers (e.g. cursor angle on a radial). Resolves
+            to the same slot id as <see cref="M:HitShapes.IHitShape.Resolve(Vector2,Vector2)"/> and additionally
+            reports the resolved angle/distance when applicable. Implementations are
+            stateless; outputs depend only on the call arguments.
+            </summary>
+        </member>
+        <member name="M:HitShapes.IGeometricHitShape.ResolveWithGeometry(Vector2,Vector2,System.Nullable{System.Single}@,System.Nullable{System.Single}@)">
+            <summary>
+            Resolve a slot and report companion geometry. <paramref name="angleDeg"/>
+            follows the convention 0 = up, clockwise positive, [0, 360).
+            <paramref name="distanceNormalized"/> is 0..1 from center to outer radius.
+            Both are <c>null</c> when the position falls outside the shape.
+            </summary>
+        </member>
+        <member name="T:HitShapes.SlotDispatcher">
+            <summary>Holds an <see cref="T:HitShapes.IHitShape"/> and tracks per-slot enter/leave/click transitions.</summary>
+        </member>
+        <member name="P:HitShapes.SlotDispatcher.LastAngleDeg">
+            <summary>Cursor angle from the most recent hover update, in degrees,
+            0 = up, clockwise positive, [0, 360). Null when the cursor is outside
+            the shape or the underlying <see cref="T:HitShapes.IHitShape"/> does not provide
+            geometric state (only radial shapes do today).</summary>
+        </member>
+        <member name="P:HitShapes.SlotDispatcher.LastDistanceNormalized">
+            <summary>Cursor distance from center as a 0..1 fraction of the shape's
+            outer radius, from the most recent hover update. Null when the cursor
+            is outside the shape or the underlying <see cref="T:HitShapes.IHitShape"/> does not
+            provide geometric state.</summary>
+        </member>
+        <member name="M:HitShapes.SlotDispatcher.HandleMouseEnter(Sandbox.UI.MousePanelEvent,Sandbox.UI.Panel)">
+            <summary>Hover update using explicit receiver size. Safe under event bubbling.</summary>
+        </member>
+        <member name="M:HitShapes.SlotDispatcher.HandleClick(Sandbox.UI.MousePanelEvent,Sandbox.UI.Panel)">
+            <summary>Click using explicit receiver size. Safe under event bubbling.</summary>
+        </member>
+        <member name="M:HitShapes.SlotDispatcher.UpdateHoverAt(Vector2,Vector2)">
+            <summary>Drive the hover state machine without a MousePanelEvent.</summary>
+        </member>
+        <member name="M:HitShapes.SlotDispatcher.Reset">
+            <summary>Clear hover state. Call after panel recreation if the dispatcher survives it.</summary>
+        </member>
+    </members>
+</doc>

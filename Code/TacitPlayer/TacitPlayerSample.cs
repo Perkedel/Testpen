@@ -1,4 +1,5 @@
-using Sandbox;
+//using Sandbox;
+namespace Sandbox.TacitPlayer; 
 
 // I can't believe this, there's no standard `Health e Dedd` component here in s&box?!
 // Fucking really? everybody (Gamemode itself) had to do this themselves?
@@ -8,13 +9,18 @@ using Sandbox;
 // Josh!!! MAKE ME DOOM-QUAKE-LIKE HEALTH ARMOR COMPONENT SYSTEM!!!, Later after we're done here!
 // For now, we're going to yoink between Walker & Sanbox gamemode Health component.
 
-public sealed partial class TacitPlayerSample: Component, Component.IDamageable, PlayerController.IEvents
+public sealed partial class TacitPlayerSample : Component, Component.IDamageable, PlayerController.IEvents
 {
 	// Tacit = Stealthily. Oh thancc God, not a trouble word.
 
 	private static TacitPlayerSample Local { get; set; }
 	// public static TacitPlayerSample FindLocalPlayer() => Local;
 	public static TacitPlayerSample FindLocalPlayer() => Game.ActiveScene.GetAllComponents<TacitPlayerSample>().Where( x => !x.IsProxy ).FirstOrDefault();
+	// public static TacitPlayerSample FindLocalPlayer()
+	// {
+	// 	return Local;
+	// }
+	// public TacitPlayerSample FindNowPlayer() => Game.
 
 	[Property, RequireComponent] public PlayerController Controller { get; set; } // Meant to be complement of Player Controller
 

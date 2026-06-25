@@ -1,0 +1,18 @@
+{
+  "GeneratedFiles": [
+    {
+      "Kind": 0,
+      "Path": "Teststatea.razor",
+      "LastHash": "fbeb2dbf1002fd10c691b5618e08f236d6f4cc9ec484db3dd86e973fcf7e77cf",
+      "OwnedByDocumentId": "sui_teststatea_aeac6de9",
+      "GeneratorVersion": "0.1.0"
+    },
+    {
+      "Kind": 1,
+      "Path": "Teststatea.razor.scss",
+      "LastHash": "f993a1c5dbb27063a49efb6ee53607aed1feed375efddda2420fb4aaba162457",
+      "OwnedByDocumentId": "sui_teststatea_aeac6de9",
+      "GeneratorVersion": "0.1.0"
+    }
+  ]
+}
