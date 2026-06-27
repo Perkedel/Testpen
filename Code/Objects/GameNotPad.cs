@@ -127,6 +127,7 @@ public sealed class GameNotPad : Component
 
 		for(int i = 0;i<=3; i++)
 		{
+			// if(PaddleButtons.IsValid())
 			if(PaddleButtons[i].IsValid())
 			{
 				PaddleButtons[i].expectedGlyphName = String.Format( "paddleButton_%d", i );
