@@ -1,7 +1,7 @@
 using Goo;
 using Sandbox.UI;
 
-namespace UI.Basical;
+namespace Sandbox.UI.Basical;
 
 public sealed class ProgressBarGoo : GooPanel<Container>
 {
@@ -9,9 +9,14 @@ public sealed class ProgressBarGoo : GooPanel<Container>
 	[Property] float Minimum { get; set; } = 0f;
 	[Property] float Maximum { get; set; } = 100f;
 
-	public ProgressBarGoo( float height = 12f)
+	public ProgressBarGoo( float height = 12f )
 	{
 
+	}
+
+	public ProgressBarGoo()
+	{
+		
 	}
 
 	protected override void OnUpdate()
@@ -21,11 +26,18 @@ public sealed class ProgressBarGoo : GooPanel<Container>
 
 	protected override Container Build() => new Container
 	{
-		BackgroundColor = Color.Gray;
+		BackgroundColor = Color.Gray,
 		Children = {
 			new Container{
-				// filler
-				Children = {},
+				// Contains the bar
+				BackgroundColor = Color.Black,
+				Children = {
+					// The bar
+					new Container{
+						BackgroundColor = Color.Red,
+						Height = 100,
+					}
+				},
 			},
 			new Text("50%"),
 		},

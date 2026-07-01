@@ -1,0 +1,91 @@
+@using Sandbox;
+@using Sandbox.UI;
+
+<style>
+	ProgressBarRazor
+	{
+		//position: absolute;
+		//padding: 4px;
+		background-color: black;
+		border-radius: 10px;
+		/*Align-content: center;*/
+		//align-items:flex-end;
+		width : 400px;
+		height : 50px;
+
+		.stacker
+		{
+			position : relative;
+			padding : 2px;
+		}
+
+		.textSay
+		{
+			position : absolute;
+			align-items : center;
+			justify-content : center;
+			left: 200px;
+			color:white;
+			font-size: 3rem;
+		}
+
+		.bar
+		{
+			justify-content : center;
+			//padding: 2px;
+			border-radius: 10px;
+			width:100%;
+			height:100%;
+			background-color: red;
+		}
+	}
+</style>
+
+<root style="width: @(Width)px;height : @(Height)px;">
+	<div >
+		<div class="stacker">
+			<!--<div class="bar" style="width:@(Value)%;"/>-->
+			<!--Bug! percent makes it not linear wtf, I gave up!-->
+			<div class="bar" style="width:@(Width * (Value/100)); background-color: @(BarColor)"/>
+			<!--<div class="bar" style="width:@(Value)rem;"/>-->
+			@if(ShowText){
+				<div class="textSay" style="left : @(Width / 2); color: @(TextColor); text-stroke: @(TextStroke)px @(TextStrokeColor); font-size: @(TextSize)">
+					@($"{Math.Round(Value)}%")
+				</div>
+			}
+		</div>
+	</div>
+</root>
+
+@code
+{
+	[Property] public float Value { get; set; } = 75f;
+	[Property] public float Minimum { get; set; } = 0f;
+	[Property] public float Maximum { get; set; } = 100f;
+	[Property] public float Width { get; set; } = 400f;
+	[Property] public float Height { get; set; } = 50f;
+	[Property] public string BarColor { get; set; } = "red";
+	[Property] public bool ShowText { get; set; } = true;
+	[Property] public string TextColor { get; set; } = "white";
+	[Property] public string TextStrokeColor { get; set; } = "black";
+	[Property] public float TextStroke { get; set; } = 2f;
+	[Property] public string TextSize { get; set; } = "3rem";
+	[Property] public string BgColor { get; set; } = "black";
+
+	//string ProgressSays { get; set; } = $"100%";
+
+	protected override int BuildHash() => System.HashCode.Combine(
+	Value ,
+	Minimum,
+	Maximum
+	);
+
+	/*
+	https://css-tricks.com/how-to-stack-elements-in-css/
+	https://www.w3schools.com/cssref/css_units.php
+	https://www.w3schools.com/cssref/css_units.php
+	https://css-tricks.com/adding-stroke-to-web-text/
+	https://stackoverflow.com/questions/13426875/text-border-using-css-border-around-text
+	https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/flex-direction
+	*/
+}

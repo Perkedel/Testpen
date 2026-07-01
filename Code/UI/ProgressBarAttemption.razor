@@ -1,0 +1,44 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.UI.Basical;
+@inherits PanelComponent
+@namespace Sandbox
+
+<root>
+	<div class="containsPb">
+		<ProgressBarRazor Value=@(Valueing)/>
+		<ProgressBarRazor Value=@(Valueing) Width=@(500) BarColor="blue"/>
+		<ProgressBarRazor Value=@(Valueing) Width=@(100) BarColor="yellow"/>
+		<ProgressBarRazor Value=@(Valueing) Width=@(1000) BarColor="lime"/>
+	</div>
+</root>
+
+@code
+{
+
+	[Property, TextArea] public string MyStringValue { get; set; } = "Hello World!";
+	[Property] public float Valueing {get;set;} = 50f;
+	[Property] public float Minning {get;set;} = 0f;
+	[Property] public float Maxxing {get;set;} = 100f;
+	[Property] public bool Running {get;set;} = true;
+	[Property] public float RunSpeed {get;set;} = 10f;
+
+	[Property,ReadOnly] bool RunBack = false;
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		if(Running)
+		{
+			if(Valueing >= Maxxing) RunBack = true;
+			if(Valueing <= Minning) RunBack = false;
+			Valueing += (Time.Delta * RunSpeed) * (RunBack? -1f : 1f);
+		}
+	}
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( MyStringValue, Valueing, Maxxing, Minning, RunBack );
+}

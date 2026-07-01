@@ -1,11 +1,13 @@
 @using Sandbox;
 @using Sandbox.UI;
+@using Sandbox.UI.Basical;
 @inherits PanelComponent
 @namespace Sandbox
 
 <root>
 	<div class="Rudimentary">
 		<p>@HrSay BPM @LubSay</p>
+		<p><ProgressBarRazor Value=@(ProgressBarBeatPercent) BarColor="green"/></p>
 		<p>🍪 @CookiesSay (x @MultiplierSay )</p>
 		<!--<p><input type="number"></p>-->
 		<p><a class="button" onClick=@DecreaseHeartRate>-</a> <label>💓</label> <a class="button" onClick=@AddHeartRate>+</a> | <a class="button" onClick=@ResetHeartRate>🔄️</a></p>
@@ -39,6 +41,7 @@
 	[Property] string CookiesSay {get;set;} = "---";
 	[Property] string MultiplierSay {get;set;} = "???";
 	[Property] string SpeakerSay {get;set;} = "❓";
+	[Property] float ProgressBarBeatPercent {get;set;} = 0f;
 
 	protected void AddHeartRateBy(float whatIsIt = 1)
 	{
@@ -139,6 +142,18 @@
 			LubSay = HeartOrgan.Lub? "♥️" : " ";
 			HrSay = $"{HeartRate}";
 			SpeakerSay = HeartOrgan.EnableSound? "🔊" : "🔇";
+
+			// Progress Bar
+			if(HeartOrgan.Lub)
+			{
+				// get Return time
+				ProgressBarBeatPercent = (HeartOrgan.StartReturnTime / HeartOrgan.ReturnTime) * 100f;
+			}
+			else
+			{
+				// get PeriodT
+				ProgressBarBeatPercent = 100-((HeartOrgan.RemainPeriodT / HeartOrgan.PeriodT) * 100f);
+			}
 		} else
 		{
 			LubSay = "❓";
@@ -183,6 +198,7 @@
 	CookiesNow,
 	Clicked,
 	CookiesSay,
+	ProgressBarBeatPercent,
 	HeartRate
 	);
 }

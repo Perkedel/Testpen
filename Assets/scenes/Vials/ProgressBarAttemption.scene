@@ -1,15 +1,15 @@
 {
-  "__guid": "b5b3847b-2cc4-4098-a158-0b514ec3ca7e",
+  "__guid": "6514edf9-0416-45e3-b069-f4b1195c8b96",
   "GameObjects": [
     {
-      "__guid": "c24e7611-782c-4146-b17e-81cd80d293e2",
+      "__guid": "8ff4ac42-86d3-47e6-9f9d-a7e31da163b7",
       "__version": 2,
       "Flags": 0,
-      "Name": "Scene Information",
+      "Name": "2D Skybox",
       "Position": "0,0,0",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
-      "Tags": "",
+      "Tags": "skybox",
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkFlags": 0,
@@ -18,29 +18,25 @@
       "OwnerTransfer": 1,
       "Components": [
         {
-          "__type": "Sandbox.SceneInformation",
-          "__guid": "4d12b802-530f-46a3-980c-e27169e71704",
+          "__type": "Sandbox.SkyBox2D",
+          "__guid": "50d7e85c-13d8-4b6c-b6df-7a05d4e5a1f7",
           "__enabled": true,
           "Flags": 0,
-          "Author": "JOELwindows7",
-          "Changes": null,
-          "Description": "What's inside the \"Game\" API?",
-          "Group": null,
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
           "OnComponentUpdate": null,
-          "SceneTags": "",
-          "Title": "Game API",
-          "Version": null
+          "SkyIndirectLighting": true,
+          "SkyMaterial": "materials/skybox/skybox_workshop.vmat",
+          "Tint": "1,1,1,1"
         }
       ],
       "Children": []
     },
     {
-      "__guid": "5fc27700-76d3-489f-b574-7012d179b2ff",
+      "__guid": "5837365a-b657-4cf5-a7fd-5547126e5163",
       "__version": 2,
       "Flags": 0,
       "Name": "Camera",
@@ -57,7 +53,7 @@
       "Components": [
         {
           "__type": "Sandbox.CameraComponent",
-          "__guid": "8b816992-5d95-4645-9551-13121d58fd31",
+          "__guid": "07cb091a-8965-4fb3-a8ff-bc3f5c97d34a",
           "__enabled": true,
           "Flags": 0,
           "BackgroundColor": "0.33333,0.46275,0.52157,1",
@@ -83,45 +79,15 @@
           "Viewport": "0,0,1,1",
           "ZFar": 10000,
           "ZNear": 10
-        },
-        {
-          "__type": "ToastsDisplay",
-          "__guid": "93893a7a-e2a9-45f4-9a99-7670a564c4a0",
-          "__enabled": true,
-          "Flags": 0,
-          "OnComponentDestroy": null,
-          "OnComponentDisabled": null,
-          "OnComponentEnabled": null,
-          "OnComponentFixedUpdate": null,
-          "OnComponentStart": null,
-          "OnComponentUpdate": null
-        },
-        {
-          "__type": "Sandbox.ScreenPanel",
-          "__guid": "00bff7bb-6591-4674-b795-601ba491ca29",
-          "__enabled": true,
-          "Flags": 0,
-          "AutoScreenScale": true,
-          "OnComponentDestroy": null,
-          "OnComponentDisabled": null,
-          "OnComponentEnabled": null,
-          "OnComponentFixedUpdate": null,
-          "OnComponentStart": null,
-          "OnComponentUpdate": null,
-          "Opacity": 1,
-          "Scale": 1,
-          "ScaleStrategy": "ConsistentHeight",
-          "TargetCamera": null,
-          "ZIndex": 100
         }
       ],
       "Children": []
     },
     {
-      "__guid": "bd59c109-275a-466b-be62-26abd8ef391e",
+      "__guid": "ab68f591-b814-4299-b2bb-c5f30be38fcd",
       "__version": 2,
       "Flags": 0,
-      "Name": "UI_sub",
+      "Name": "UI_Sub",
       "Position": "0,0,0",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
@@ -135,10 +101,10 @@
       "Components": [],
       "Children": [
         {
-          "__guid": "e19f7fe2-6fe1-4bd6-b134-0f3ccdca65a0",
+          "__guid": "670e31ab-07ac-4cca-a924-4ef4c1fbb610",
           "__version": 2,
           "Flags": 0,
-          "Name": "GameApi",
+          "Name": "ProgressBarAttemptScreen",
           "Position": "0,0,0",
           "Rotation": "0,0,0,1",
           "Scale": "1,1,1",
@@ -152,7 +118,7 @@
           "Components": [
             {
               "__type": "Sandbox.ScreenPanel",
-              "__guid": "99ad594c-dc4a-42a7-93a7-cd4255ef6030",
+              "__guid": "337cd17d-2af0-4e59-bc4e-ac49b6cbd62f",
               "__enabled": true,
               "Flags": 0,
               "AutoScreenScale": true,
@@ -164,20 +130,22 @@
               "OnComponentUpdate": null,
               "Opacity": 1,
               "Scale": 1,
-              "ScaleStrategy": "FollowDesktopScaling",
+              "ScaleStrategy": "ConsistentHeight",
               "TargetCamera": {
                 "_type": "component",
-                "component_id": "8b816992-5d95-4645-9551-13121d58fd31",
-                "go": "5fc27700-76d3-489f-b574-7012d179b2ff",
+                "component_id": "07cb091a-8965-4fb3-a8ff-bc3f5c97d34a",
+                "go": "5837365a-b657-4cf5-a7fd-5547126e5163",
                 "component_type": "CameraComponent"
               },
-              "ZIndex": 50
+              "ZIndex": 100
             },
             {
-              "__type": "Sandbox.GameApiTest",
-              "__guid": "81c71c42-8805-450b-9c82-2f1f3fb541e0",
+              "__type": "Sandbox.ProgressBarAttemption",
+              "__guid": "813020fc-6b4c-44b4-a137-97e535c37969",
               "__enabled": true,
               "Flags": 0,
+              "Maxxing": 100,
+              "Minning": 0,
               "MyStringValue": "Hello World!",
               "OnComponentDestroy": null,
               "OnComponentDisabled": null,
@@ -185,7 +153,10 @@
               "OnComponentFixedUpdate": null,
               "OnComponentStart": null,
               "OnComponentUpdate": null,
-              "theMenu": null
+              "RunBack": false,
+              "Running": true,
+              "RunSpeed": 10,
+              "Valueing": 50
             }
           ],
           "Children": []
@@ -193,10 +164,10 @@
       ]
     },
     {
-      "__guid": "ec6715dc-2b10-4474-91e9-a5a5c8fade09",
+      "__guid": "16a8cc47-ca9d-4e2e-bb4c-48db07b615d8",
       "__version": 2,
       "Flags": 0,
-      "Name": "SaveTestBy",
+      "Name": "Scene Information",
       "Position": "0,0,0",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
@@ -209,16 +180,23 @@
       "OwnerTransfer": 1,
       "Components": [
         {
-          "__type": "Sandbox.SaveGameApiTest",
-          "__guid": "425a6d8d-a33a-4850-962a-77a3bd11d650",
+          "__type": "Sandbox.SceneInformation",
+          "__guid": "e946a12c-d06d-4a44-a4a6-c2b91068940d",
           "__enabled": true,
           "Flags": 0,
+          "Author": "JOELwindows7",
+          "Changes": null,
+          "Description": "How could the-f s&box lacks UI templates & builder like does in Godot?!?",
+          "Group": "ui",
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
           "OnComponentEnabled": null,
           "OnComponentFixedUpdate": null,
           "OnComponentStart": null,
-          "OnComponentUpdate": null
+          "OnComponentUpdate": null,
+          "SceneTags": "ui",
+          "Title": "Progress Bar Development",
+          "Version": null
         }
       ],
       "Children": []
@@ -229,9 +207,11 @@
     "TimeScale": 1,
     "WantsSystemScene": true,
     "Metadata": {
-      "Title": "Game API",
-      "Description": "What's inside the \"Game\" API?",
-      "Author": "JOELwindows7"
+      "Title": "Progress Bar Development",
+      "Description": "How could the-f s&box lacks UI templates & builder like does in Godot?!?",
+      "Group": "ui",
+      "Author": "JOELwindows7",
+      "Tags": "ui"
     },
     "NavMesh": {
       "Enabled": false,
@@ -250,7 +230,7 @@
     "GameObjectSystems": {
       "Sandbox.Clutter.ClutterGridSystem": {
         "Storage": {
-          "$blob": "ba3fed86-3fdb-4d10-8312-cb0851105fe6"
+          "$blob": "791a01c4-8a9a-4676-addc-f407ca048848"
         }
       },
       "Sandbox.SelectionSetsSystem": {
@@ -261,8 +241,8 @@
     }
   },
   "ResourceVersion": 3,
-  "Title": "Game API",
-  "Description": "What's inside the \"Game\" API?",
+  "Title": "Progress Bar Development",
+  "Description": "How could the-f s&box lacks UI templates & builder like does in Godot?!?",
   "__references": [],
   "__version": 3
 }

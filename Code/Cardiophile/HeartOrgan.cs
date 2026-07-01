@@ -33,11 +33,11 @@ public sealed class HeartOrgan : Component
 
 	[Header("Here's the Mathematics!")]
 	[Property, Feature("Extra Debugs"), Group("Mathematics"), ReadOnly] float Hertz { get; set; } = 70f / 60f; // HeartRate / 60
-	[Property, Feature("Extra Debugs"), Group("Mathematics"), ReadOnly] float PeriodT { get; set; } = 1 / (70 / 60); // 1 / Hertz
-	[Property, Feature("Extra Debugs"), Group("Running"), ReadOnly] float RemainPeriodT { get; set; } = 1 / (70 / 60); // catch the PeriodT & reset to PeriodT
+	[Property, Feature("Extra Debugs"), Group("Mathematics"), ReadOnly] public float PeriodT { get; set; } = 1 / (70 / 60); // 1 / Hertz
+	[Property, Feature("Extra Debugs"), Group("Running"), ReadOnly] public float RemainPeriodT { get; set; } = 1 / (70 / 60); // catch the PeriodT & reset to PeriodT
 	[Property, Feature("Extra Debugs"), Group("Running Conversion"), ReadOnly] float RemainPeriodTMillisec { get; set; } = (1 / (70 / 60)) * 1000f; // RemainPeriodT * 1000
-	[Property, Feature("Extra Debugs"), Group("Mathematics"), ReadOnly] float ReturnTime { get; set; } = .25f; // When heart will diastole back?
-	[Property, Feature("Extra Debugs"), Group("Running"), ReadOnly] float StartReturnTime { get; set; } = .25f; // catch ReturnTime now & reset based ReturnTime
+	[Property, Feature("Extra Debugs"), Group("Mathematics"), ReadOnly] public float ReturnTime { get; set; } = .25f; // When heart will diastole back?
+	[Property, Feature("Extra Debugs"), Group("Running"), ReadOnly] public float StartReturnTime { get; set; } = .25f; // catch ReturnTime now & reset based ReturnTime
 	[Property, Feature( "Extra Debugs" ), Group( "Running Conversion" ), ReadOnly] float StartReturnTimeMillisec { get; set; } = (.25f) * 1000f; // StartReturnTime * 1000
 
 	[Header("Here's the Core of it!")]

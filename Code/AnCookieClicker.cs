@@ -24,9 +24,11 @@ public sealed class AnCookieClicker : Component
 
 	protected override void OnUpdate()
 	{
-		if(Multiplier < 0.1f)
+		if ( Multiplier < 0.1f )
 		{
 			Multiplier = 0.1f;
 		}
+
+		// TODO: JSON save
 	}
 }

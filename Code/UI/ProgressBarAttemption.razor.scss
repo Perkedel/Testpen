@@ -1,0 +1,25 @@
+ProgressBarAttemption
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	pointer-events: all;
+
+	align-items: center;
+
+	.title
+	{
+		font-size: 25px;
+		font-family: Poppins;
+		color: #fff;
+	}
+
+	.containsPb
+	{
+        height: 200px;
+        align-items: center;
+        flex-direction: column;
+	}
+}

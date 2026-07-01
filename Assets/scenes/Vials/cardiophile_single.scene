@@ -90,6 +90,7 @@
               "OnComponentFixedUpdate": null,
               "OnComponentStart": null,
               "OnComponentUpdate": null,
+              "ProgressBarBeatPercent": 0,
               "SpeakerSay": "❓"
             }
           ],
@@ -299,7 +300,8 @@
               "OnComponentFixedUpdate": null,
               "OnComponentStart": null,
               "OnComponentUpdate": null,
-              "relaxTo": 1
+              "relaxTo": 1,
+              "reverseBeat": true
             }
           ],
           "Children": [

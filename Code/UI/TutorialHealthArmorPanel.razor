@@ -1,10 +1,11 @@
 @using Sandbox;
 @using Sandbox.UI;
+@using Sandbox.UI.Basical;
 
 <root>
 	<div class="column InfoHud">
-		<div class="health">HP: @Health</div>
-	  	<div class="armor">Armor: @Armor</div>
+		<div class="health">HP: <ProgressBarRazor @ref="PBRazor" Value=@Health/></div>
+	  	<div class="armor">Armor: <ProgressBarRazor Value=@Armor BarColor="cyan" TextColor="black" TextStrokeColor="white"/></div>
 	</div>
 </root>
 
@@ -13,6 +14,15 @@
 	// https://sbox.game/dev/doc/ui/razor-panels/
 	public float Health { get; set; } = 100f;
 	public float Armor { get; set; } = 100f;
+
+	//public ProgressBarGoo PBGoo {get;set;}
+	public ProgressBarRazor PBRazor {get;set;}
+	public ProgressBarRazor PBRazorArmor {get;set;}
+
+	//protected override void OnUpdate()
+	//{
+		//base.OnUpdate();
+	//}
 
 	protected override int BuildHash() => System.HashCode.Combine( Health, Armor );
 }
