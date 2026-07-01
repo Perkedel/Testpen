@@ -17,6 +17,11 @@ public sealed class SaveGameApiTest : Component
 		saveing.Files.WriteAllText( "saveingTeswt.txt", "hello world" );
 		saveing.Files.WriteJson<DataStructureSample>( "dataStructTest.json", data );
 
+		// How about this instead?
+		// https://sbox.game/dev/doc/assets/file-system
+		FileSystem.Data.WriteJson<DataStructureSample>( "dataStructTestRaw.json", data );
+		FileSystem.OrganizationData.WriteJson<DataStructureSample>( "dataStructTestRaw.json", data );
+
 		//DataStructureSample readData = saveing.Files.ReadJson<DataStructureSample>( "dataStructTest.json" );
 		//Log.Info( $"Here data:,\n\n{readData}" );
 
