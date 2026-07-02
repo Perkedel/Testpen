@@ -79,6 +79,36 @@
           "Viewport": "0,0,1,1",
           "ZFar": 10000,
           "ZNear": 10
+        },
+        {
+          "__type": "ToastsDisplay",
+          "__guid": "94a53952-9684-454d-9763-a2a7ba1cc596",
+          "__enabled": true,
+          "Flags": 0,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
+        },
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "69dd62ec-f7b2-4943-b048-716a736d5794",
+          "__enabled": true,
+          "Flags": 0,
+          "AutoScreenScale": true,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "Opacity": 1,
+          "Scale": 1,
+          "ScaleStrategy": "ConsistentHeight",
+          "TargetCamera": null,
+          "ZIndex": 100
         }
       ],
       "Children": []
@@ -137,7 +167,7 @@
                 "go": "5837365a-b657-4cf5-a7fd-5547126e5163",
                 "component_type": "CameraComponent"
               },
-              "ZIndex": 100
+              "ZIndex": 50
             },
             {
               "__type": "Sandbox.ProgressBarAttemption",

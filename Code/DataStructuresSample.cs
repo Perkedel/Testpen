@@ -1,4 +1,4 @@
-class DataStructureSample
+public class DataStructureSample
 {
 	public string Name { get; set; } = "abcd";
 	public float Floating { get; set; } = 12.2f;
@@ -13,6 +13,10 @@ class DataStructureSample
 	public DataStructureSample(string setName = "aaaa")
 	{
 		Name = setName;
-		SubStruct = new DataSubStructureSample( "hello world" );
+		SubStruct = new DataSubStructureSample("hello world");
 	}
+
+	/*
+	https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/properties
+	*/
 }

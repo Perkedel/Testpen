@@ -6,7 +6,7 @@ ProgressBarAttemption
 	right: 0;
 	bottom: 0;
 	pointer-events: all;
-
+	/* overflow: auto; */
 	align-items: center;
 
 	.title
@@ -19,7 +19,9 @@ ProgressBarAttemption
 	.containsPb
 	{
         /* height: 200px; */
+        width: 100%;
         align-items: center;
         flex-direction: column;
+        overflow: auto;
 	}
 }

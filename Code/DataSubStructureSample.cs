@@ -1,4 +1,4 @@
-class DataSubStructureSample
+public class DataSubStructureSample
 {
 	public string Label { get; set; }
 

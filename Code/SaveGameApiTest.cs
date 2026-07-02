@@ -28,6 +28,8 @@ public sealed class SaveGameApiTest : Component
 
 		var allSaves = Storage.GetAll( "save" );
 
+		/*
+
 		foreach ( var save in allSaves )
 		{
     		// Access entry properties
@@ -49,6 +51,7 @@ public sealed class SaveGameApiTest : Component
 		        // Load your game...
 		    }
 		}
+		*/
 	}
 
 	protected override void OnUpdate()

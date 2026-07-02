@@ -48,20 +48,25 @@
             "Scale": 1,
             "ScaleStrategy": "FollowDesktopScaling",
             "TargetCamera": null,
-            "ZIndex": 100
+            "ZIndex": 200
           },
           {
             "__type": "Sandbox.StartMenu",
             "__guid": "8b51a9b4-5a59-4ab7-9689-6316050f2fc4",
             "__enabled": true,
             "Flags": 0,
+            "isInStart": false,
+            "isPaused": false,
             "MyStringValue": "Testpen!",
+            "ObtainSceneInfo": null,
             "OnComponentDestroy": null,
             "OnComponentDisabled": null,
             "OnComponentEnabled": null,
             "OnComponentFixedUpdate": null,
             "OnComponentStart": null,
-            "OnComponentUpdate": null
+            "OnComponentUpdate": null,
+            "PlsDoNotFreeze": false,
+            "withBg": false
           }
         ],
         "Children": []
@@ -98,7 +103,7 @@
             "Scale": 1,
             "ScaleStrategy": "ConsistentHeight",
             "TargetCamera": null,
-            "ZIndex": 100
+            "ZIndex": 150
           }
         ],
         "Children": []
