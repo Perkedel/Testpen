@@ -3,7 +3,7 @@
 @inherits PanelComponent
 @namespace Sandbox
 
-<root class=@(isPaused?"":"resumed")>
+<root class="@(isPaused?"":"resumed") @(withBg? "withBg":"")">
 	<!--https://sbox.game/dev/doc/ui/razor-panels/razor-components-->
 	<!--<div class="title">@MyStringValue</div>-->
 	<div class="topBar">
@@ -47,6 +47,7 @@
 	*/
 
 	[Property] public bool isPaused {get; internal set;} = false;
+	[Property] public bool withBg {get; internal set;} = false;
 	protected bool hathPaused {get;set;} = false;
 	[Property] public bool isInStart {get;set;} = false;
 	[Property, TextArea] public string MyStringValue { get; set; } = "Testpen!";
@@ -129,6 +130,7 @@
 				}
 				hathPaused = true;
 			}
+			if(!isInStart) withBg = true;
 		} else {
 			if(hathFrozen)
 			{
@@ -137,6 +139,7 @@
 				hathFrozen = false;
 			}
 			hathPaused = false;
+			withBg = false;
 		}
 	}
 

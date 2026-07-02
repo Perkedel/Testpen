@@ -29,6 +29,12 @@ StartMenu
 	    display:none;
 	}
 
+	&.withBg
+	{
+	    transition-duration: .5s;
+        background-color: rgba(black,.75);
+	}
+
 	.title
 	{
 		font-size: 25px;

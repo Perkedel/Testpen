@@ -6,8 +6,11 @@
 	{
 		//position: absolute;
 		//padding: 4px;
-		background-color: black;
+		background-color: gray;
+		// border-style: solid;
+		border: 2px solid;
 		border-radius: 10px;
+		border-color: black;
 		/*Align-content: center;*/
 		//align-items:flex-end;
 		width : 400px;
@@ -16,22 +19,34 @@
 		.stacker
 		{
 			position : relative;
-			padding : 2px;
+			// padding : 2px;
+			justify-content: space-evenly;
+			align-items: stretch;
+			flex-grow: 1;
 		}
 
 		.textSay
 		{
 			position : absolute;
 			align-items : center;
-			justify-content : center;
-			left: 200px;
+			/*justify-content : center;*/
+			// justify-content: space-evenly;
+			/*left: 200px;*/
+			// left:0;
+			// right:0;
+			flex-grow:1;
 			color:white;
-			font-size: 3rem;
+			//font-size: 3rem;
+			//font-size-adjust: 0.5;
+			>p
+			{
+
+			}
 		}
 
 		.bar
 		{
-			justify-content : center;
+			//justify-content : center;
 			//padding: 2px;
 			border-radius: 10px;
 			width:100%;
@@ -41,7 +56,7 @@
 	}
 </style>
 
-<root style="width: @(Width)px;height : @(Height)px;">
+<root style="width: @(Width)px;height : @(Height)px; background-color: rgba(@(BgColor), 0.75); border-color: @BgBorderColor">
 	<div >
 		<div class="stacker">
 			<!--<div class="bar" style="width:@(Value)%;"/>-->
@@ -49,8 +64,10 @@
 			<div class="bar" style="width:@(Width * (Value/100)); background-color: @(BarColor)"/>
 			<!--<div class="bar" style="width:@(Value)rem;"/>-->
 			@if(ShowText){
-				<div class="textSay" style="left : @(Width / 2); color: @(TextColor); text-stroke: @(TextStroke)px @(TextStrokeColor); font-size: @(TextSize)">
-					@($"{Math.Round(Value)}%")
+				<div class="textSay" style="color: @(TextColor); text-stroke: @(TextStroke)px @(TextStrokeColor); font-size: @(Height/1.2)px; left: @(Width/2);">
+					<p></p>
+					<p>@($"{Math.Round(Value)}%")</p>
+					<p></p>
 				</div>
 			}
 		</div>
@@ -69,8 +86,9 @@
 	[Property] public string TextColor { get; set; } = "white";
 	[Property] public string TextStrokeColor { get; set; } = "black";
 	[Property] public float TextStroke { get; set; } = 2f;
-	[Property] public string TextSize { get; set; } = "3rem";
+	[Property] public string TextSize { get; set; } = "1rem";
 	[Property] public string BgColor { get; set; } = "black";
+	[Property] public string BgBorderColor { get; set; } = "black";
 
 	//string ProgressSays { get; set; } = $"100%";
 
@@ -87,5 +105,11 @@
 	https://css-tricks.com/adding-stroke-to-web-text/
 	https://stackoverflow.com/questions/13426875/text-border-using-css-border-around-text
 	https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/flex-direction
+	https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+	https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-size-adjust
+	https://stackoverflow.com/questions/16056591/font-scaling-based-on-size-of-container
+	https://css-tricks.com/fitting-text-to-a-container/
+	https://dev.to/logrocket/css-font-size-adjust-how-to-auto-adjust-your-font-size-16fo
+	https://www.w3schools.com/cSS/css_border.asp
 	*/
 }

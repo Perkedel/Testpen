@@ -20,15 +20,15 @@ public sealed class RudimentaryHeartScaleAnimator : Component
 				if ( reverseBeat )
 				{
 					// if ( Itself.Lub ) ModelObject.WorldScale = enlargeTo;
-					if ( Itself.Lub ) ModelObject.WorldScale = Vector3.Lerp(ModelObject.WorldScale,relaxTo,.02f);
+					if ( Itself.Lub ) ModelObject.WorldScale = Vector3.Lerp(ModelObject.WorldScale,relaxTo,.2f);
 					// else ModelObject.WorldScale = relaxTo;
-					else ModelObject.WorldScale =  Vector3.Lerp(ModelObject.WorldScale,enlargeTo,.02f);
+					else ModelObject.WorldScale =  Vector3.Lerp(ModelObject.WorldScale,enlargeTo,.2f);
 				}
 				else{
 					// if ( Itself.Lub ) ModelObject.WorldScale = enlargeTo;
-					if ( Itself.Lub ) ModelObject.WorldScale = Vector3.Lerp(ModelObject.WorldScale,enlargeTo,.02f);
+					if ( Itself.Lub ) ModelObject.WorldScale = Vector3.Lerp(ModelObject.WorldScale,enlargeTo,.2f);
 					// else ModelObject.WorldScale = relaxTo;
-					else ModelObject.WorldScale =  Vector3.Lerp(ModelObject.WorldScale,relaxTo,.02f);
+					else ModelObject.WorldScale =  Vector3.Lerp(ModelObject.WorldScale,relaxTo,.2f);
 				}
 
 

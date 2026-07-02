@@ -129,6 +129,7 @@ public sealed class HeartOrgan : Component
 		Log.Info( $"Set HeartRate into {HeartRate} BPM" );
 		Hertz = HeartRate > 0 ? HeartRate / 60 : 1;
 		PeriodT = Hertz > 0 ? 1 / Hertz : 1;
+		ResyncHeartUpdate(Time.Delta);
 	}
 
 	public void AddHeartRate( float ByWhat = 1 )

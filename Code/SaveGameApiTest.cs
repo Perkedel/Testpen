@@ -11,16 +11,17 @@ public sealed class SaveGameApiTest : Component
 		base.OnStart();
 		DataStructureSample data = new DataStructureSample("AAA BBB");
 		//data.Name = "AAA BBB";
-		saveing.SetMeta( "playerName", "awawa" );
-		saveing.SetMeta( "someSome", "sdafasklfjklwejlk" );
-		saveing.SetMeta( "level", 12 );
-		saveing.Files.WriteAllText( "saveingTeswt.txt", "hello world" );
-		saveing.Files.WriteJson<DataStructureSample>( "dataStructTest.json", data );
+		// saveing.SetMeta( "playerName", "awawa" );
+		// saveing.SetMeta( "someSome", "sdafasklfjklwejlk" );
+		// saveing.SetMeta( "level", 12 );
+		// saveing.Files.WriteAllText( "saveingTeswt.txt", "hello world" );
+		// saveing.Files.WriteJson<DataStructureSample>( "dataStructTest.json", data );
 
 		// How about this instead?
 		// https://sbox.game/dev/doc/assets/file-system
 		FileSystem.Data.WriteJson<DataStructureSample>( "dataStructTestRaw.json", data );
 		FileSystem.OrganizationData.WriteJson<DataStructureSample>( "dataStructTestRaw.json", data );
+		// so saveing is only for doom?
 
 		//DataStructureSample readData = saveing.Files.ReadJson<DataStructureSample>( "dataStructTest.json" );
 		//Log.Info( $"Here data:,\n\n{readData}" );
