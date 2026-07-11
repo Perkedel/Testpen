@@ -1,4 +1,4 @@
 - fur shader internal? where?
 - credit Artemio. Now we will make 240p test suite
 - Alter ego fall pit map so feminine
-- reupdate because there is `Make it Open Source`. Redundant, but we are serious about Open Source.
+- ~~reupdate because there is `Make it Open Source`. Redundant, but we are serious about Open Source.~~
