@@ -15,6 +15,7 @@
 		</div>
 		<div class="topCenter">
 			<p>@openedSceneName</p>
+			<p>@randNumSay</p>
 		</div>
 		<div class="topRight">
 			<p><a class="settingButton" onClick=@SettingGame>⚙️</a></p>
@@ -57,6 +58,8 @@
 	//[Property] protected DoNotFreezeOnPause? noFreeze {get; set;}
 	[Property] public bool PlsDoNotFreeze {get;set;} = false;
 	protected bool hathFrozen {get; set;} = false;
+	protected int randNumber {get;set;} = 55;
+	protected string randNumberSay {get;set;} = "RAM Number = 55";
 
 	// Yoink Scene List from Facepunch!
 	// https://github.com/Facepunch/sbox-scenestaging/blob/main/Code/SceneMenu/SceneMenuPanel.razor
@@ -72,6 +75,13 @@
 		// Search these SceneProperties Components!
 		//noFreeze = Scene.Directory.FindByName( "DoNotFreezeOnPause" ).First().GetComponent<DoNotFreezeOnPause>();
 		//ObtainSceneInfo = Scene.Directory.FindByName("Scene Information").First().GetComponent<SceneInformation>();
+
+		// https://stackoverflow.com/questions/2706500/how-do-i-generate-a-random-integer-in-c
+		// If StartMenu we place supposedly always exist, we expect this random number never trigger once game start
+		Random rnd = new Random();
+		randNumber = rnd.Next(0,100);
+		randNumberSay = $"RAM Nymber = {randNumber}";
+		// if changes every change scene, that mean the always exist is not persistent. Disappointing! we want persistence RAM!!
 	}
 
 	protected override void OnUpdate()

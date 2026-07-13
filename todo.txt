@@ -2,3 +2,4 @@
 - credit Artemio. Now we will make 240p test suite
 - Alter ego fall pit map so feminine
 - ~~reupdate because there is `Make it Open Source`. Redundant, but we are serious about Open Source.~~
+- Create Gyro effect Spinning `T` demo thanks to Box3D almost accurate physics
