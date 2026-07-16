@@ -19,6 +19,38 @@
         "3c6394a8-e7fe-4282-80a2-359c95715270": "eb4cb234-307e-4381-8372-f93acd396e31",
         "a67c7350-3a3e-4d0f-9e27-28574d285247": "55c0bddb-c0bf-43e2-b38e-2cdb4bf2762e"
       }
+    },
+    {
+      "__guid": "4c3c10b4-42b3-490c-88d9-160210afc158",
+      "__version": 2,
+      "Flags": 0,
+      "Name": "SceneInfoHandover",
+      "Position": "0,0,0",
+      "Rotation": "0,0,0,1",
+      "Scale": "1,1,1",
+      "Tags": "",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkFlags": 0,
+      "NetworkOrphaned": 0,
+      "NetworkTransmit": true,
+      "OwnerTransfer": 1,
+      "Components": [
+        {
+          "__type": "Sandbox.SceneInfoHandover",
+          "__guid": "c703e012-612b-4bb4-a84d-cc6b58a32680",
+          "__enabled": true,
+          "Flags": 0,
+          "ObtainSceneInfo": null,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
+        }
+      ],
+      "Children": []
     }
   ],
   "SceneProperties": {

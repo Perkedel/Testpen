@@ -1,0 +1,94 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+@namespace Sandbox
+
+<root>
+	<div class="Rudimentary">
+		<p>Press & Hold Left or Right to speen</p>
+		<p ><a class="EnlargeText" onMouseDown=@(()=>SpinLeft(true)) onMouseUp=@(()=>SpinLeft(false)) onMouseOut=@(()=>SpinLeft(false))>(⬅️)</a> | <a class="EnlargeText" onMouseDown=@(()=>SpinRight(true)) onMouseUp=@(()=>SpinRight(false)) onMouseOut=@(()=>SpinRight(false))>(➡️)</a></p>
+		<p><a onClick=@ClickRollDice>🎲 Roll those die there!</a></p>
+	</div>
+</root>
+
+@code
+{
+
+	[Property, TextArea] public string MyStringValue { get; set; } = "Hello World!";
+	//[Property] public LeftRightSpin controllering {get;set;}
+	[Property] public LeftRightSpin[] controllerings {get;set;}
+	//[Property] public TempDice theDice {get;set;}
+	[Property] public TempDice[] theDie {get;set;}
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		if(Input.Pressed("Jump")) ClickRollDice();
+
+		if(Input.Pressed("Left")) SpinLeft(true);
+		if(Input.Released("Left")) SpinLeft(false);
+
+		if(Input.Pressed("Right")) SpinRight(true);
+		if(Input.Released("Right")) SpinRight(false);
+	}
+
+	protected void SpinLeft(bool down = false)
+	{
+		/*
+		if(controllering.IsValid())
+		{
+			controllering.forceLeft = down;
+		}
+		*/
+
+		foreach(LeftRightSpin t in controllerings)
+		{
+			if(t.IsValid())
+			{
+				t.forceRight = down;
+			}
+		}
+	}
+
+	protected void SpinRight(bool down = false)
+	{
+		/*
+		if(controllering.IsValid())
+		{
+			controllering.forceRight = down;
+		}
+		*/
+
+		foreach(LeftRightSpin t in controllerings)
+		{
+			if(t.IsValid())
+			{
+				t.forceRight = down;
+			}
+		}
+	}
+
+	protected void ClickRollDice()
+	{
+		/*
+		if(theDice.IsValid())
+		{
+			theDice.GiveImpact();
+		}
+		*/
+
+		foreach(TempDice diceIt in theDie)
+		{
+			if(diceIt.IsValid())
+			{
+				diceIt.GiveImpact();
+			}
+		}
+	}
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( MyStringValue );
+}

@@ -1,0 +1,50 @@
+DzanibekovUI
+{
+	position: absolute;
+	/* top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0; */
+	/* justify-content: center; */
+	/* align-items: center; */
+	font-weight: bold;
+	font-family: Poppins;
+	/* border-radius: 20px; */
+	pointer-events: all;
+	/* flex-direction: column; */
+
+	a
+	{
+	    cursor:pointer;
+	    background-color:rgba(navy,0.8);
+		color: white;
+		border-radius:10px;
+	    &:hover
+		{
+		    background-color:rgba(blue,0.8);
+		    sound-in:ui.button.over;
+		}
+		&:active
+		{
+            background-color: rgba(darkblue,0.8);
+		    sound-in:ui.popup.message.close;
+		}
+
+		&.EnlargeText
+		{
+        font-size: 10em;
+		}
+	}
+
+
+
+	>.Rudimentary
+	{
+        flex-direction: column;
+    	p
+    	{
+    	    font-size: xx-large;
+
+    	}
+	}
+}

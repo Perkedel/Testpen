@@ -37,6 +37,7 @@
         "BodyMass": 500,
         "BodyRadius": 16,
         "BrakePower": 1,
+        "CameraCollisionIgnore": "",
         "CameraOffset": "256,0,12",
         "ColliderObject": {
           "_type": "gameobject",
@@ -119,6 +120,7 @@
         "OnComponentUpdate": null,
         "OverrideMassCenter": true,
         "RigidbodyFlags": "DisableCollisionSounds",
+        "SleepThreshold": 2,
         "StartAsleep": false
       },
       {
@@ -268,10 +270,16 @@
         "TagName": "interact"
       },
       {
-        "__type": "TacitPlayerSample",
+        "__type": "Sandbox.TacitPlayer.TacitPlayerSample",
         "__guid": "a40ebc9b-6c18-4812-a065-4fb0d83b8bcf",
         "__enabled": true,
         "Flags": 0,
+        "Controller": {
+          "_type": "component",
+          "component_id": "884ea2eb-d773-4ba9-b94c-23e52ac78ded",
+          "go": "aa2c41d8-1950-4dcd-9340-66be5defc30d",
+          "component_type": "PlayerController"
+        },
         "Health": 100,
         "MaxHealth": 100,
         "OnComponentDestroy": null,
@@ -280,6 +288,29 @@
         "OnComponentFixedUpdate": null,
         "OnComponentStart": null,
         "OnComponentUpdate": null
+      },
+      {
+        "__type": "Sandbox.BaseInventoryComponent",
+        "__guid": "f2a0aadc-252b-4bc7-b207-d2d6bdffc2ed",
+        "__enabled": true,
+        "Flags": 0,
+        "AutoSwitchOnEmpty": false,
+        "AutoSwitchOnPickup": true,
+        "Behaviour": "Buckets",
+        "GiveOnStart": true,
+        "ManualPumping": false,
+        "MaxSlots": 6,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "PickupMode": "Touch",
+        "PickupRadius": 48,
+        "StartingAmmo": [],
+        "StartingItems": [],
+        "UsesLoadout": true
       }
     ],
     "Children": [
@@ -347,10 +378,10 @@
         ],
         "Children": [
           {
-            "__guid": "0471d1ce-11cd-4605-81fc-68a324f327b5",
+            "__guid": "91899724-be5c-4f17-aab5-967defd43d2d",
             "__version": 2,
             "Flags": 0,
-            "Name": "Clothing - qa_team_tshirt",
+            "Name": "Clothing - construct_tshirt",
             "Position": "0,0,0",
             "Rotation": "0,0,0,1",
             "Scale": "1,1,1",
@@ -364,7 +395,7 @@
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
-                "__guid": "10da1b5b-dce8-4071-8dca-4a423b4ec93a",
+                "__guid": "1c2f4399-7191-48e7-ade9-00865977ff24",
                 "__enabled": true,
                 "Flags": 0,
                 "AnimationGraph": null,
@@ -381,7 +412,7 @@
                 "MaterialGroup": null,
                 "MaterialOverride": null,
                 "Materials": null,
-                "Model": "clothing/release_shirt/models/release_shirt.vmdl",
+                "Model": "clothing/tshirt_reskins/black_simple_tshirt/black_simple_shirt.vmdl",
                 "Morphs": {},
                 "OnComponentDestroy": null,
                 "OnComponentDisabled": null,
@@ -416,7 +447,7 @@
             "Children": []
           },
           {
-            "__guid": "cda06989-c197-43ca-981b-8f69920698a5",
+            "__guid": "5d07362b-5252-4f80-9e23-7d6d7fe0529a",
             "__version": 2,
             "Flags": 0,
             "Name": "Clothing - eyebrows",
@@ -433,7 +464,7 @@
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
-                "__guid": "11f5a789-adb8-4c6d-8758-6965af12e024",
+                "__guid": "6af4ba71-e222-47c3-b6b4-cd047c540b0c",
                 "__enabled": true,
                 "Flags": 0,
                 "AnimationGraph": null,
@@ -485,7 +516,7 @@
             "Children": []
           },
           {
-            "__guid": "e00fed48-5627-4b40-a3df-553cbc308c6a",
+            "__guid": "091f6d04-edd7-485e-a098-4e980f8aab02",
             "__version": 2,
             "Flags": 0,
             "Name": "Clothing - hair.loose.grey",
@@ -502,7 +533,7 @@
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
-                "__guid": "be0b2b95-626c-4302-b3d9-b208588ed80c",
+                "__guid": "10cffce7-d91c-404b-807a-2fa3b4446536",
                 "__enabled": true,
                 "Flags": 0,
                 "AnimationGraph": null,
@@ -554,7 +585,7 @@
             "Children": []
           },
           {
-            "__guid": "4d346d38-0167-4124-8510-a21c623dc32b",
+            "__guid": "62855faa-42d3-45b4-a64f-09702fc9c093",
             "__version": 2,
             "Flags": 0,
             "Name": "Clothing - headphones",
@@ -571,7 +602,7 @@
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
-                "__guid": "bc103ccd-94cb-4048-9797-8d4c40e10ba0",
+                "__guid": "a35ffb34-a558-46d8-9fcb-1a6b478d4cba",
                 "__enabled": true,
                 "Flags": 0,
                 "AnimationGraph": null,
@@ -623,7 +654,7 @@
             "Children": []
           },
           {
-            "__guid": "160a69b9-7e22-4901-935d-a614ce6f8028",
+            "__guid": "c323f2ce-9acc-432c-af9f-70968968d788",
             "__version": 2,
             "Flags": 0,
             "Name": "Clothing - puffer_jacket_blue",
@@ -640,7 +671,7 @@
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
-                "__guid": "a4a791bf-bb15-4975-846b-7ebd205d96e5",
+                "__guid": "0308b588-8318-467a-a00e-e1f43db5177b",
                 "__enabled": true,
                 "Flags": 0,
                 "AnimationGraph": null,
@@ -692,7 +723,7 @@
             "Children": []
           },
           {
-            "__guid": "2937ba42-9d37-4588-8b69-1f0339a34afa",
+            "__guid": "27fa6276-6ab9-401d-92b5-c8edbd9f709f",
             "__version": 2,
             "Flags": 0,
             "Name": "Clothing - blue_sneakers",
@@ -709,7 +740,7 @@
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
-                "__guid": "4955e94e-4be0-4e7e-9032-cff1f2215e89",
+                "__guid": "ecdad9e8-ab76-46e1-8f5c-91b4e027df98",
                 "__enabled": true,
                 "Flags": 0,
                 "AnimationGraph": null,
@@ -761,7 +792,7 @@
             "Children": []
           },
           {
-            "__guid": "e1c4e207-22fc-49b4-9bff-523d9349f09d",
+            "__guid": "a84ef38b-6640-4b67-9b2a-d494a00b72c4",
             "__version": 2,
             "Flags": 0,
             "Name": "Clothing - trousers.smart",
@@ -778,7 +809,7 @@
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
-                "__guid": "1c915a74-624f-44a3-ad8e-0624b576447c",
+                "__guid": "1a6b4cca-a300-4552-aa08-a337902966d3",
                 "__enabled": true,
                 "Flags": 0,
                 "AnimationGraph": null,
@@ -830,7 +861,7 @@
             "Children": []
           },
           {
-            "__guid": "532af669-eee0-4831-a849-497bb23ac60d",
+            "__guid": "a1130c73-ad83-478f-a3d2-04499a1cc456",
             "__version": 2,
             "Flags": 0,
             "Name": "Clothing - modern_watch",
@@ -847,7 +878,7 @@
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
-                "__guid": "b720c8ff-f490-4b57-966d-bd0b47335d0c",
+                "__guid": "ffbcb32b-3c24-46da-ae8e-885f65631a36",
                 "__enabled": true,
                 "Flags": 0,
                 "AnimationGraph": null,

@@ -12,10 +12,13 @@
 			<p><a class="resumeButton @(@isInStart?"hidden":"")" onClick=@ResumeGame><iconify icon="material-symbols:arrow-back" size=@(48)/></a></p>
 			<p class="topTitle">🪛 Testpen!</p>
 			<p><a class="homeButton @(isInStart?"hidden":"")" onClick=@ReturnToMenu>🏠</a></p>
+
 		</div>
 		<div class="topCenter">
-			<p>@openedSceneName</p>
-			<p>@randNumSay</p>
+			<div class="descSections">
+				<p>@openedSceneName</p>
+				<p>@randNumberSay</p>
+			</div>
 		</div>
 		<div class="topRight">
 			<p><a class="settingButton" onClick=@SettingGame>⚙️</a></p>
@@ -53,7 +56,7 @@
 	[Property] public bool isInStart {get;set;} = false;
 	[Property, TextArea] public string MyStringValue { get; set; } = "Testpen!";
 	protected string openedSceneName {get;set;} = "Select test";
-	[Property] public SceneInformation ObtainSceneInfo {get;set;}
+	[Property] public SceneInformation? ObtainSceneInfo {get;set;}
 
 	//[Property] protected DoNotFreezeOnPause? noFreeze {get; set;}
 	[Property] public bool PlsDoNotFreeze {get;set;} = false;
@@ -75,6 +78,7 @@
 		// Search these SceneProperties Components!
 		//noFreeze = Scene.Directory.FindByName( "DoNotFreezeOnPause" ).First().GetComponent<DoNotFreezeOnPause>();
 		//ObtainSceneInfo = Scene.Directory.FindByName("Scene Information").First().GetComponent<SceneInformation>();
+		//var findThe = Scene.Directory.FindByName("Scene Information").First();
 
 		// https://stackoverflow.com/questions/2706500/how-do-i-generate-a-random-integer-in-c
 		// If StartMenu we place supposedly always exist, we expect this random number never trigger once game start
@@ -82,6 +86,19 @@
 		randNumber = rnd.Next(0,100);
 		randNumberSay = $"RAM Number = {randNumber}";
 		// if changes every change scene, that mean the always exist is not persistent. Disappointing! we want persistence RAM!!
+		// Yep, it kept changing. Nope! another way pls!
+
+		//openedSceneName = ActiveScene.
+		/*
+		if(!ObtainSceneInfo.IsValid())
+		{
+			//ObtainSceneInfo = Scene.Directory.FindByName("Scene Information").First().GetComponent<SceneInformation>();
+		}
+		if(ObtainSceneInfo.IsValid())
+		{
+			openedSceneName = $"{ObtainSceneInfo.Title}";
+		}
+		*/
 	}
 
 	protected override void OnUpdate()
@@ -184,6 +201,12 @@
 
     }
     */
+
+    public void SubmitSceneInfo(SceneInformation withThis)
+    {
+		if(withThis.IsValid()) ObtainSceneInfo = withThis;
+		if(ObtainSceneInfo.IsValid()) openedSceneName = $"{ObtainSceneInfo.Title}";
+    }
 
 	protected void ReturnToMenu()
 	{

@@ -118,6 +118,8 @@ StartMenu
 		> .topLeft
 		{
 		    gap: 1rem;
+
+
 		}
 
 		> .topCenter
@@ -131,6 +133,15 @@ StartMenu
 		    //justify-content: right;
 			gap: 1rem;
 		}
+	}
+
+	.descSections
+	{
+        flex-direction: column;
+        /* >p
+        {
+            flex-direction: column;
+        } */
 	}
 
 	>.body

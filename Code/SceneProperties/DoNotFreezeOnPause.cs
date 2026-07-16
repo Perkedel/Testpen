@@ -10,7 +10,14 @@ public sealed class DoNotFreezeOnPause : Component, ISceneProperties
 	{
 		if(!theMenu.IsValid())
 		{
-			theMenu = Scene.Directory.FindByName( "ScreenMenu" ).First().GetComponent<StartMenu>();
+			try{
+				GameObject? findThe = Scene.Directory.FindByName( "ScreenMenu" ).First();
+				// theMenu = Scene.Directory.FindByName( "ScreenMenu" ).First().GetComponent<StartMenu>();
+				if(findThe.IsValid()) theMenu = findThe.GetComponent<StartMenu>();
+			} catch (Exception e)
+			{
+
+			}
 		}
 		if ( theMenu.IsValid() )
 		{
