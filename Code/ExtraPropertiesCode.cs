@@ -25,6 +25,7 @@ public sealed class ExtraPropertiesCode : Component
 	[Header( "And these are s&box Special Types" )]
 	[Property, Title( "Curve" ), Description( "A Curve of what would be the `y` when its `x` is this" )] public Curve ACurve { get; set; }
 	[Property, Title( "ActionGraph" ), Description( "Simple If-Else programming graph as value" )] public Action AnActGraph { get; set; }
+	[Property, Title( "Doo" ), Description( "A Doo action NEW" )] public Doo AnDooGraph { get; set; }
 
 	// Customizations
 	[Header( "Customize How they'd look" )]
@@ -119,7 +120,30 @@ public sealed class ExtraPropertiesCode : Component
 	[Property, Feature( "Show & Hide" ), Group( "Flag \"Advanced\"" ), Advanced] public string ThisIsTooAdvancedForYou { get; set; } = "YEEEAAAAAAAAA";
 
 	// Require Component
-	[Property, Feature( "Show & Hide" ), Group( "Requires Component" ),RequireComponent,Description("`RequireComponent` flag is used on a Component variable, to make it automatically adds itself & make it refer to that when it doesn't have one yet.")] public ExtraRequiredCode IRequireYouToBeHere { get; set; }
+	[Property, Feature( "Show & Hide" ), Group( "Requires Component" ), RequireComponent, Description( "`RequireComponent` flag is used on a Component variable, to make it automatically adds itself & make it refer to that when it doesn't have one yet." )] public ExtraRequiredCode IRequireYouToBeHere { get; set; }
+
+	protected override void OnStart()
+	{
+		// How to Invoke doo?
+		RunDoo( AnDooGraph );
+		
+
+		// remember about "this"
+		this.InternalTrigger();
+		// useful when to handover yourself into another Component yess!
+
+		
+	}
+
+	protected void InternalTrigger()
+	{
+		Log.Info( "Internal Trigger" );
+	}
+
+	public void TriggerMe()
+	{
+		Log.Info( "Hello Doo" );
+	}
 }
 
 // I admit. It's not as great as Unity right now. But c'mon, have some mercy, they're just getting started bruh!

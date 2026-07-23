@@ -311,6 +311,22 @@
         "StartingAmmo": [],
         "StartingItems": [],
         "UsesLoadout": true
+      },
+      {
+        "__type": "Sandbox.EveryonePlsFollowMe",
+        "__guid": "6adb24fc-cf0e-431a-9b69-005948a75410",
+        "__enabled": true,
+        "Flags": 0,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "updateAttractIn": {
+          "Absolute": 0,
+          "Relative": 143767710
+        }
       }
     ],
     "Children": [
@@ -378,7 +394,7 @@
         ],
         "Children": [
           {
-            "__guid": "91899724-be5c-4f17-aab5-967defd43d2d",
+            "__guid": "4f07d2c4-4120-49ff-b535-1a7798170bb9",
             "__version": 2,
             "Flags": 0,
             "Name": "Clothing - construct_tshirt",
@@ -395,7 +411,7 @@
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
-                "__guid": "1c2f4399-7191-48e7-ade9-00865977ff24",
+                "__guid": "9273d936-1435-4cee-a5d0-f3eac65d1d49",
                 "__enabled": true,
                 "Flags": 0,
                 "AnimationGraph": null,
@@ -447,7 +463,7 @@
             "Children": []
           },
           {
-            "__guid": "5d07362b-5252-4f80-9e23-7d6d7fe0529a",
+            "__guid": "a8e835e9-3c0c-41c4-8119-c2ee4262e347",
             "__version": 2,
             "Flags": 0,
             "Name": "Clothing - eyebrows",
@@ -464,7 +480,7 @@
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
-                "__guid": "6af4ba71-e222-47c3-b6b4-cd047c540b0c",
+                "__guid": "8cf0b5b5-4357-4e80-8aea-6c207c06915b",
                 "__enabled": true,
                 "Flags": 0,
                 "AnimationGraph": null,
@@ -516,7 +532,7 @@
             "Children": []
           },
           {
-            "__guid": "091f6d04-edd7-485e-a098-4e980f8aab02",
+            "__guid": "8fdf1e3f-aa85-48b5-8952-c3e0664e9a00",
             "__version": 2,
             "Flags": 0,
             "Name": "Clothing - hair.loose.grey",
@@ -533,7 +549,7 @@
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
-                "__guid": "10cffce7-d91c-404b-807a-2fa3b4446536",
+                "__guid": "cb2e597e-1c17-42e5-8cb7-3a70febadfe6",
                 "__enabled": true,
                 "Flags": 0,
                 "AnimationGraph": null,
@@ -585,7 +601,7 @@
             "Children": []
           },
           {
-            "__guid": "62855faa-42d3-45b4-a64f-09702fc9c093",
+            "__guid": "42e76887-14d9-48f0-83c2-967a1d9e18d1",
             "__version": 2,
             "Flags": 0,
             "Name": "Clothing - headphones",
@@ -602,7 +618,7 @@
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
-                "__guid": "a35ffb34-a558-46d8-9fcb-1a6b478d4cba",
+                "__guid": "2de76cac-28a4-4609-9f13-32cbf9c18f68",
                 "__enabled": true,
                 "Flags": 0,
                 "AnimationGraph": null,
@@ -654,7 +670,7 @@
             "Children": []
           },
           {
-            "__guid": "c323f2ce-9acc-432c-af9f-70968968d788",
+            "__guid": "62de47e0-955a-4ce7-842f-ea6405b6f197",
             "__version": 2,
             "Flags": 0,
             "Name": "Clothing - puffer_jacket_blue",
@@ -671,7 +687,7 @@
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
-                "__guid": "0308b588-8318-467a-a00e-e1f43db5177b",
+                "__guid": "01692cb9-45e0-47bc-9ebc-0eab1b1b94b2",
                 "__enabled": true,
                 "Flags": 0,
                 "AnimationGraph": null,
@@ -723,7 +739,7 @@
             "Children": []
           },
           {
-            "__guid": "27fa6276-6ab9-401d-92b5-c8edbd9f709f",
+            "__guid": "218ddd39-b9cd-4852-b1df-b38a07408721",
             "__version": 2,
             "Flags": 0,
             "Name": "Clothing - blue_sneakers",
@@ -740,7 +756,7 @@
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
-                "__guid": "ecdad9e8-ab76-46e1-8f5c-91b4e027df98",
+                "__guid": "a03799ee-a517-4f15-ba4d-cf83e2695dc0",
                 "__enabled": true,
                 "Flags": 0,
                 "AnimationGraph": null,
@@ -792,7 +808,7 @@
             "Children": []
           },
           {
-            "__guid": "a84ef38b-6640-4b67-9b2a-d494a00b72c4",
+            "__guid": "3fa658fb-5f8d-4473-a6fa-dd458b8aceec",
             "__version": 2,
             "Flags": 0,
             "Name": "Clothing - trousers.smart",
@@ -809,7 +825,7 @@
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
-                "__guid": "1a6b4cca-a300-4552-aa08-a337902966d3",
+                "__guid": "e8a39d74-aa28-46fb-b9da-0fc0a1b5328d",
                 "__enabled": true,
                 "Flags": 0,
                 "AnimationGraph": null,
@@ -861,7 +877,7 @@
             "Children": []
           },
           {
-            "__guid": "a1130c73-ad83-478f-a3d2-04499a1cc456",
+            "__guid": "7237fad4-765f-4140-8166-9ccb050eadf5",
             "__version": 2,
             "Flags": 0,
             "Name": "Clothing - modern_watch",
@@ -878,7 +894,7 @@
             "Components": [
               {
                 "__type": "Sandbox.SkinnedModelRenderer",
-                "__guid": "ffbcb32b-3c24-46da-ae8e-885f65631a36",
+                "__guid": "1f8cab39-7805-4260-b752-31919c0d9d5f",
                 "__enabled": true,
                 "Flags": 0,
                 "AnimationGraph": null,

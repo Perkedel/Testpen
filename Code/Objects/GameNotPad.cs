@@ -268,8 +268,10 @@ public sealed class GameNotPad : Component
 		}
 
 		//foreach(var paddleButtonTest in PaddleButtons)
-		for(int i = 0;i<=3; i++)
+		//foreach(SquishTest paddleButtonTest in PaddleButtons)
+		for(int i = 0;i<PaddleButtons.Length; i++)
 		{
+			// wtf hoiw to length check,?!?
 			//if(paddleButtonTest.IsValid())
 			if(PaddleButtons[i].IsValid())
 			{

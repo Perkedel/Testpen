@@ -29,6 +29,7 @@
 {
 	[Property, TextArea] public string MyStringValue { get; set; } = "Waaaaa";
 	[Property] public HeartOrgan HeartOrgan {get;set;}
+	[Property] public HeartOrgan[] HeartOrgans {get;set;}
 	[Property] public AnCookieClicker CookieClicker {get;set;}
 
 	[Property] public float HeartRate {get;set;} = 70f;
@@ -134,8 +135,36 @@
 		}
 	}
 
+	public void CookieClick()
+	{
+		// minified Cookie Clicking
+		if(CookieClicker.IsValid())
+		{
+			CookieClicker.ClickTheCookie();
+		}
+	}
+
+	protected override void OnStart()
+	{
+		base.OnStart();
+		try{
+			foreach(HeartOrgan hb in HeartOrgans)
+			{
+
+			}
+		} catch (Exception e)
+		{
+
+		}
+		if(HeartOrgan.IsValid())
+		{
+			HeartOrgan.HandoverEcg(this);
+		}
+	}
+
 	protected override void OnUpdate()
 	{
+		base.OnUpdate();
 		if(HeartOrgan.IsValid())
 		{
 			HeartRate = HeartOrgan.HeartRate;
@@ -161,6 +190,17 @@
 			SpeakerSay = "❓";
 		}
 
+		try
+		{
+			foreach(HeartOrgan hb in HeartOrgans)
+			{
+
+			}
+		} catch (Exception e)
+		{
+
+		}
+
 		if(CookieClicker.IsValid())
 		{
 			if(HeartOrgan.IsValid())
@@ -169,7 +209,7 @@
 					{
 						if(!Clicked)
 						{
-							CookieClicker.ClickTheCookie();
+							//CookieClicker.ClickTheCookie();
 
 						}
 						Clicked = true;

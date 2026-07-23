@@ -44,7 +44,23 @@ public sealed class HeartOrgan : Component
 	[Property, Feature("Extra Debugs"), Group("Core")] public bool Lub { get; set; } = false; // Heart Systole
 	[Property, Feature("Extra Debugs"), Group("Core"), ReadOnly] int StateIndex { get; set; } = 0; // Heart organ state
 	[Property, Feature("Extra Debugs"), Group("Core")] bool isBeating { get; set; } = true; // Heart is alive
-	[Property, Feature("Extra Debugs"), Group("Info"), ReadOnly] string ToggleSay { get; set; } = ""; // Heart text info
+	[Property, Feature( "Extra Debugs" ), Group( "Info" ), ReadOnly] string ToggleSay { get; set; } = ""; // Heart text info
+
+	[Property, Feature("Scripting"), Group("Cookie Clicker")] public Doo OnLub{ get; set; }
+	[Property, Feature( "Scripting" ), Group( "Rudimentary" )] public Ecghud Ecg { get; set; }
+
+	public void HandoverEcg( Ecghud itThis )
+	{
+		Ecg = itThis;
+	}
+
+	protected void OnLubFunc()
+	{
+		if(Ecg.IsValid())
+		{
+			Ecg.CookieClick();
+		}
+	}
 
 	protected void DecideReturnTime( float forWhathowMuch = 0 )
 	{
@@ -180,18 +196,22 @@ public sealed class HeartOrgan : Component
 		RemainPeriodTMillisec = RemainPeriodT * 1000f;
 		if ( RemainPeriodTMillisec <= 0 )
 		{
+			// Heart Systole
 			StateIndex = 1;
 			RemainPeriodT = PeriodT;
 			RemainPeriodTMillisec = RemainPeriodT * 1000f;
 			Lub = true;
-			// TODO: ECG & sound
-			if(EnableSound){
+			// DONE: ECG & sound
+			if ( EnableSound )
+			{
 				if ( SystoleSound.IsValid() ) Sound.Play( SystoleSound, WorldPosition );
 			}
+			RunDoo( OnLub );
+			OnLubFunc();
 		}
 		else
 		{
-			// TODO: ECG
+			// DONE: ECG
 		}
 
 		if ( Lub )
@@ -200,19 +220,20 @@ public sealed class HeartOrgan : Component
 			StartReturnTimeMillisec = StartReturnTime * 1000f;
 			if ( StartReturnTimeMillisec <= 0 )
 			{
+				// Heart Diastole
 				StateIndex = 0;
 				StartReturnTime = ReturnTime;
 				StartReturnTimeMillisec = StartReturnTime * 1000f;
 				Lub = false;
-				// TODO: ECG & sound
-				if(EnableSound)
+				// DONE: ECG & sound
+				if ( EnableSound )
 				{
-					if ( DiastoleSound.IsValid()) Sound.Play( DiastoleSound, WorldPosition );
+					if ( DiastoleSound.IsValid() ) Sound.Play( DiastoleSound, WorldPosition );
 				}
 			}
 			else
 			{
-				// TODO: ECG
+				// DONE: ECG
 			}
 		}
 	}
@@ -239,6 +260,12 @@ public sealed class HeartOrgan : Component
 				// TODO: ECG
 			}
 		}
+	}
+
+	protected override void OnStart()
+	{
+		// Check the Doo
+
 	}
 
 	protected override void OnUpdate()

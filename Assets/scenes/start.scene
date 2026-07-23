@@ -134,6 +134,7 @@
           "__guid": "a8f8faaa-bda1-439d-8b21-7638b8c0cb89",
           "__enabled": true,
           "Flags": 0,
+          "ContactShadows": true,
           "Contribution": "Diffuse, Specular, Transmissive",
           "FogMode": "Enabled",
           "FogStrength": 1,
@@ -184,6 +185,190 @@
         "5a88fd01-98a9-48f3-b5e1-99d0ea9bd8d4": "c2ae7224-c8eb-4dea-9b42-d7f467d6986d",
         "28c56b8c-caf6-46a4-b082-d01adfb8ec2b": "a044dcbc-45c8-4700-9056-c2e6c7807579"
       }
+    },
+    {
+      "__guid": "f10b8587-faa1-4d44-870e-39b273a0da89",
+      "__version": 2,
+      "Flags": 0,
+      "Name": "SampleSceneCodes",
+      "Position": "0,0,0",
+      "Rotation": "0,0,0,1",
+      "Scale": "1,1,1",
+      "Tags": "",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkFlags": 0,
+      "NetworkOrphaned": 0,
+      "NetworkTransmit": true,
+      "OwnerTransfer": 1,
+      "Components": [
+        {
+          "__type": "ExtraPropertiesCode",
+          "__guid": "7236feb1-16a6-41ac-be2d-9eee9182b199",
+          "__enabled": true,
+          "Flags": 0,
+          "ABoolean": true,
+          "ACurve": [
+            {
+              "x": 0.5,
+              "y": 0.5,
+              "in": 0,
+              "out": 0,
+              "mode": "Mirrored"
+            }
+          ],
+          "ADoubleFloat": 1.5893747806549072,
+          "AnActGraph": {
+            "__version": 9,
+            "__guid": "bf290c94-c12b-4e12-b683-e5fc07e42445",
+            "__changeId": 2,
+            "UserData": {
+              "Title": "ActionGraph"
+            },
+            "Variables": [],
+            "Nodes": [
+              {
+                "Id": 0,
+                "Type": "input"
+              }
+            ],
+            "Links": []
+          },
+          "AnDooGraph": {
+            "body": [
+              {
+                "$type": "ivk",
+                "InvokeType": "Member",
+                "TargetComponent": {
+                  "t": "Direct",
+                  "cv": {
+                    "_type": "component",
+                    "component_id": "024edec0-51fe-4e62-bf41-0c9a7393cc91",
+                    "go": "f10b8587-faa1-4d44-870e-39b273a0da89",
+                    "component_type": "ExtraRequiredCode"
+                  }
+                },
+                "Member": null,
+                "ReturnVariable": null
+              },
+              {
+                "$type": "ivk",
+                "InvokeType": "Member",
+                "TargetComponent": {
+                  "t": "Direct",
+                  "cv": {
+                    "_type": "component",
+                    "component_id": "7236feb1-16a6-41ac-be2d-9eee9182b199",
+                    "go": "f10b8587-faa1-4d44-870e-39b273a0da89",
+                    "component_type": "ExtraPropertiesCode"
+                  }
+                },
+                "Member": "ExtraPropertiesCode.TriggerMe",
+                "Arguments": [],
+                "ReturnVariable": null
+              }
+            ]
+          },
+          "AnInteger": 291,
+          "ASingleFloat": 1.5,
+          "BioData": {},
+          "BioDataUnCramped": {},
+          "Boostean": 1000,
+          "Crutches": 500,
+          "DummyEnumed": false,
+          "EnableAdvanced": true,
+          "EnableEnum": true,
+          "EnableTheSliders": true,
+          "FeatureShowHide": true,
+          "FilePathString": "",
+          "FontSelectString": "Poppins",
+          "HeaderWillSnuckInto": true,
+          "Health": 100,
+          "IHaveBeenSpaced": 25,
+          "IHaveSpacedYou": 24,
+          "ImagePathString": "",
+          "InputActionString": "",
+          "IRequireYouToBeHere": {
+            "_type": "component",
+            "component_id": "024edec0-51fe-4e62-bf41-0c9a7393cc91",
+            "go": "f10b8587-faa1-4d44-870e-39b273a0da89",
+            "component_type": "ExtraRequiredCode"
+          },
+          "MultiLineString": "",
+          "MultiSelectOption": "bar, baz, quix",
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null,
+          "OneLineString": "OneLiner",
+          "ReadOnly": true,
+          "ReadOnlyBool": true,
+          "ReadOnlyDouble": 67.44332122802734,
+          "ReadOnlyFloat": 6.7,
+          "ReadOnlyInteger": 103,
+          "ReadOnlyString": "You can't edit me lol",
+          "ScenePathString": "",
+          "SingleActionGraph": {
+            "__version": 9,
+            "__guid": "0beb627b-fa19-40e2-b885-2b227578cd8b",
+            "__changeId": 6,
+            "UserData": {
+              "Title": "Single Action Graph"
+            },
+            "Variables": [],
+            "Nodes": [
+              {
+                "Id": 0,
+                "Type": "input",
+                "UserData": {
+                  "Position": "-24,96"
+                }
+              }
+            ],
+            "Links": []
+          },
+          "SingleSelectOption": "bar",
+          "Stepper": 100,
+          "StepperSlide": 100,
+          "StepperSlideUnclamp": 100,
+          "ThisIsTooAdvancedForYou": "YEEEAAAAAAAAA",
+          "TimeRangeCurve": [],
+          "ValidationTest": 50,
+          "ValueRangeCurve": [],
+          "WideDouble": 99999,
+          "WideFloat": 99999,
+          "WideInteger": 1234567890,
+          "WideString": "AAAAAAAAAAAAAAAAAAAA!!!",
+          "WideText": "ASDHFLAUIHWERIUFHASLSUDUHFKLJASHDFJKLAHSIULGHALIERHGAKLJSHDFGKJLAHSDKJLFHALSKJDHFLAKJDHSFKLJ!!!"
+        },
+        {
+          "__type": "ExtraRequiredCode",
+          "__guid": "024edec0-51fe-4e62-bf41-0c9a7393cc91",
+          "__enabled": true,
+          "Flags": 0,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
+        },
+        {
+          "__type": "ExtraSceneCode",
+          "__guid": "3a5a1e3e-f299-41d9-944a-ec1e17a06d9e",
+          "__enabled": true,
+          "Flags": 0,
+          "OnComponentDestroy": null,
+          "OnComponentDisabled": null,
+          "OnComponentEnabled": null,
+          "OnComponentFixedUpdate": null,
+          "OnComponentStart": null,
+          "OnComponentUpdate": null
+        }
+      ],
+      "Children": []
     }
   ],
   "SceneProperties": {
