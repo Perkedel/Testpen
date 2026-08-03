@@ -21,6 +21,7 @@
 			<a class="button" onClick=@(()=>PresetHeartRate(6))>300</a>|
 		</p>
 		<p><a class="button" onClick=@DecreaseMultiplier>-</a> <label>MULTI</label> <a class="button" onClick=@IncreaseMultiplier>+</a> | <a class="button" onClick=@ResetMultiplier>🔄️</a></p>
+		<p><label>🌀 Daze</label> <a class="button" onClick=@(()=>InduceSkip(false))>SKIP</a> | <a class="button" onClick=@(()=>InduceSkip(true))>PVC</a></p>
 		<p>Internal <a class="Checkbox" id="InternalSpeakerToggle" onClick=@ToggleSound>@SpeakerSay</a></p>
 	</div>
 </root>
@@ -92,6 +93,14 @@
 				default:
 					break;
 			}
+	}
+
+	protected void InduceSkip(bool withPVC)
+	{
+		if(HeartOrgan.IsValid())
+		{
+			HeartOrgan.InduceSkip(withPVC);
+		}
 	}
 
 	protected void ResetHeartRate()
