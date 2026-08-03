@@ -57,7 +57,9 @@ public sealed class HeartOrgan : Component
 	[Property, Feature("Extra Debugs"), Group("Mathematics"), ReadOnly] public float ReturnTime { get; set; } = .25f; // When heart will diastole back?
 	[Property, Feature("Extra Debugs"), Group("Running"), ReadOnly] public float StartReturnTime { get; set; } = .25f; // catch ReturnTime now & reset based ReturnTime
 	[Property, Feature( "Extra Debugs" ), Group( "Running Conversion" ), ReadOnly] float StartReturnTimeMillisec { get; set; } = (.25f) * 1000f; // StartReturnTime * 1000
-	[Property, Feature("Extra Debugs"), Group("Mathematics"), ReadOnly] public float PVCPeriodT { get; set; } = 5f; // for PVC event
+	// [Property, Feature( "Extra Debugs" ), Group( "Mathematics" ), ReadOnly] public float PVCPeriodT { get; set; } = 5f; // for PVC event
+	[Property, Feature( "Extra Debugs" ), Group( "Mathematics" ), ReadOnly] public RealTimeUntil RemainPeriodRTU { get; set; } // s&box Realtime Untils! the Systole
+	[Property, Feature( "Extra Debugs" ), Group( "Mathematics" ), ReadOnly] public RealTimeUntil StartReturnRTU { get; set; } // and Diastole
 
 	[Header("Here's the Core of it!")]
 	[Property, Feature("Extra Debugs"), Group("Core")] public bool Lub { get; set; } = false; // Heart Systole
@@ -302,7 +304,8 @@ public sealed class HeartOrgan : Component
 			// _capT += 12f;
 			// _capT = PVCSetTime;
 			PeriodT = IsPVC? PVCSetTime : SkipSetTime;
-			RemainPeriodT = IsPVC? PVCSetTime : SkipSetTime;
+			RemainPeriodT = IsPVC ? PVCSetTime : SkipSetTime;
+			RemainPeriodRTU = IsPVC ? PVCSetTime : SkipSetTime;
 			ReturnTime = IsPVC? PostPVCSetTime : ReturnTime;
 			// StartReturnTime = PostPVCSetTime;
 
@@ -334,6 +337,13 @@ public sealed class HeartOrgan : Component
 		if ( RemainPeriodT > _capT )
 		{
 			RemainPeriodT = _capT;
+			RemainPeriodRTU = _capT;
+			return;
+		}
+		if (RemainPeriodT < 0)
+		{
+			RemainPeriodT = 0;
+			RemainPeriodRTU = 0;
 			return;
 		}
 		RemainPeriodT -= Delta;
@@ -350,6 +360,7 @@ public sealed class HeartOrgan : Component
 			// Heart Systole
 			StateIndex = 1;
 			RemainPeriodT = PeriodT;
+			RemainPeriodRTU = PeriodT;
 			RemainPeriodTMillisec = RemainPeriodT * 1000f;
 			Lub = true;
 			// DONE: ECG & sound
@@ -412,6 +423,7 @@ public sealed class HeartOrgan : Component
 				// Heart Diastole
 				StateIndex = 0;
 				StartReturnTime = ReturnTime;
+				StartReturnRTU = ReturnTime; // NEW
 				StartReturnTimeMillisec = StartReturnTime * 1000f;
 				Lub = false;
 				// DONE: ECG & sound
@@ -421,12 +433,18 @@ public sealed class HeartOrgan : Component
 				}
 				if(SkipActive)
 				{
-
-
+					if(IsPVC && PVCNumbersInThisSession == 1)
+					{
+						// the last PVC before "null" terminator (0), try go to pause
+						PeriodT = SkipSetTime;
+						// RemainPeriodT = PeriodT;
+						// RemainPeriodRTU = PeriodT;
+					}
 					if(SkipActive && SkipDone)
 					{
 						PeriodT = SkipSetTime;
 						RemainPeriodT = PeriodT;
+						RemainPeriodRTU = PeriodT;
 						SkipActive = false;
 						SkipDone = false;
 						// heart got it together again
@@ -466,6 +484,7 @@ public sealed class HeartOrgan : Component
 			{
 				StateIndex = 0;
 				StartReturnTime = ReturnTime;
+				StartReturnRTU = ReturnTime;
 				StartReturnTimeMillisec = StartReturnTime * 1000f;
 				Lub = false;
 				// TODO: ECG & sound

@@ -3,3 +3,4 @@
 - Alter ego fall pit map so feminine
 - ~~reupdate because there is `Make it Open Source`. Redundant, but we are serious about Open Source.~~
 - Create Gyro effect Spinning `T` demo thanks to Box3D almost accurate physics
+- learn how to do animated npc moving. use Facepunch.testbed's Navigation Obstacles or Links
