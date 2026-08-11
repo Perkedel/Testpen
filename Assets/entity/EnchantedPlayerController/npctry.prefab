@@ -3,7 +3,7 @@
     "__guid": "fe0d784e-29fc-4a82-baf7-a3031bc34783",
     "__version": 2,
     "Flags": 0,
-    "Name": "NPCTry",
+    "Name": "npctry",
     "Position": "0,0,0",
     "Rotation": "0,0,0,1",
     "Scale": "1,1,1",
@@ -190,11 +190,23 @@
         "RemoveUnownedItems": true,
         "Source": "Manual",
         "WorkshopItems": []
+      },
+      {
+        "__type": "Sandbox.Npctry",
+        "__guid": "99e21a72-0b4c-4e38-b09a-b5e529df9f58",
+        "__enabled": true,
+        "Flags": 0,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null
       }
     ],
     "Children": [
       {
-        "__guid": "7c0030be-290a-4edc-8e5b-22e7be1b8224",
+        "__guid": "fcbe7eb1-5994-4f03-9d5f-04e41044daf0",
         "__version": 2,
         "Flags": 0,
         "Name": "Clothing - shark_head",
@@ -211,7 +223,7 @@
         "Components": [
           {
             "__type": "Sandbox.SkinnedModelRenderer",
-            "__guid": "0e04cdae-ec75-453a-979c-618560d82ac6",
+            "__guid": "13b33964-07fe-410e-8cc0-47fdee9f0503",
             "__enabled": true,
             "Flags": 0,
             "AnimationGraph": null,
@@ -263,7 +275,7 @@
         "Children": []
       },
       {
-        "__guid": "528ee346-ca62-4013-864d-2544ba46021e",
+        "__guid": "10b603aa-86a8-4f87-a504-ab053fefb926",
         "__version": 2,
         "Flags": 0,
         "Name": "Clothing - trackie_bottoms",
@@ -280,7 +292,7 @@
         "Components": [
           {
             "__type": "Sandbox.SkinnedModelRenderer",
-            "__guid": "f7147a96-b913-4868-9352-d7a8470b0094",
+            "__guid": "114d96dc-868b-47a7-bfe6-a31047b0c9c5",
             "__enabled": true,
             "Flags": 0,
             "AnimationGraph": null,
@@ -332,7 +344,7 @@
         "Children": []
       },
       {
-        "__guid": "d4d66fac-05ec-4edb-982a-6634e2b3191c",
+        "__guid": "c0beb316-6d54-447e-b3b5-899d27c968fc",
         "__version": 2,
         "Flags": 0,
         "Name": "Clothing - tanktop",
@@ -349,7 +361,7 @@
         "Components": [
           {
             "__type": "Sandbox.SkinnedModelRenderer",
-            "__guid": "be416971-d65d-4171-b47d-d3ad4df41fad",
+            "__guid": "a9407299-6a56-4a84-a1fb-98248d80e88b",
             "__enabled": true,
             "Flags": 0,
             "AnimationGraph": null,
@@ -401,7 +413,7 @@
         "Children": []
       },
       {
-        "__guid": "c8604681-3d4d-4c63-b6e4-e32380b0f7f3",
+        "__guid": "74ed65d4-42e4-423a-bc02-ff3af1a30fb8",
         "__version": 2,
         "Flags": 0,
         "Name": "Clothing - sneakers",
@@ -418,7 +430,7 @@
         "Components": [
           {
             "__type": "Sandbox.SkinnedModelRenderer",
-            "__guid": "3920ce4b-11d1-4478-a833-cf76374f93b2",
+            "__guid": "6e2ebdaf-b98d-42e7-8d0b-4f9ee7552dea",
             "__enabled": true,
             "Flags": 0,
             "AnimationGraph": null,
@@ -470,7 +482,7 @@
         "Children": []
       },
       {
-        "__guid": "3aea0f76-ef3c-4f1d-be4f-0e9db3398827",
+        "__guid": "82cfb9ff-f7c6-48a1-af27-8120b1aeae32",
         "__version": 2,
         "Flags": 0,
         "Name": "Clothing - tactical_vest",
@@ -487,7 +499,7 @@
         "Components": [
           {
             "__type": "Sandbox.SkinnedModelRenderer",
-            "__guid": "f13f3e8b-912b-479d-a3fd-6417b6fab057",
+            "__guid": "6d0ff932-1d6c-4dbf-ae35-a7d9dfb95e1e",
             "__enabled": true,
             "Flags": 0,
             "AnimationGraph": null,
@@ -539,7 +551,7 @@
         "Children": []
       },
       {
-        "__guid": "11e70bff-09cb-420a-a799-bcae7c105c59",
+        "__guid": "e7dc1473-b048-4174-93c3-4a694ff6787e",
         "__version": 2,
         "Flags": 0,
         "Name": "Clothing - handlebar_moustache",
@@ -556,7 +568,7 @@
         "Components": [
           {
             "__type": "Sandbox.SkinnedModelRenderer",
-            "__guid": "4b8b081a-3914-45e1-8569-6dac7b3f648a",
+            "__guid": "ebab3713-5c34-4199-8395-d6bb54f0cd9e",
             "__enabled": true,
             "Flags": 0,
             "AnimationGraph": null,
@@ -608,7 +620,7 @@
         "Children": []
       },
       {
-        "__guid": "cacde624-731e-4292-b647-6502a8ac23b6",
+        "__guid": "813691f5-c54b-4dd2-b7ce-992d54e614d3",
         "__version": 2,
         "Flags": 0,
         "Name": "Clothing - party_glasses",
@@ -625,7 +637,7 @@
         "Components": [
           {
             "__type": "Sandbox.SkinnedModelRenderer",
-            "__guid": "b246e424-9dca-4052-b7fa-601e8e727b4f",
+            "__guid": "92dc7a49-d738-46e0-a8ee-771befbd6027",
             "__enabled": true,
             "Flags": 0,
             "AnimationGraph": null,
@@ -676,7 +688,28 @@
         ],
         "Children": []
       }
-    ]
+    ],
+    "__properties": {
+      "NetworkInterpolation": true,
+      "TimeScale": 1,
+      "WantsSystemScene": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": false,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": "",
+        "DeferGeneration": false,
+        "CustomBounds": false
+      }
+    },
+    "__variables": []
   },
   "ResourceVersion": 2,
   "ShowInMenu": false,
